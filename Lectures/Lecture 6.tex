@@ -1,0 +1,328 @@
+\vspace*{1em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Continuous Functions}
+\end{center}
+\end{mdframed}
+
+\begin{definition}[Continuous Functions]
+A function $f: G \to \cc$ is \emph{continuous at $z_0 \in G$} if either $z_0$ is an isolated point or 
+\[\lim_{z \to z_0}\,f(z) = f(z_0) = f\left(\lim_{z\to z_0}\,z\right)\]
+That is, for all $\epsilon > 0$, there exists a $\delta > 0$ such that
+\[\text{if }\ 0 < \abs{z - z_0} < \delta,\quad \text{then }\ \abs{f(z) - f(z_0)}<\epsilon.\]
+A function is \cdef{continuous} if it is continuous at every point in its domain.\\
+\\
+By the limit laws (Theorem \ref{limlaw}), sum, product and quotient of continuous functions are continuous (whenever and wherever defined).
+\end{definition}
+
+\vspace*{1em}
+
+\begin{theorem}[Composition of Continuous Functions]\label{composcont}
+Suppose we have two functions $f:G_1 \to \cc$ and $g: G_2 \to \cc$ such that $f(G_1) \subseteq G_2$. If $f$ is continuous at $z_0$ and $g$ is continuous at $f(z_0)$, then $g\circ f$ is continuous at $z_0$. That is,
+\[\lim_{z \to z_0}g(f(z)) = g(f(z_0)) = g\left(\lim_{z\to z_0}f(z)\right) = g\left(f\left(\lim_{z\to z_0}\,z\right)\right)\]
+Therefore, if $f$ and $g$ are continuous, so is $g\circ f$.
+\end{theorem}
+\begin{proof}
+By continuity of $g$ at $f(z_0)$, for an arbitrary $\epsilon > 0$, there exists a $\delta_1 > 0$ such that
+\[\text{if }\ 0 < \abs{w - f(z_0)} < \delta_1,\quad \text{then }\ \abs{g(w) - g(f(z_0))}<\epsilon.\]
+Now, by continuity of $f$ at $z_0$, for $\delta_1 > 0$, there exists a $\delta > 0$ such that
+\[\text{if }\ 0 < \abs{z - z_0} < \delta,\quad \text{then }\ \abs{f(z) - f(z_0)}<\delta_1.\]
+With these two statements, we have that 
+\[\text{if }\ 0 < \abs{z - z_0} < \delta,\quad \text{then }\ \abs{g(f(z)) - g(f(z_0))}<\epsilon.\]
+Therefore $g\circ f$ is continuous at $z_0$.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{theorem}
+Suppose $f: G \to \cc$ is continuous at $z_0$ and $f(z_0) \neq 0$, then there exists a $\delta > 0$ such that $f(z) \neq 0$ for all $z \in D_\delta(z_0)$. That is, $\abs{f(z)} > 0$ for all $z \in D_\delta(z_0)$.
+\end{theorem}
+\begin{proof}
+Since $f$ is continuous and non-zero at $z_0$, for $\epsilon = \dfrac{\abs{f(z_0)}}{2} > 0$ there exists a $\delta > 0$ such that
+\[\text{if }\ z \in D_\delta(z_0),\quad \text{then }\ \abs{f(z) - f(z_0)}< \frac{\abs{f(z_0)}}{2}.\]
+For such a $z$, the reverse triangle inequality gives us
+\[\abs{\abs{f(z)} - \abs{f(z_0)}} \leq \abs{f(z) - f(z_0)}< \frac{\abs{f(z_0)}}{2};\quad \text{so, }\ -\frac{\abs{f(z_0)}}{2} < \abs{f(z)} - \abs{f(z_0)} < \frac{\abs{f(z_0)}}{2}\]
+since the former is the absolute value of real numbers. Therefore, adding $\abs{f(z_0)}$ to this inequality gives us
+\[\abs{f(z)} > \frac{\abs{f(z_0)}}{2} > 0\]
+as needed.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{theorem}[Continuity in terms of Real and Imaginary parts of a Function]\label{contpart}
+Suppose that 
+\[f(z) = f(x + iy) = u(x,y) + i\,v(x,y).\]
+Then $f$ is continuous at $z_0 = x_0 + iy_0$ if and only if $u$ and $v$ are continuous at $(x_0,y_0)$.
+\end{theorem}
+\begin{proof}
+This is directly follows from Theorem \ref{cmplxlimripart}.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{definition}[Compact Sets]
+A subset of $\cc$ is said to be \cdef{compact} if it is closed and bounded.
+\end{definition}
+
+\vspace*{1em}
+
+\begin{definition}[Bounded Functions]
+A function $f: G \to \cc$ is said to be a \cdef{bounded\ function} if the image $f(G)$ is bounded. Equivalently, if there exists $M > 0$ such that $\abs{f(z)} \leq M$ for every $z \in G$.
+\end{definition}
+
+\vspace*{1em}
+
+\begin{theorem}[Extreme Value Theorem]
+Suppose $K \subseteq \cc$ is compact, and $f: K \to \cc$ is continuous. Then $f$ is bounded, that is there exists an $M > 0$ such that $\abs{f(z)} \leq M$ for all $z \in K$, and there exists a $z_0 \in K$ such that $\abs{f(z_0)} = M$.
+\end{theorem}
+\begin{proof}
+Since $f = u + iv$ is continuous, so are $u,v:\rr^2 \to \rr$ by Theorem \ref{contpart}.  Hence, so is
+\[\abs{f(z)} = \abs{f(x + iy)} = \sqrt{u(x,y)^2 + v(x,y)^2}\]
+as it's obtained as a sum, product and composition of continuous functions. This result then follows from standard Calculus, since $\abs{f}$ is a real-valued function.
+\end{proof}
+
+\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Complex-Differentiable Functions}
+\end{center}
+\end{mdframed}
+
+\begin{definition}[Derivative]\label{cmplxder}
+Consider a function $f:G \to \cc$, the \cdef{derivative} \emph{of $f$ at $z_0 \in G$} is the limit
+\[\frac{d}{dz}(f(z_0)) = f'(z_0) \coloneqq \lim_{z \to z_0}\frac{f(z) - f(z_0)}{z - z_0}\]
+If the limit exists, we say $f$ is \emph{differentiable at $z_0$}.\\[0.5em]
+A function is \cdef{differentiable} if it is differentiable at every point in its domain.
+\end{definition}
+Letting $h = \Delta_{z_0}z = z - z_0$, the limit can also be written as
+\[f'(z_0) = \lim_{h \to 0}\frac{f(z_0 + h) - f(z_0)}{h}\]
+
+\vspace*{1em}
+
+\begin{example}
+Consider $f(z) = z^2$, then
+\begin{align*}
+f'(z) = \lim_{h \to 0}\frac{f(z + h) - f(z)}{h} &= \lim_{h \to 0}\frac{(z + h)^2 - z^2}{h}\\[0.5em]
+&= \lim_{h \to 0}\frac{2zh + h^2}{h}\\[0.5em]
+&= \lim_{h \to 0}\,2z + h\\[0.5em]
+&= 2z
+\end{align*}
+\end{example}
+
+\vspace*{1em}
+
+\begin{example}\label{normdiffexistence}
+Where is $f(z) = \abs{z}^2$ differentiable?\\[1em]
+Consider $z \in \cc$ and an arbitrary $h \in \cc$, then we compute
+\begin{align*}
+f(z + h) - f(z) &= \abs{z + h}^2 - \abs{z}^2\\[0.5em]
+&= (z + h)\overline{(z + h)} - z\overline{z}\\[0.5em]
+&= z\overline{z} + z\overline{h} + \overline{z}h + h\overline{h} - z\overline{z}\\[0.5em]
+&= z\overline{h} + \overline{z}h + h\overline{h}
+\end{align*}
+Then 
+\[\frac{f(z + h) - f(z)}{h} = \frac{z\overline{h} + \overline{z}h + h\overline{h}}{h} = z\,\frac{\overline{h}}{h} + \overline{z} + \overline{h}\]
+Along the real axis, $h = \overline{h}$, we have
+\[\frac{f(z + h) - f(z)}{h} = z + \overline{z} + h;\]
+therefore, as $h \to 0$, the limit is $z + \overline{z}$. Along the imaginary axis, $h = -\overline{h}$, we have
+\[\frac{f(z + h) - f(z)}{h} = -z + \overline{z} - h;\]
+therefore, as $h \to 0$, the limit is $-z + \overline{z}$.\\
+\\
+Since limits are unique, if $f'(z)$ exists, then $z + \overline{z} = -z + \overline{z}$, which gives us $z = 0$. That is, if $f'(z)$ exists, it only exists for $z = 0$. So, does $f'(0)$ exist?
+\[f'(0) = \lim_{h \to 0}\frac{f(h) - f(0)}{h} = \lim_{h \to 0}\frac{h\overline{h}}{h} = \lim_{h \to 0}\overline{h} = 0\]
+\end{example}
+
+\vspace*{1em}
+
+\begin{proposition}[Differentiable Functions are Continuous]
+If $f$ is differentiable at $z_0$, then $f$ is continuous at $z_0$.
+\end{proposition}
+\begin{proof}
+Suppose $f$ is differentiable at $z_0$, then
+\[\lim_{z \to z_0}f(z) - f(z_0) = \left(\lim_{z \to z_0}\frac{f(z) - f(z_0)}{z - z_0}\right)\left(\lim_{z \to z_0}\,z - z_0\right) = f'(z_0)\cdot 0 = 0\]
+Therefore $\lim_{z \to z_0}f(z) = f(z_0)$, and hence $f$ is continuous at $z_0$.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{theorem}[Differentiation Laws]
+Suppose $f$ and $g$ are differentiable at $z$. Then,
+\begin{itemize}[itemsep=1em]
+\item[(1)] $(c)' = 0$, for every $c \in \cc$.
+\item[(2)] $(c\cdot f)'(z) = c\cdot f'(z)$, for every $c \in \cc$.\hfill \emph{(Constant Rule)}
+\item[(3)] $(z^n)' = nz^{n-1}$, for every $n \in \zz$ (assume $z \neq 0$ for $n<0$).\hfill \emph{(Power Rule)}
+\item[(4)] $(f + g)'(z) = f'(z) + g'(z)$.\hfill \emph{(Sum Rule)}
+\item[(5)] $(fg)'(z) = f'(z)g(z) + f(z)g'(z)$.\hfill \emph{(Product Rule)}
+\item[(6)] $\left(\dfrac{f}{g}\right)'(z) = \dfrac{f'(z)g(z) - f(z)g'(z)}{g(z)^2}$, provided $g(z) \neq 0$ \hfill \emph{(Quotient Rule)}
+\end{itemize}
+\end{theorem}
+\begin{proof}
+(1) and (4) are proved directly using the limit definition, (2) can be proved directly or using (1) and (5), while (3) can be proven inductively using (5) for positive $n$ and (6) for negative $n$. 
+\begin{itemize}
+\item[(5)] We first compute
+\begin{align*}
+f(z + h)g(z + h) - f(z)g(z) &= f(z + h)g(z + h) - f(z)g(z) + f(z + h)g(z) - f(z + h)g(z)\\[0.5em]
+&= f(z + h)(g(z + h) - g(z)) + g(z)(f(z + h) - f(z))
+\end{align*}
+So,
+\begin{align*}
+(fg)'(z) &= \lim_{h \to 0}\frac{f(z + h)g(z + h) - f(z)g(z)}{h}\\[0.5em]
+&= \lim_{h \to 0}\frac{f(z + h)(g(z + h) - g(z))}{h} + \lim_{h \to 0}\frac{g(z)(f(z + h) - f(z))}{h}\\[0.5em]
+&= \lim_{h \to 0}f(z + h)\cdot\lim_{h \to 0}\frac{g(z + h) - g(z)}{h} + g(z)\lim_{h \to 0}\frac{f(z + h) - f(z)}{h}\\[0.5em]
+&= f(z)g'(z) + g(z)f'(z)
+\end{align*}
+\item[(6)] We first compute
+\begin{align*}
+\frac{1}{g(z + h)} - \frac{1}{g(z)} &= \frac{g(z) - g(z + h)}{g(z)g(z + h)}\\[0.5em]
+&= -\frac{g(z+h) - g(z)}{g(z)g(z + h)}
+\end{align*}
+So,
+\begin{align*}
+\left(\dfrac{1}{g}\right)'(z) &= \lim_{h \to 0}\frac{\dfrac{1}{g(z + h)} - \dfrac{1}{g(z)}}{h}\\[0.5em]
+&= \lim_{h \to 0}-\frac{g(z+h) - g(z)}{g(z)g(z + h)}\cdot\frac{1}{h}\\[0.5em]
+&= -\lim_{h \to 0}\frac{g(z+h) - g(z)}{h}\cdot\lim_{h \to 0}\frac{1}{g(z)g(z + h)}\\[0.5em]
+&= -\frac{g'(z)}{g(z)^2}
+\end{align*}
+(6) then follows from the computation above and using (5) on $\dfrac{f(z)}{g(z)} = f(z)\cdot\dfrac{1}{g(z)}$.
+\end{itemize}
+\vspace*{-\baselineskip}
+\end{proof}
+
+\vspace*{1em}
+
+\begin{proposition}[Chain Rule]
+Suppose we have two functions $f:G_1 \to \cc$ and $g: G_2 \to \cc$ such that $f(G_1) \subseteq G_2$. If $f$ is differentiable at $z_0$ and $g$ is differentiable at $f(z_0)$, then $g\circ f$ is differentiable at $z_0$ and
+\[(g\circ f)'(z_0) = g'(f(z_0))\cdot f'(z_0)\]
+\end{proposition}
+\begin{proof}
+Let's start by defining an auxiliary function on $G_2$
+\[\phi(w) = \begin{cases} \dfrac{g(w) - g(f(z_0))}{w - f(z_0)} - g'(f(z_0)) & w \neq f(z_0)\\[0.5em] 0 & w = f(z_0) \end{cases}\]
+Since $g$ is differentiable at $f(z_0)$, then $\lim_{w \to f(z_0)}\phi(w) = 0 = \phi(f(z_0))$ and therefore $\phi$ is continuous at $f(z_0)$. Furthermore, since $f$ is differentiable at $z_0$, it is continuous at $z_0$. So $\lim_{z \to z_0}\phi(f(z)) = \phi(f(z_0)) = 0$ by Theorem \ref{composcont}.\\[1em]
+Rewriting the above expression, we get the following expression which is valid on all of $G_2$.
+\[g(w) - g(f(z_0)) = (w - f(z_0))(\phi(w) + g'(f(z_0)))\]
+Now, for $w = f(z) \in f(G_1)$, we have
+\begin{align*}
+\frac{g(f(z)) - g(f(z_0))}{z - z_0} &= \frac{(f(z) - f(z_0))(\phi(f(z)) + g'(f(z_0)))}{z - z_0}\\[0.5em]
+&= (\phi(f(z)) + g'(f(z_0)))\cdot\frac{f(z) - f(z_0)}{z - z_0}
+\end{align*}
+Therefore, 
+\begin{align*}
+(g\circ f)'(z_0) &= \lim_{z \to z_0}\frac{g(f(z)) - g(f(z_0))}{z - z_0}\\[0.5em]
+&= \lim_{z \to z_0}(\phi(f(z)) + g'(f(z_0)))\cdot\lim_{z \to z_0}\frac{f(z) - f(z_0)}{z - z_0}\\[1em]
+&= g'(f(z_0))\cdot f'(z_0),\ \text{since $\lim_{z \to z_0}\phi(f(z)) = 0$}
+\end{align*}
+\end{proof}
+
+\vspace*{0.2in}
+
+\subsection{Problems}
+\vspace{0.1in}
+
+\begin{problem}\label{prob 6.1}
+Example \ref{polycts} tells us that polynomials are continuous. 
+\begin{itemize}
+\item[(a)] Prove that the complex conjugation function $\sigma(z) \coloneqq \overline{z}$ is continuous.
+\item[(b)] Prove that a polynomial in $\overline{z}$ is continuous. That is, prove that a polynomial given as
+\[p(\overline{z}) = a_n\overline{z}^n + \cdots + a_1\overline{z} + a_0,\quad a_i \in \cc,\ a_n \neq 0\]
+is continuous.
+\item[(c)] Prove that the following functions are continuous by writing them as a sum or product of polynomials $p(z)$ and $q(\overline{z})$
+\begin{itemize}
+\item[(i)] $R(z) \coloneqq \Re z$
+\item[(ii)] $I(z) \coloneqq \Im z$
+\item[(iii)] $N(z) \coloneqq \abs{z}^2$
+\end{itemize}
+\end{itemize}
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 6.2}
+Show that the function $f : \cc \to \cc$ given by
+\[f(z) = \begin{cases} \dfrac{\overline{z}}{z} & \text{if }z \neq 0\\[1em] 1 & \text{if } z = 0 \end{cases}\]
+is continuous on $\cc^*$.
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 6.3}
+Consider the function \[f : \cc^*\to \cc,\ z \mapsto \frac{1}{z}.\]
+Apply the definition of the derivative to give a direct proof that $f'(z) = -\dfrac{1}{z^2}$.
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 6.4}
+Find the derivative of the function 
+\[M(z) \coloneqq \frac{az + b}{cz + d},\quad ad-bc \neq 0.\]
+When is $M'(z) = 0$?
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 6.5}
+Using Example \ref{limnotex} as an inspiration, show that $f'(z)$ does not exist for any $z$ for the functions
+\begin{itemize}
+\item[(a)] $f(z) = \Re z$
+\item[(b)] $f(z) = \Im z$
+\end{itemize}
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 6.6}
+Show that the function $f : \cc \to \cc$ given by
+\[f(z) = \begin{cases} \dfrac{\overline{z}^2}{z} & \text{if }z \neq 0\\[1em] 0 & \text{if } z = 0 \end{cases}\]
+is not differentiable at $0$.
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 6.7}\hfill
+\begin{itemize}
+\item[(a)] Show that a polynomial of degree $n$, $p(z) = a_0 + a_1z + a_2z^2 + \cdots + a_nz^n$, where $a_n \neq 0$, is differentiable everywhere, with
+\[p'(z) = a_1 + 2a_2z + \cdots + na_nz^{n-1}\]
+\item[(b)] Furthermore, show that for $p(z)$, as given in (a), we have
+\[a_i = \frac{p^{(i)}(0)}{i!}\]
+for $i = 0,\ldots,n$. Where $p^{(0)}(z) = p(z)$ and $p^{(i)}(z)$, for $i>0$, is the $i^{\text{th}}$ derivative of $p(z)$.
+\end{itemize}
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 6.8}
+Let $G$ be a domain and $f: G \to \cc$ a function that is differentiable at every point in $G$. Consider the domain
+\[G^* = \setp{z \in \cc}{\overline{z} \in G}\]
+and the function 
+\[f^*:G^* \to \cc,\ z \mapsto \overline{f(\overline{z})}\]
+Show that $f^*$ is differentiable at every point in $G^*$.
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 6.9}
+For each function, determine all points at which the derivative exists. When the derivative exists, find its value. Use Example \ref{normdiffexistence} as an inspiration.
+\begin{itemize}
+\item[(a)] $f(z) = z + i\overline{z}$
+\item[(b)] $g(z) = (z + i\overline{z})^2$
+\item[(b)] $h(z) = z\Im z$
+\end{itemize}
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 6.10}
+By definition, a function $f : G \to \cc$ is differentiable at $z_0 \in G$ if the limit
+\[f'(z_0) = \lim_{z\to z_0}\frac{f(z) - f(z_0)}{z - z_0}\]
+exists. Unpacking the limit definition, we see that $f$ is differentiable at $z_0$ if and only if for every $\epsilon > 0$, there exists a $\delta > 0$ such that
+\[\text{if }\ 0 < \abs{z - z_0} < \delta,\quad \text{then }\ \abs{\frac{f(z) - f(z_0)}{z - z_0} - f'(z_0)} < \epsilon.\]
+\newpage
+By appealing only to the definition, we show that $\sigma : \cc \to \cc$ defined by $\sigma(z) = \overline{z}$ is not differentiable anywhere by completing the following steps.
+\begin{itemize}
+\item[(i)] Let $z_0 \in \cc$ and assume that $f'(z_0)$ exists. Choose $\delta > 0$ according to the definition using $\epsilon = 1/2$ and write down the resulting statement.
+\item[(ii)] Consider $z = z_0 + \delta/2$ and conclude from (a) that $\abs{1 - f'(z_0)} < \epsilon$.
+\item[(iii)] Consider $z = z_0 + i\delta/2$ and conclude from (a) that $\abs{1 + f'(z_0)} < \epsilon$.
+\item[(iv)] Using the triangle inequality together with (ii) and (iii), obtain a contradiction.
+\end{itemize}
+\end{problem}

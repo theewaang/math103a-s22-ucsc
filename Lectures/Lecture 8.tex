@@ -1,0 +1,280 @@
+\vspace*{1em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Holomorphic Functions}
+\end{center}
+\end{mdframed}
+
+\begin{definition}[Holomorphic Functions]
+A function $f$ is \emph{holomorphic on an open set $U$} if $f'(z)$ exists for every $z \in U$.\\[0.5em]
+We say $f$ is \emph{holomorphic at a point $z_0$} if it holomorphic on some open disk $D_\epsilon(z_0)$ for an $\epsilon > 0$. We say $f$ is \cdef{holomorphic} if it is holomorphic at every point in its domain.\\[0.5em]
+A function that is holomorphic on all of $\cc$ is said to be \cdef{entire}. 
+\end{definition}
+
+\vspace*{1em}
+
+\begin{example}\hfill
+\begin{itemize}
+\item[(1)] $f(z) = \dfrac{1}{z}$ is holomorphic on any open set not containing $0$, in particular on $\cc^*$.
+\item[(2)] $f(z) = \abs{z}^2$ is nowhere holomorphic since we have already seen that $f$ is only complex-differentiable at $z = 0$ and at no other point.
+\item[(3)] Polynomials are entire.
+\item[(4)] $f(z) = \overline{z}$ is nowhere holomorphic, since it's nowhere differentiable.
+\end{itemize}
+\end{example}
+
+\vspace*{1em}
+
+\begin{discussion}
+Let $G$ be a domain (open and connected subset of $\cc$). We know several necessary and sufficient conditions for $f = u + iv$ to be holomorphic on $G$. 
+\begin{itemize}[leftmargin = 6em]
+\item[(Necessary)]
+\begin{itemize}
+\item[(1)] $f$ is continuous on $G$.
+\item[(2)] Cauchy-Riemann equations (\ref{creqex}) are satisfied on $G$.
+\end{itemize}
+\item[(Sufficient)]
+\begin{itemize}
+\item[(1)] First order partial derivatives of $u$ and $v$ exist and continuous on $G$, and the Cauchy-Riemann equations (\ref{creqex}) are satisfied on $G$.
+\item[(2)] Differentiation Laws. If $f$ and $g$ are holomorphic on $G$, then so are $f + g,\, fg$ and $f/g$ (if $g \neq 0$ on $G$).
+\item[(3)] Composition of holomorphic functions is holomorphic.
+\end{itemize}
+\end{itemize}
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{theorem}[Sufficient Condition for Constantness]\label{der0const}
+Suppose $G$ is a domain and $f'(z) = 0$ for all $z \in G$. Then $f(z)$ is constant on $G$.
+\end{theorem}
+\begin{proof}
+%{\color{red}Add proof.}
+Write $f(z) = f(x + iy) = u(x,y) + i\,v(x,y)$, so we have
+\begin{align*}
+0 = f'(z) &= u_x + iv_x = v_y - i\,u_y
+\end{align*}
+Therefore $u_x = u_y = 0$ and $v_x = v_y = 0$. We consider points $p,q \in G$ such that there's a line segment $L$ in $G$ connecting them. Let $\vec{w} = (a,b)$ be a unit vector parallel to $L$, then the directional derivative of $u$ along $L$ is
+\[(\operatorname{grad}u)\cdot\vec{w} = au_x + bu_y = 0.\]
+So, $u$ is constant along $L$. Since $G$ is a domain, any two points can be connected by a polygon line. Applying the above argument along constituent line segments, we see that $u$ has the same value along the endpoints of any polygon line. This shows that $u$ is constant on $G$, say $u(x,y) = c$. A similar argument works for $v$, giving us $v(x,y) = d$. Hence
+\[f(z) = c + id,\]
+that is, $f$ is constant.
+\end{proof}
+
+\vspace*{1em}
+
+Theorem \ref{der0const} has many interesting consequences.
+\begin{proposition}\label{conjholconst}
+Suppose $f$ and $\bar{f}$ are holomorphic on a domain $G$. Then $f$ is constant on $G$.
+\end{proposition}
+\begin{proof}
+We write
+\begin{align*}
+f(z) &= f(x + iy) = u(x,y) + i\,v(x,y)\\[0.5em]
+\bar{f}(z) &= \overline{f(x + iy)} = u(x,y) - i\,v(x,y)
+\end{align*}
+Since $f$ and $\bar{f}$ are holomorphic, they satisfy the Cauchy-Riemann equations (\ref{creqex})
+\[\text{for $f$: }\ \begin{cases}u_x = v_y\\ u_y = -v_x \end{cases}\]\\[-0.5em]
+\[\text{for $\bar{f}$: }\ \begin{cases}u_x = (-v)_y = -v_y\\ u_y = -(-v)_x = v_x \end{cases}\]\\
+This gives us $v_y = -v_y$ and $v_x = -v_x$, and therefore $u_x = v_x = 0$. Hence $f'(z) = u_x + i\,v_x = 0$, giving us that $f$ is constant by Theorem \ref{der0const}.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{corollary}\label{realholconst}
+Suppose $f$ is holomorphic on a domain $G$ and always real-valued. Then $f$ is constant on $G$.
+\end{corollary}
+\begin{proof}
+Since $f$ is always real-valued, we have $f = \bar{f}$. Therefore $\bar{f}$ is holomorphic on $G$ as well, and hence $f$ is constant by Proposition \ref{conjholconst}.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{corollary}\label{absholconst}
+Suppose $f$ is holomorphic on a domain $G$ and $\abs{f}$ is constant on it. Then $f$ is also constant on $G$.
+\end{corollary}
+\begin{proof}
+By assumption $\abs{f(z)} = c$, for all $z \in G$, for some $c \in \cc$. This gives us
+\[f(z)\overline{f(z)} = \abs{f(z)}^2 = c^2\tag{$*$}\label{eqabs}\]
+Suppose $c = 0$, then $\abs{f(z)} = 0$ and therefore $f(z) = 0$. Suppose $c \neq 0$, then necessarily $f(z) \neq 0$ for every $z \in G$ by (\ref{eqabs}). Hence
+\[\overline{f(z)} = \frac{c^2}{f(z)},\]
+and thus $\bar{f}$ is holomorphic. Therefore both $f$ and $\bar{f}$ are holomorphic and hence $f$ is constant by Proposition \ref{conjholconst}.
+\end{proof}
+
+%\vspace*{1em}
+
+\begin{example}
+We apply Corollary \ref{absholconst} to $f(z) = \dfrac{\overline{z}}{z}$ to conclude that it's not holomorphic.\\
+\\
+We first note that, for any $z \in \cc$,
+\[\abs{f(z)} = \abs{\frac{\overline{z}}{z}} = \frac{|\overline{z}|}{\abs{z}} = 1;\]
+that is, $\abs{f}$ is constant. Suppose $f$ was holomorphic on $\cc$ (this argument can be specialised to any domain $G$), then $f$ would be a holomorphic function such that $\abs{f}$ is constant. Therefore, by Corollary \ref{absholconst}, $f$ is constant on $\cc$. That's a contradiction, since $f$ is non-constant, as $f(1) = 1$ and $f(i) = -1$. 
+\end{example}
+
+\vspace*{1em}
+
+\begin{example}[in-class]
+Is the function $f(z) = \Re z$ holomorphic?
+\end{example}
+\begin{proof}[Answer]
+Note that $f(z) = \Re z$ is a real-valued function, for any $z \in \cc$. Suppose $f$ was holomorphic on $\cc$ (this argument can be specialised to any domain $G$), then $f$ would be a holomorphic function such that $f$ is always real-valued. Therefore, by Corollary \ref{realholconst}, $f$ is constant on $\cc$. That's a contradiction, since $f$ is non-constant, as $f(1) = 1$ and $f(i) = 0$. 
+\end{proof}
+
+\vspace*{2em}
+
+We now discuss a large class of holomorphic functions, which are complex  versions of functions you may have seen in your Calculus classes
+
+\vspace*{1em}
+
+\begin{mdframed}
+\begin{center}
+{\Large The Exponential Function}
+\end{center}
+\end{mdframed}
+
+\begin{definition}[The Exponential Function]
+The \cdef{(complex)\ exponential\, function} $e^z$ (or $\exp(z)$) is defined on all of $\cc$ as follows
+\[e^z \coloneqq e^{\Re z}e^{i\Im z} = e^{\Re z}(\cos(\Im z) + i\sin(\Im z)).\]
+That is, writing $z = x + iy$, we have
+\[e^z = e^xe^{iy} = e^x(\cos y + i\sin y).\]
+Since $x \in \rr,\  e^x$ is the usual real exponential function, while $e^{iy}$ is given by Euler's formula.\\[0.5em]
+Furthermore, the definitions give us $\overline{e^z} = e^{\overline{z}}$.\\[0.5em]
+Note that when $z = x \in \rr$, we have $e^z = e^x$, since then $\Im z = 0$.
+\end{definition}
+
+\vspace*{1em}
+
+\begin{proposition}[Properties of the Exponential]\label{propexp}
+Consider $z,w \in \cc$. 
+\begin{itemize}
+\item[(1)] $\abs{e^z} = e^{\Re z}$ and $\arg e^z = \setp{\Im z + 2k\pi}{k \in \zz}$.
+\item[(2)] $e^{z + w} = e^ze^w$.
+\item[(3)] $e^{z - w} = \dfrac{e^z}{e^w}$.
+\item[(4)] $e^z$ is entire, and $(e^z)' = e^z$.
+\item[(5)] $e^z$ is periodic: $e^{z + 2k\pi i} = e^z$ for all $k \in \zz$.
+\end{itemize}
+\end{proposition}
+\begin{proof}\hfill
+\begin{itemize}
+\item[(1)] Write $z = x + iy$, then $\abs{e^z} = \abs{e^x}\abs{\cos x + i\sin x} = \abs{e^x}$. Which tells us \[\arg e^z = \setp{y + 2k\pi}{k \in \zz}.\]
+\item[(2)] Write $z = x + iy$ and $w = u + iv$, then
+\begin{align*}
+e^{z + w} &= e^{(x+u) + i(y + v)}\\[0.5em]
+&= e^{x + u}e^{i(y + v)}\\[0.5em]
+&= e^x e^u e^{iy} e^{iv}\\[0.5em]
+&= e^xe^{iy}e^ue^{iv}\\[0.5em]
+&= e^ze^w
+\end{align*}
+\item[(3)] From (2) we get $e^{z-w}e^w = e^z$.
+\item[(4)] This was seen in Example \ref{expcmplxeg}.
+\item[(5)] From (2) we have $e^{z + 2k\pi i} = e^z e^{2k\pi i} = e^z$.
+\end{itemize}
+\vspace*{-\baselineskip}
+\end{proof}
+
+\vspace*{2em}
+
+\subsection{Problems}
+\vspace{0.1in}
+
+\begin{problem}\label{prob 8.1}
+Let $f = u + iv$ be a complex-valued function defined on an open set $G \subseteq \cc$. Suppose that the first-order partial derivatives of $\Re f = u$ and $\Im f = v$ exist and are continuous on $G$.
+\begin{itemize}[itemsep = 1em]
+\item[(a)] Recall that if $z = x + iy$, then
+\[x = \frac{z + \overline{z}}{2} \quad \text{and} \quad y = \frac{z - \overline{z}}{2i}\]
+Treat $f = f(x,y)$ as a function in two real-variables, and \emph{formally} apply the chain rule in Calculus to obtain the expressions
+\[\frac{\partial f}{\partial z} = \frac{1}{2}\left(\frac{\partial f}{\partial x} - i\frac{\partial f}{\partial y}\right) \quad \text{and} \quad \frac{\partial f}{\partial \overline{z}} = \frac{1}{2}\left(\frac{\partial f}{\partial x} + i\frac{\partial f}{\partial y}\right)\]
+\item[(b)] Define $\dfrac{\partial f}{\partial x} \coloneqq \dfrac{\partial u}{\partial x} + i\dfrac{\partial v}{\partial x}$, and similarly for $\dfrac{\partial f}{\partial y}$.\\[1em] Prove that $f$ is holomorphic on $G$ if and only if $\dfrac{\partial f}{\partial \overline{z}} = 0$.
+\item[(c)] 
+\begin{itemize}[itemsep=1em]
+\item[(i)] If $f$ is holomorphic on $G$, prove that $f'(z) = \dfrac{\partial f}{\partial z}$.
+\item[(ii)] The \emph{Jacobian} of $(x,y) \mapsto (u(x,y),v(x,y))$ is the determinant of the matrix
+\[\begin{pmatrix}
+\dfrac{\partial u}{\partial x} && \dfrac{\partial u}{\partial y}\\[1.5em]
+\dfrac{\partial v}{\partial x} && \dfrac{\partial v}{\partial y}
+\end{pmatrix}\]
+If $f$ is holomorphic on $G$, prove that the Jacobian equals $\abs{f'(z)}^2 \geq 0$.
+\end{itemize}
+\end{itemize}
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 8.2}
+Suppose $f$ is entire and can be written as \[f(z) = u(x) + i\,v(y),\] that is, the
+real part of $f$ depends only on $x = \Re(z)$ and the imaginary part of $f$ depends only on $y = \Im(z)$.\\[0.5em]
+Prove that $f(z) = az + b$ for some $a \in \rr$ and $b \in \cc$.
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 8.3}
+Suppose $f$ is entire, with real and imaginary parts $u$ and $v$ satisfying
+\[u(x, y)\, v(x, y) = 3\]
+for all $z = x + i y$. Show that $f$ is constant.
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 8.4}
+Prove that, if $G \subseteq \cc$ is a domain and $f : G \to \cc$ is a complex-valued function with $f''(z)$ defined and equal to $0$ for all $z \in G$, then $f(z) = az + b$ for some $a, b \in \cc$. 
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 8.5}
+Show that
+\begin{itemize}
+\item[(a)] $\exp(2 \pm 3\pi i) = -e^2$
+\item[(b)] $\exp\left(\dfrac{2 + \pi}{4}\right) = \sqrt{\dfrac{e}{2}}(1 + i)$
+\item[(c)] $\exp(z + \pi i) = -\exp z$.
+\end{itemize}
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 8.6}
+Prove that
+\begin{itemize}
+\item[(a)] $f(z) = \exp\overline{z}$ is nowhere holomorphic.
+\item[(b)] $f(z) = \exp z^2$ is entire. What is its derivative?
+\end{itemize}
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 8.7}
+Show that
+\begin{itemize}
+\item[(a)] $\abs{\exp(2z + i) + exp(iz^2)} \leq e^{2x} + e^{-2xy}$.
+\item[(b)] $\abs{\exp(z^2)} \leq \exp(\abs{z}^2)$.
+\item[(c)] $\abs{\exp(-2z)} < 1$ if and only if $\Re z > 0$.
+\end{itemize}
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 8.8}
+Find all values of $z$ such that
+\begin{itemize}
+\item[(a)] $\exp z = -2$
+\item[(b)] $\exp z = 1 + i\sqrt{3}$
+\item[(c)] $\exp(2z - 1) = 1$.
+\end{itemize}
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 8.9}
+Find all solutions to the equation $e^{2z} - 2ie^z = 1$.
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 8.10}
+Let $G \subseteq \cc^*$ be an open set and let $f$ be a function that is continuous on $G$ with the property
+\[e^{f(z)} = z,\quad z \in G.\]
+Show that $f$ is holomorphic on $G$.
+\begin{remark}
+This shows that a \emph{continuously} defined logarithm on an open set is immediately holomorphic.
+\end{remark}
+\end{problem}

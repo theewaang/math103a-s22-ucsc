@@ -1,0 +1,392 @@
+\vspace*{1em}
+
+\begin{definition}[Exponential Function with Base $c$]
+The \cdef{exponential\ function\ with\ base} {\color{blue}$c$}, where $c\in \cc^*$, is the \emph{multi-valued} function
+\[c^z \coloneqq e^{\,z\log c}\]
+\end{definition}
+
+\vspace*{1em}
+
+\begin{discussion}
+Once a branch of $\log z$ has been specified, $c^z$ is an entire function. In that case, using chain rule we have
+\begin{align*}
+(c^z)' = (e^{\,z\log c})' &= e^{\,z\log c}(z\log c)'\\[0.5em]
+&= e^{\,c\log z}\cdot \log c\\[0.5em]
+&= c^z\log c
+\end{align*}
+What happens if we take $c = e$? Specifying the principal branch $\plog z$ we see
+\[e^z = e^{\,z\plog e} = e^{z(\ln e + i\parg e)} = e^{z(1 + 0)} = e^z\]
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{example}\hfill
+\begin{multicols}{2}
+\begin{itemize}
+\item[(1)] We compute 
+\begin{align*}
+i^i &= e^{\,i\log i}\\[0.5em]
+&= e^{\,i(\ln \abs{i} + i\arg i)}\\[0.5em]
+&= e^{\,i(\ln 1 + i(\frac{\pi}{2} + 2k\pi))},\ k \in \zz\\[0.5em]
+&= e^{\,i^2(\frac{\pi}{2} + 2k\pi)},\ k \in \zz\\[0.5em]
+&= e^{-\frac{\pi}{2}}e^{-2k\pi},\ k \in \zz
+\end{align*}
+%$\begin{aligned}[t]
+%i^i &= e^{\,i\log i}\\[0.5em]
+%&= e^{\,i(\ln \abs{i} + i\arg i)}\\[0.5em]
+%&= e^{\,i(\ln 1 + i(\frac{\pi}{2} + 2k\pi))},\ k \in \zz\\[0.5em]
+%&= e^{\,i^2(\frac{\pi}{2} + 2k\pi)},\ k \in \zz\\[0.5em]
+%&= e^{-\frac{\pi}{2}}e^{-2k\pi},\ k \in \zz
+%\end{aligned}$
+\item[(2)] We compute
+\begin{align*}
+(-1)^{\frac{1}{\pi}} &= e^{\,\frac{1}{\pi}\log -1}\\[0.5em]
+&= e^{\,\frac{1}{\pi}(\ln \abs{-1} + i\arg -1)}\\[0.5em]
+&= e^{\,\frac{1}{\pi}(\ln 1 + i(\pi + 2k\pi))},\ k \in \zz\\[0.5em]
+&= e^{\,\frac{1}{\pi}(\pi i(2k + 1))},\ k \in \zz\\[0.5em]
+&= e^{i(2k+1)},\ k \in \zz
+\end{align*}
+% $\begin{aligned}[t]
+%(-1)^{\frac{1}{\pi}} &= e^{\,\frac{1}{\pi}\log -1}\\[0.5em]
+%&= e^{\,\frac{1}{\pi}(\ln \abs{-1} + i\arg -1)}\\[0.5em]
+%&= e^{\,\frac{1}{\pi}(\ln 1 + i(\pi + 2k\pi))},\ k \in \zz\\[0.5em]
+%&= e^{\,\frac{1}{\pi}(\pi i(2k + 1))},\ k \in \zz\\[0.5em]
+%&= e^{i(2k+1)},\ k \in \zz
+%\end{aligned}$
+\end{itemize}
+\end{multicols}
+\end{example}
+
+\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Trigonometric Functions}
+\end{center}
+\end{mdframed}
+
+\begin{discussion}
+Recall that for any $z \in \cc$,
+\[\Re z = \frac{z + \overline{z}}{2} \quad \text{and} \quad \Im z = \frac{z - \overline{z}}{2i}\]
+Therefore, for $x \in \rr$,
+\begin{align*}
+\cos x &= \Re(e^{ix}) & \sin x &= \Im(e^{ix})\\[0.5em]
+ &= \frac{e^{ix} + \overline{e^{ix}}}{2} & &= \frac{e^{ix} - \overline{e^{ix}}}{2i}\\[0.5em]
+ &= \frac{e^{ix} + e^{-ix}}{2} & &= \frac{e^{ix} - e^{-ix}}{2i}
+\end{align*}
+This suggests a way to extend the domain of definition of sine and cosine functions to all of $\cc$.
+\end{discussion}
+
+%\vspace*{1em}
+
+\begin{definition}[Sine and Cosine]
+The \cdef{(complex)\ sine} and \cdef{cosine\ functions} are defined as
+\[\cos z = \frac{e^{iz} + e^{-iz}}{2} \quad \text{and} \quad \sin z = \frac{e^{iz} - e^{-iz}}{2i}\]
+respectively. Moreover, this gives us $e^{iz} = \cos z + i\sin z$. And our calculations above tell us that these functions reduce to the usual sine and cosine for $z = x \in \rr$.
+\end{definition}
+
+\vspace*{1em}
+
+\begin{proposition}[Holomorphicity of $\sin$ and $\cos$]\hfill
+\begin{itemize}
+\item[(1)] $\sin z$ and $\cos z$ are entire.
+\item[(2)] $(\sin z)' = \cos z$ and $(\cos z)' = -\sin z$.
+\end{itemize}
+\end{proposition}
+\begin{proof}\hfill
+\begin{itemize}
+\item[(1)] Since $\sin z$ and $\cos z$ are linear combinations of entire functions, they themselves are entire functions.
+\item[(2)] We note that
+\begin{align*}
+(\sin z)' &= \frac{(e^{iz})' - (e^{-iz})'}{2i} & (\cos z)' &= \frac{(e^{iz})' + (e^{-iz})'}{2}\\[0.5em]
+ &= \frac{ie^{iz} -(-i) e^{-iz}}{2i} &  &= \frac{ie^{iz} - ie^{-iz}}{2}\\[0.5em]
+ &= \frac{ie^{iz} + ie^{-iz}}{2i} &  &= i\cdot\frac{e^{iz} - e^{-iz}}{2}\\[0.5em]
+ &= \frac{e^{iz} + e^{-iz}}{2} &  &= -\frac{e^{iz} - e^{-iz}}{2i}\\[0.5em]
+ &= \cos z &  &= -\sin z
+\end{align*}
+\end{itemize}
+\vspace*{-\baselineskip}
+\end{proof}
+
+\vspace*{1em}
+
+\begin{discussion}[Trigonometric Identities]\label{trigid}
+Various familiar identities hold, here are a few.
+\begin{multicols}{2}
+\begin{itemize}
+\item[(1)] $\sin (-z) = -\sin z$
+\item[(2)] $\cos(-z) = \cos z$
+\item[(3)] $\sin (z+w) = \sin z \cos w + \cos z\sin w$
+\item[(4)] $\cos (z+w) = \cos z \cos w - \sin z\sin w$
+\item[(5)] $\sin (z+2\pi) = \sin z$
+\item[(6)] $\cos (z+ 2\pi) = \cos z$
+\item[(7)] $\sin (\pi/2 - z) = \cos z$
+\item[(8)] $\sin^2z + \cos^2z = 1$
+\end{itemize}
+\end{multicols}
+\end{discussion}
+
+\vspace*{1em}
+
+To define other trigonometric functions, we need to understand the zeros of $\sin z$ and $\cos z$.
+\begin{theorem}[Zeros of Sine and Cosine]
+The zeros of $\sin z$ and $\cos z$ are precisely the zeros of sine and cosine functions in a real variable:
+\begin{align*}
+\sin z = 0 \quad \text{if and only if} &\quad z = k\pi,\ k \in \zz\\[0.5em]
+\cos z = 0 \quad \text{if and only if} &\quad z = k\pi + \dfrac{\pi}{2},\ k \in \zz
+\end{align*}
+\end{theorem}
+\begin{proof}
+We immediately note that
+\[\sin z = \sin k\pi = 0 \quad \text{and} \quad \cos z = \cos\left(k\pi + \dfrac{\pi}{2}\right) = 0\]
+since the inputs are real numbers and sine and cosine reduce to the usual real sine and cosine for real inputs.\\[1em]
+Conversely, suppose
+\[\frac{e^{iz} - e^{-iz}}{2i} = \sin z = 0,\]
+this gives us $e^{iz} = e^{-iz}$, and therefore $e^{2iz} = 1$. Applying $\log$ gives us
+\[2iz + 2m\pi i = 2n\pi i,\quad \text{for } m,n \in \zz\]
+by Proposition \ref{proplog} (2) and Example \ref{logcalc} (2). Giving us $z = (n-m)\pi = k\pi$ for any $k\in \zz$.\\[1em]
+Suppose $\cos z = 0$. By Discussion \ref{trigid} (1) and (7), we have
+\[\sin\left(z - \frac{\pi}{2}\right) = -\cos z = 0\]
+Hence, $z - \dfrac{\pi}{2} = k\pi,\ k \in \zz$.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{definition}[Other Trigonometric Functions]
+The \cdef{(complex)\ tangent}, \cdef{cotangent}, \cdef{secant} and \cdef{cosecant} functions are defined in terms of sine and cosine.
+\begin{align*}
+\tan z \coloneqq \dfrac{\sin z}{\cos z},&\quad z \neq k\pi + \dfrac{\pi}{2} & \sec z \coloneqq \dfrac{1}{\cos z},&\quad z \neq k\pi + \dfrac{\pi}{2}\\[1em]
+\cot z \coloneqq \dfrac{\cos z}{\sin z},&\quad z \neq k\pi & \csc z \coloneqq \dfrac{1}{\sin z},&\quad z \neq k\pi
+\end{align*}
+These functions are entire in their stated domains of definition since $\sin z$ and $\cos z$ are. They also all reduce to the usual real trigonometric functions when $z$ is real, since $\sin z$ and $\cos z$ do. The derivatives are exactly as expected.
+\end{definition}
+
+\vspace*{2em}
+
+\begin{mdframed}[backgroundcolor=paleyellow,linewidth=1pt]
+\begin{center}
+{\sc\Large Part III. Integration}
+\end{center}
+\end{mdframed}
+We now want to develop a theory of integration of complex-valued functions in a single complex variable. Integrals will be defined over suitable curves (contours) in the complex plane. This theory of integration is a surprisingly powerful tool in the study of holomorphic functions.\\
+\\
+Using this theory, we will obtain powerful characterisations of holomorphic functions. Roughly speaking we will prove the following: let $G$ be a domain and $f:G \to \cc$ a function. The following are equivalent. 
+\begin{itemize}
+\item[(1)] $f$ is holomorphic on $G$.
+\item[(2)] For all $n \in \zz_{>0}$, $f^{(n)}$ exists and is holomorphic on $G$.
+\item[(3)] In each \emph{simply connected} subdomain $D$ of $G$, there exists a holomorphic function $F:D \to \cc$ such that $F' = f\vert_D$. 
+\item[(4)] $f$ is continuous on $G$ and 
+\[\int_C f(z)\,dz = 0\]
+for every \emph{contour} $C$ lying in a \emph{simply connected} subdomain.
+\item[(5)] If $C$ is a \emph{simple closed contour} in $G$ and $z_0$ is interior to $C$, then
+\[f'(z_0) = \frac{1}{2\pi i}\int_C \frac{f(z)}{z - z_0}\,dz.\]
+\end{itemize}
+Additionally, as an application of the theory, we will prove
+\begin{itemize}
+\item \emph{Liouville's theorem}. Every bounded holomorphic function is constant.
+\item \emph{Fundamental Theorem of Algebra}. Every polynomial of degree $n \geq 1$ has atleast one complex root.
+\end{itemize}
+
+\vspace*{1em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Derivatives of Functions of a Real-variable}
+\end{center}
+\end{mdframed}
+To define an integral of a complex-valued functions in a single complex variable, we need to understand how to differentiate a complex-valued function in a single real variable
+\[\gamma: [a,b] \to \cc,\]
+where $[a,b] \subseteq \rr$.
+
+\vspace*{1em}
+
+\begin{definition}
+For $\gamma:[a,b] \to \cc$, writing $\gamma(t) = u(t) + i\,v(t)$, where $u,\,v:[a,b] \to \rr$, we define the \emph{derivative} of $\gamma$ to be
+\[\gamma'(t) = u'(t) + iv'(t),\]
+provided that $u'(t)$ and $v'(t)$ exist. In this case, we say $\gamma$ is differentiable.
+\end{definition}
+
+\vspace*{1em}
+
+\begin{proposition}
+Suppose $\gamma_1(t) = u_1(t) + iv_1(t)$ and $\gamma_2(t) = u_2(t) + iv_2(t)$ are differentiable, then
+\begin{itemize}
+\item[(1)] $(\gamma_1 + \gamma_2)'(t) = \gamma_1'(t) + \gamma_2'(t)$
+\item[(2)] $(\gamma_1\gamma_2)'(t) = \gamma_1'(t)\gamma_2(t) + \gamma_1(t)\gamma_2'(t)$
+\end{itemize}
+\end{proposition}
+\begin{proof}\hfill
+\begin{itemize}
+\item[(1)] 
+$\begin{aligned}[t]
+(\gamma_1 + \gamma_2)' &=  ((u_1 + u_2) + i(v_1 + v_2))'\\[0.5em]
+&= (u_1 + u_2)' + i(v_1 + v_2)'\\[0.5em]
+&= (u_1' + u_2') + i(v_1' + v_2')\\[0.5em]
+&= (u_1' + iv_1') + (u_2' + iv_2')\\[0.5em]
+&= \gamma_1' + \gamma_2'
+\end{aligned}$
+
+\item[(2)] 
+$\begin{aligned}[t]
+(\gamma_1\gamma_2)' &=  ((u_1 + iv_1)(u_2 + iv_2))'\\[0.5em]
+&=  ((u_1u_2 - v_1v_2) + i(u_1v_2 + u_2v_1))'\\[0.5em]
+&= (u_1u_2 - v_1v_2)' + i(u_1v_2 + u_2v_1)'\\[0.5em]
+&= (u_1u_2)' - (v_1v_2)' + i(u_1v_2)' + i(u_2v_1)'\\[0.5em]
+&= (u_1'u_2 + u_1u_2') - (v_1'v_2 + v_1v_2') + i(u_1'v_2 + u_1v_2') + i(u_2'v_1 + u_2v_1')\\[0.5em]
+&= (u_1'u_2 - v_1'v_2) + i(u_1'v_2 + u_2v_1') + (u_1u_2' - v_1v_2') + i(u_1v_2' + u_2'v_1)\\[0.5em]
+&= (u_1' + iv_1')(u_2 + iv_2) + (u_1 + iv_1)(u_2' + iv_2')\\[0.5em]
+&= \gamma_1'\gamma_2 + \gamma_1\gamma_2'
+\end{aligned}$\\[1em]
+Hence, $(\gamma_1\gamma_2)' = \gamma_1'\gamma_2 + \gamma_1\gamma_2'$.
+\end{itemize}
+\vspace*{-\baselineskip}
+\end{proof}
+
+\vspace*{1em}
+
+\begin{example}
+We will often encounter the function $\gamma:[a,b] \to \cc$, where
+\[\gamma(t) = e^{z_0t},\quad z_0 \in \cc\]
+Let's compute $\gamma'(t)$, for which we first need to express it as $u(t) + iv(t)$. Let $z_0 = x_0 + iy_0$,
+\begin{align*}
+\gamma(t) = e^{z_0t} &= e^{(x_0 + iy_0)t}\\[0.5em]
+&= e^{x_0t + iy_0t}\\[0.5em]
+&= e^{x_0t}e^{iy_0t} = e^{x_0t}(\cos(y_0t) + i\sin(y_0t))
+\end{align*}
+Therefore, $u(t) = e^{x_0t}\cos(y_0t)$ and $v(t) = e^{x_0t}\sin(y_0t)$. We note,
+\begin{align*}
+u'(t) &= (e^{x_0t})'(\cos(y_0t)) + (e^{x_0t})(\cos(y_0t))' & v'(t) &= (e^{x_0t})'(\sin(y_0t)) + (e^{x_0t})(\sin(y_0t))'\\[0.5em]
+ &= x_0e^{x_0t}\cos(y_0t) - y_0e^{x_0t}\sin(y_0t) & &= x_0e^{x_0t}\sin(y_0t) + y_0e^{x_0t}\cos(y_0t)
+\end{align*}
+Hence, 
+\begin{align*}
+\gamma'(t) = u'(t) + iv'(t) &= x_0e^{x_0t}\cos(y_0t) - y_0e^{x_0t}\sin(y_0t) + ix_0e^{x_0t}\sin(y_0t) + iy_0e^{x_0t}\cos(y_0t)\\[0.5em]
+&= x_0e^{x_0t}(\cos(y_0t) + i\sin(y_0t)) + iy_0e^{x_0t}(\cos(y_0t) + i\sin(y_0t))\\[0.5em]
+&= (x_0e^{x_0t} + iy_0e^{x_0t})(\cos(y_0t) + i\sin(y_0t))\\[0.5em]
+&= (x_0 + iy_0)e^{x_0t}e^{iy_0t}\\[0.5em]
+&= z_0e^{z_0t}
+\end{align*}
+To summarise, for $\gamma(t) = e^{z_0t}$, we have $\gamma'(t) = z_0e^{z_0t}$.
+\end{example}
+\vspace*{2em}
+
+\subsection{Problems}
+\vspace{0.1in}
+
+%verify identities. sin z is not bounded. hyperbolic trig.
+
+\begin{problem}\label{prob 10.1}
+Find the all possible values of
+\begin{multicols}{2}
+\begin{itemize}
+\item[(a)] $(-1)^{3i}$
+\item[(b)] $3^{2i/\pi}$
+\item[(c)] $(1 + i)^{1-i}$
+\item[(d)] $(1+i\sqrt{3})^i$
+\item[(e)] $(-i)^i$
+\item[(f)] $(ei)^{\sqrt{2}}$
+\item[(g)] $(-1)^{1/\pi}$
+\item[(h)] $i^{i/\pi}$
+\end{itemize}
+\end{multicols}
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 10.2}
+Compute the principal value of the given complex powers.
+\begin{multicols}{2}
+\begin{itemize}
+\item[(a)] $(-1)^{3i}$
+\item[(b)] $3^{2i/\pi}$
+\item[(c)] $2^{4i}$
+\item[(d)] $(1+i\sqrt{3})^{3i}$
+\item[(e)] $i^{i/\pi}$
+\item[(f)] $(1 + i)^{2 - i}$
+\item[(g)] $\left(\dfrac{e}{2}(-1-i\sqrt{3})\right)^{3\pi i}$
+\item[(h)] $(1 - i)^{4i}$
+\end{itemize}
+\end{multicols}
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 10.3}\hfill
+\begin{itemize}
+\item[(a)] Verify that $(z^\alpha)^n = z^{n\alpha}$ for $z \neq 0$ and $n \in \zz$.
+\item[(b)] Find a counterexample to the statement: $(z^{\alpha})^\beta = z^{\alpha\beta}$, where $z \neq 0$ and $\alpha,\beta \in \cc$.
+\end{itemize}
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 10.4}
+Let $z^\alpha$ represent the principal value of the complex power. Find the derivative of the given function at the given point.
+\begin{multicols}{2}
+\begin{itemize}
+\item[(a)] $z^{3/2};\quad z = 1 + i$
+\item[(b)] $z^{1 + i};\quad z = 1 + i\sqrt{3}$
+\item[(c)] $z^{2i};\quad z = i$
+\item[(d)] $z^{\sqrt{2}};\quad z = -i$
+\end{itemize}
+\end{multicols}
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 10.5}
+Let $z \in \cc$.
+\begin{itemize}
+\item[(a)] Prove that $|1^{z}|$ is single-valued if and only if $\Im z = 0$.
+\item[(b)] Find a necessary and sufficient condition for $|i^{iz}|$ to be single-valued.
+\item[(c)] Find a counterexample to the statement: $1^z$ is single-valued if and only if $\Im z = 0$.
+\end{itemize}
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 10.6}
+Express the value of the given trigonometric function in the form $x + iy$.
+\begin{multicols}{2}
+\begin{itemize}
+\item[(a)] $\sin(4i)$
+\item[(b)] $\cos(-3i)$
+\item[(c)] $\cos(2-4i)$
+\item[(d)] $\sin\left(\dfrac{\pi}{4} + i\right)$
+\item[(e)] $\tan(2i)$
+\item[(f)] $\cot(\pi + 2i)$
+\item[(g)] $\sec\left(\dfrac{\pi}{2} - i\right)$
+\item[(h)] $\csc(1 + i)$
+\end{itemize}
+\end{multicols}
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 10.7}
+Find all complex values $z$ satisfying the given equation.
+\begin{multicols}{2}
+\begin{itemize}
+\item[(a)] $\sin z = i$
+\item[(b)] $\cos z = 4$
+\item[(c)] $\sin z = \cos z$
+\item[(d)] $\cos z = i\,\sin z$
+\end{itemize}
+\end{multicols}
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 10.8}
+Prove the properties stated in Discussion \ref{trigid}.
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 10.9}\hfill
+\begin{itemize}
+\item[(a)] Prove that $\overline{\cos z} = \cos\overline{z}$.
+\item[(b)] What is $\Re \cos z$ and $\Im \cos z$?
+\item[(c)] Using the identity $e^{iz} = \cos z + i\sin z$, prove $\overline{\sin z} = \sin\overline{z}$ and find $\Re \sin z$ and $\Im \sin z$. 
+\end{itemize}
+\end{problem}

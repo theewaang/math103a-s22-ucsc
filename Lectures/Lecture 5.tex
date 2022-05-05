@@ -1,0 +1,313 @@
+\vspace*{1em}
+
+\begin{example}
+Let's show that $\lim_{z \to i} z^2 = -1$ using the definition.
+\end{example}
+\begin{proof}
+Let $\epsilon > 0$ be arbitrary. Note that $\abs{z^2 - (-1)} = \abs{z - i}\abs{z + i}$. We make an initial estimate, suppose $0 < \abs{z - i} < 1$, then
+\begin{align*}
+\abs{z + i} &= \abs{z - i + 2i}\\[0.5em]
+&\leq \abs{z - i} + \abs{2i}\\[0.5em]
+&< 1 + 2\\[0.5em]
+&= 3
+\end{align*}
+Now, if we choose $\delta = \min\set{\dfrac{\epsilon}{3},1}$, then if $0 < \abs{z - i} < \delta$ we get
+\[0 < \abs{z - i} < 1\ \text{and}\ \frac{\epsilon}{3}\]
+So,
+\begin{align*}
+\abs{z^2 - (-1)} &= \abs{z - i}\abs{z + i}\\[0.5em]
+&< 3\abs{z - i},\quad \text{since $\abs{z - i} < 1$}\\[0.5em]
+&< 3\cdot\frac{\epsilon}{3},\quad \text{since $\abs{z - i} < \frac{\epsilon}{3}$}\\[0.5em]
+&= \epsilon
+\end{align*}
+Therefore $\lim_{z \to i} z^2 = -1$.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{theorem}
+If $f$ has a limit at $z_0$, then it is unique.
+\end{theorem}
+\begin{proof}
+Assume
+\[\lim_{z \to z_0}f(z) = \alpha \quad \text{and} \quad \lim_{z \to z_0}f(z) = \beta\]
+Consider an arbitrary $\epsilon > 0$, then we can find a $\delta_1 > 0$ such that
+\[\text{if }\ 0 < \abs{z - z_0} < \delta,\quad \text{then }\ \abs{f(z) - \alpha}<\frac{\epsilon}{2}\]
+and $\delta_2 > 0$ such that
+\[\text{if }\ 0 < \abs{z - z_0} < \delta,\quad \text{then }\ \abs{f(z) - \beta}<\frac{\epsilon}{2}\]
+Define $\delta \coloneqq \min\set{\delta_1,\delta_2} \leq \delta_1,\,\delta_2$, then if $0< \abs{z - z_0} < \delta$ we have
+\begin{align*}
+\abs{\alpha - \beta} &= \abs{f(z) - f(z) + \alpha - \beta}\\[0.5em]
+&\leq \abs{\alpha - f(z)} + \abs{f(z) - \beta}\\[0.5em]
+&= \abs{f(z) - \alpha} + \abs{f(z) - \beta}\\[0.5em]
+&< \frac{\epsilon}{2} + \frac{\epsilon}{2}\\[0.5em]
+&= \epsilon
+\end{align*}
+We have proven that $\abs{\alpha - \beta} < \epsilon$ for any $\epsilon > 0$. Now, suppose $\alpha \neq \beta$, then for $\epsilon = \abs{\alpha - \beta} > 0$ we get $\abs{\alpha - \beta} < \abs{\alpha - \beta}$, which is preposterous. Hence $\alpha = \beta$, and thus the limit is unique.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{remark}
+The reason we require that $z_0$ be an accumulation point of the domain of $f$ is just that we need to be sure that there are points $z$ of the domain that are arbitrarily close to $z_0$. That is, there are indeed points satisfying $0< \abs{z-z_0} < \delta$.\\[0.5em]
+Our definition (i.e., the part that says $0 < \abs{z - z_0}$) does not require $z_0$ to be in the domain of $f$, and if $z_0$ is in the domain of $f$, the definition explicitly ignores the value of $f(z_0)$.
+\end{remark}
+
+\vspace*{1em}
+
+Uniqueness of limits can be used to show that a limit does not exist.
+\begin{example}\label{limnotex}
+The function $f(z) = \dfrac{\overline{z}}{z}$ has no limit at $0$.
+\end{example}
+\begin{proof}[Discussion of Example \ref{limnotex}]
+Let $z = x + iy$, then
+\[f(z) = \frac{x - iy}{x + iy}\]
+Along the real axis, $\Im z = 0$, and so $z = x$, giving us $f(z) = \dfrac{x}{x} = 1$.\\[0.5em]
+Along the imaginary axis, $\Re z = 0$, and so $z = y$, giving us $f(z) = \dfrac{-y}{y} = -1$.\\[0.5em]
+Taking the limit along these axes gives us different values of the limit, $1$ and $-1$. Hence, by the uniqueness of limits, the limit doesn't exist.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Theorems on Limits}
+\end{center}
+\end{mdframed}
+
+\begin{theorem}[Limit in terms of Real and Imaginary parts of a Function]\label{cmplxlimripart}
+Suppose that
+\[f(z) = f(x + iy) = u(x,y) + i\,v(x,y)\]
+Then 
+\[\lim_{x + iy \to x_0 + iy_0}f(x + iy) = u_0 + iv_0\]
+if and only if
+\[\lim_{(x,y) \to (x_0,y_0)}u(x,y) = u_0 \quad \text{and} \quad \lim_{(x,y) \to (x_0,y_0)}v(x,y) = v_0\]
+\end{theorem}
+\begin{proof}
+$(\Rightarrow)$ Consider an arbitrary $\epsilon > 0$, then there exists a $\delta > 0$ such that if
+\[0 < \abs{(x+iy) - (x_0 + iy_0)} < \delta\]
+\[\text{then }\ \abs{f(x+iy) - (u_0 + iv_0)} = \abs{(u(x,y) + i\,v(x,y)) - (u_0 + iv_0)} < \epsilon\]
+We first note that, by definition
+\begin{align*}
+\norm{(x,y) - (x_0,y_0)} &= \abs{(x+iy) - (x_0 + iy_0)}
+\end{align*}
+and the end of Discussion \ref{cmplxnorm} tells us that
+\begin{align*}
+\abs{u(x,y) - u_0} &\leq \abs{(u(x,y) + i\,v(x,y)) - (u_0 + iv_0)} < \epsilon\\[0.5em]
+\abs{v(x,y) - v_0} &\leq \abs{(u(x,y) + i\,v(x,y)) - (u_0 + iv_0)} < \epsilon
+\end{align*}
+That is, we have that
+\[\text{if }\ 0 < \norm{(x,y) - (x_0,y_0)} < \delta,\quad \text{then }\ \abs{u(x,y) - u_0} < \epsilon\ \ \text{and}\ \ \abs{v(x,y) - v_0} < \epsilon\]
+Therefore,
+\[\lim_{(x,y) \to (x_0,y_0)}u(x,y) = u_0 \quad \text{and} \quad \lim_{(x,y) \to (x_0,y_0)}v(x,y) = v_0\]\\[1em]
+$(\Leftarrow)$ Consider an arbitrary $\epsilon > 0$, then there exists a $\delta_1 > 0$ such that
+\[\text{if }\ 0 < \norm{(x,y) - (x_0,y_0)} < \delta_1,\quad \text{then }\ \abs{u(x,y) - u_0} < \frac{\epsilon}{2}\]
+and there exists a $\delta_2 > 0$ such that
+\[\text{if }\ 0 < \norm{(x,y) - (x_0,y_0)} < \delta_2,\quad \text{then }\ \abs{v(x,y) - v_0} < \frac{\epsilon}{2}\]
+Define $\delta \coloneqq \min\set{\delta_1,\delta_2} \leq \delta_1,\,\delta_2$. Now, if
+\[0 < \abs{(x+iy) - (x_0 + iy_0)} = \norm{(x,y) - (x_0,y_0)} < \delta\]
+then
+\begin{align*}
+\abs{f(x+iy) - (u_0 + iv_0)} &= \abs{(u(x,y) + i\,v(x,y)) - (u_0 + iv_0)}\\[0.5em]
+&= \abs{(u(x,y) - u_0) + i(v(x,y)- v_0)}\\[0.5em]
+&\leq \abs{(u(x,y) - u_0)} + \abs{i(v(x,y)- v_0)},\ \text{by triangle identity}\\[0.5em]
+&= \abs{(u(x,y) - u_0)} + \abs{i}\abs{(v(x,y)- v_0)}\\[0.5em]
+&= \abs{(u(x,y) - u_0)} + \abs{(v(x,y)- v_0)}\\[0.5em]
+&< \frac{\epsilon}{2} + \frac{\epsilon}{2}\\[0.5em]
+&= \epsilon
+\end{align*}
+Therefore,
+\[\lim_{x + iy \to x_0 + iy_0}f(x + iy) = u_0 + iv_0\]
+\end{proof}
+
+\vspace*{1em}
+
+\begin{theorem}[Limit Laws]\label{limlaw}
+Suppose
+\[\lim_{z \to z_0} f(z) = \alpha \quad \text{and} \quad \lim_{z \to z_0} g(z) = \beta\]
+Then
+\begin{itemize}
+\item[(1)] $\lim_{z \to z_0} (f(z) + g(z)) = \alpha + \beta$
+\item[(2)] $\lim_{z \to z_0} (f(z)\,g(z)) = \alpha\beta$
+\item[(3)] $\lim_{z \to z_0} \dfrac{f(z)}{g(z)} = \dfrac{\alpha}{\beta}$, provided $\beta \neq 0$.
+\end{itemize}
+\end{theorem}
+\begin{proof}
+The proof follows from Theorem \ref{cmplxlimripart} and limit laws from Calculus.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{example}\label{polycts}
+Let $p(z)$ be a polynomial, then
+\[\lim_{z \to z_0}p(z) = p(z_0)\]
+Write $p(z) = a_0 + a_1z + \cdots + a_nz^n$, then by Theorem \ref{limlaw} we have
+\begin{align*}
+\lim_{z \to z_0}p(z) &= \lim_{z \to z_0}(a_0 + a_1z + \cdots + a_nz^n)\\[0.5em]
+&= \lim_{z \to z_0} a_0 + \lim_{z \to z_0} a_1z + \cdots + \lim_{z \to z_0} a_nz^n,\ \text{by Theorem \ref{limlaw} (1)}\\[0.5em]
+&= \lim_{z \to z_0} a_0 + \lim_{z \to z_0} a_1 \cdot \lim_{z \to z_0} z + \cdots + \lim_{z \to z_0} a_n \cdot \lim_{z \to z_0} z^n,\ \text{by Theorem \ref{limlaw} (2)}\\[0.5em]
+&= a_0 + a_1z_0 + \cdots + a_nz_0^n,\ \text{by Theorem \ref{limlaw} (2) and }\lim_{z \to z_0} z = z_0\\[0.5em]
+&= p(z_0)
+\end{align*}\\[-2em]
+\qed
+\end{example}
+
+\vspace*{2em}
+
+\begin{definition}[Extended Complex Plane or the Riemann Sphere]
+The \cdef{Extended\ Complex\ Plane} is the set $\cc$ together with a symbol $\infty$ called the \emph{point at infinity}, denoted $\widehat{\cc}$ or $\cc_\infty$.\\[0.5em]
+There is a bijection between the extended complex plane and the unit sphere given by the \emph{stereographic projection}, and therefore the extended complex plane is also called the \cdef{Riemann\ Sphere}.\\
+\[\begin{tikzpicture}
+  \draw[dashed] (-6,-1.5) -- (4.5, -1.5) -- (6, 1.5) -- (-3.5,1.5) -- (-6,-1.5);
+  \draw (0,0) circle (3);
+  \draw[dashed] (0,0) ellipse (3 and 1);
+  \draw[] (0,3) -- (4.5, -1);
+  \fill[forest] (0,3) circle (2pt) node[above,yshift=2pt]{{\color{forest}$N$}};
+  \fill (0, 0) circle (2pt);
+  \fill (4.5, -1) circle (2pt) node[below left]{$z$};
+  \fill (0.56, 2.502) circle (2pt) node[right,yshift=3pt,xshift=2pt]{\small$p$};
+  \shade[fill=forest,fill opacity=1/8] (5,1.5) arc (0:-60:3.45) -- (4.5,-1.5) -- (6,1.5) -- (5,1.5);
+  \draw[dashed] (5,1.5) arc (0:-60:3.45);
+  \shade[fill=forest,fill opacity=1/8] (-4.75,-1.5) arc (0:-75:-3.1) -- (-3.5,1.5) -- (-6,-1.5) -- (-4.75,-1.5);
+  \draw[dashed] (-4.75,-1.5) arc (0:-75:-3.1);
+  \shade[fill=forest,fill opacity=1/8] (2,2.236) arc (113.5:66.5:-5) arc (-48.35:-131.8:-3);
+  \draw[dashed] (2,2.236) arc (113.5:66.5:-5);
+  \node[] at (4,2) {\Large$\cc$};
+\end{tikzpicture}\]\\
+The point $N$ (the north pole) corresponds to $\infty$, and any point $p$ on the sphere corresponds uniquely to a point $z \in \cc$ which is the unique point of intersection of the complex plane with the line passing through $N$ and $p$.
+\end{definition}
+
+\vspace*{1em}
+
+\begin{definition}[Neighbourhood of Infinity]
+Let $\epsilon > 0$, the set
+\[\setp{z\in \cc}{\abs{z} > \frac{1}{\epsilon}}\]
+is called a \emph{neighbourhood of $\infty$}. Geometrically, a neighbourhood at infinity is the exterior of a circle centered at the origin, which corresponds to a neighbourhood of $N$ on the unit sphere.
+\end{definition}
+
+\vspace*{1em}
+
+\begin{discussion}
+We can now easily give meaning to limits
+\[\lim_{z \to z_0}f(z) = w_0\]
+where $z_0$ and $w_0$ are allowed to be $\infty$. We replace the appropriate neighbourhood in  Definition \ref{limdef} with neighbourhoods of $\infty$.
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{theorem}[Limits involving Infinity]\hfill
+\begin{itemize}
+\item[(1)] $\displaystyle\lim_{z \to z_0} \dfrac{1}{f(z)} = 0$ if and only if $\displaystyle\lim_{z \to z_0}f(z) = \infty$.
+\item[(2)] $\displaystyle\lim_{z \to \infty}f(z) = \lim_{z \to 0} f\left(\dfrac{1}{z}\right)$, provided the limit exist.
+\end{itemize}
+\emph{Combining (1) and (2), we get \[\displaystyle\lim_{z \to 0} \dfrac{1}{f\left(\frac{1}{z}\right)} = 0\quad \text{if and only if} \quad \displaystyle\lim_{z \to \infty}f(z) = \infty.\]}
+Bottom line, we can simplify limits involving $\infty$ to limits involving $0$.
+\end{theorem}
+\begin{proof}
+The proofs are based on the simple observation that
+\[\frac{1}{a} < b \quad \text{if and only if} \quad \frac{1}{b} < a\]
+for non-zero real numbers $a$ and $b$.
+\begin{itemize}
+\item[(1)] Now $\displaystyle\lim_{z \to z_0} \dfrac{1}{f(z)} = 0$ if and only if for every $\epsilon > 0$ there exists $\delta > 0$ such that 
+\[\text{if }\ 0 < \abs{z - z_0} < \delta,\quad \text{then }\ \frac{1}{\abs{f(z)}} = \abs{\frac{1}{f(z)} - 0}< \epsilon\]
+if and only if for every $\epsilon > 0$ there exists $\delta > 0$ such that 
+\[\text{if }\ 0 < \abs{z - z_0} < \delta,\quad \text{then }\ \abs{f(z)}>\frac{1}{\epsilon}\]
+if and only if
+$\displaystyle\lim_{z \to z_0}f(z) = \infty$.
+\item[(2)] $\displaystyle\lim_{z \to \infty}f(z) = \alpha$ if and only if for every $\epsilon > 0$ there exists $\delta > 0$ such that 
+\[\text{if }\ \abs{z} > \frac{1}{\delta},\quad \text{then }\ \abs{f(z) - \alpha}< \epsilon\]
+if and only if for every $\epsilon > 0$ there exists $\delta > 0$ such that 
+\[\text{if }\ 0 < \abs{\frac{1}{z}} < \delta,\quad \text{then }\ \abs{f(z) - \alpha} < \epsilon\]
+if and only if, by replacing $z$ with $1/z$, $\displaystyle\lim_{z \to 0}\,f\left(\dfrac{1}{z}\right) = \alpha$.
+\end{itemize}
+\end{proof}
+
+\vspace*{1em}
+
+\begin{example}
+We want to show $\displaystyle \lim_{z \to \infty} \frac{2z^4 + 1}{z^3 + 1} = \infty$. This is equivalent to showing
+\[\lim_{z \to 0} \frac{1}{f(1/z)} = \lim_{z \to 0} \frac{(1/z)^3 + 1}{2(1/z)^4 + 1} = 0,\quad \text{for }f(z) = \frac{2z^4 + 1}{z^3 + 1}\]
+Note that,
+\begin{align*}
+\lim_{z \to 0} \frac{(1/z)^3 + 1}{2(1/z)^4 + 1}&= \lim_{z \to 0} \frac{\frac{1 + z^3}{z^3}}{\frac{2 + z^4}{z^4}}\\[0.5em]
+&= \lim_{z \to 0}\ z\cdot\frac{1 + z^3}{2 + z^4}\\[0.5em]
+&= 0\cdot\frac{1}{2}\\[0.5em]
+&= 0
+\end{align*}
+Therefore $\displaystyle \lim_{z \to \infty} \frac{2z^4 + 1}{z^3 + 1} = \infty$.
+\end{example}
+
+\vspace*{1em}
+
+\begin{example}[in-class]
+Show $\displaystyle \lim_{z \to \infty} \frac{2 + z^5}{z^2 + 3} = \infty$.
+\end{example}
+\begin{proof}[Answer]
+This is equivalent to showing
+\[\lim_{z \to 0} \frac{1}{f(1/z)} = \lim_{z \to 0} \frac{(1/z)^2 + 3}{2 + (1/z)^5} = 0,\quad \text{for }f(z) = \frac{2 + z^5}{z^2 + 3}\]
+Note that,
+\begin{align*}
+\lim_{z \to 0} \frac{(1/z)^2 + 3}{2 + (1/z)^5} &= \lim_{z \to 0} \frac{\frac{1 + 3z^2}{z^2}}{\frac{2z^5 + 1}{z^5}}\\[0.5em]
+&= \lim_{z \to 0}\ z^3\cdot\frac{1 + 3z^2}{2z^5 + 1}\\[0.5em]
+&= 0^3\cdot\frac{1}{1}\\[0.5em]
+&= 0
+\end{align*}
+Therefore $\displaystyle \lim_{z \to \infty} \frac{2 + z^5}{z^2 + 3} = \infty$.
+\end{proof}
+
+\vspace*{0.2in}
+
+\subsection{Problems}
+\vspace{0.1in}
+
+\begin{problem}\label{prob 5.1}
+Compute the following limits and prove your claim by using only the $\epsilon$-$\delta$ definition.
+\begin{multicols}{2}
+\begin{itemize}
+\item[(a)] $\displaystyle \lim_{z \to i}\,\overline{z}$
+\item[(b)] $\displaystyle \lim_{z \to 1+i}\,z^2$
+\item[(c)] $\displaystyle \lim_{z \to 1}\,z^3$
+\item[(d)] $\displaystyle \lim_{z \to 1 - i}\,\overline{z}^2 - 1$
+\item[(e)] $\displaystyle \lim_{z \to 1}\,z - \overline{z}$
+\item[(f)] $\displaystyle \lim_{z \to i}\,\overline{z} + z$
+\end{itemize}
+\end{multicols}
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 5.2}
+Evaluate the following limits or explain why they don't exist.
+\begin{multicols}{2}
+\begin{itemize}
+\item[(a)] $\displaystyle \lim_{z\to i}\frac{iz^3 - 1}{z + i}$
+\item[(b)] $\displaystyle \lim_{z\to 1-i} (x + i(2x + y))$
+\end{itemize}
+\end{multicols}
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 5.3}
+Define
+\[f(z) = \frac{x^2y}{x^4 + y^2} \quad \text{where }\  z = x + iy \neq 0.\]
+Show that the limits of $f$ at $0$ along all straight lines through the origin exist and are equal, but $\lim_{z \to 0}f(z)$ does not exist.\\[0.5em]
+{\footnotesize Hint: Consider the limit along the parabola $y = x^2$.}
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 5.4}
+Let $M(z) = \dfrac{z - 3}{1 - 2z}$. Prove that
+\[\lim_{z\to \infty} M(z) = -\frac{1}{2} \quad \text{and} \quad \lim_{z \to 1/2} M(z) = \infty\]
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 5.5}
+Let \[M(z) = \dfrac{az + b}{cz + d},\quad ad-bc \neq 0.\] Prove that
+\begin{itemize}
+\item[(a)] $\displaystyle\lim_{z \to \infty} M(z) = \infty$ if $c = 0$.
+\item[(b)] $\displaystyle\lim_{z \to \infty} M(z) = \dfrac{a}{c}$ and $\displaystyle\lim_{z \to -d/c}M(z) = \infty$, if $c \neq 0$.
+\end{itemize}
+\end{problem}

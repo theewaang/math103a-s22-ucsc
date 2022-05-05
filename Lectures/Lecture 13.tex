@@ -1,0 +1,98 @@
+\vspace*{1em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Estimating Contour Integrals}
+\end{center}
+\end{mdframed}
+
+\begin{lemma}[Triangle Inequality for Integrals]\label{intriineq}
+Suppose $\gamma:[a,b] \to \cc$ is piecewise continuous. Then
+\[\abs{\int_a^b\,\gamma(t)\ dt} \leq \int_a^b\abs{\gamma(t)}dt\]
+\end{lemma}
+\begin{proof}
+Let's first assume 
+\[\int_a^b\,\gamma(t)\ dt = 0,\]
+then the lemma holds as $\abs{\gamma(t)} \geq 0$ for all $t \in [a,b]$ and so its integral is non-negative. Otherwise, let
+\[r_0e^{it_0} = \int_a^b\,\gamma(t)\ dt \neq 0.\]
+Then,
+\begin{align*}
+\abs{\int_a^b\,\gamma(t)\ dt} &= |r_0e^{it}|\\[0.5em]
+&= r_0\\[0.5em]
+&= \Re r_0\\[0.5em]
+&= \Re (r_0e^{it_0}e^{-it_0})\\[0.5em]
+&= \Re \left(e^{-it_0}\int_a^b\,\gamma(t)\ dt\right)\\[0.5em]
+&= \Re \left(\int_a^b\,e^{-it_0}\gamma(t)\ dt\right)\\[0.5em]
+&= \int_a^b\,\Re (e^{-it_0}\gamma(t)) dt\\[0.5em]
+&= \int_a^b\,\Re (e^{-it_0})\Re(\gamma(t)) dt\\[0.5em]
+&\leq \int_a^b\,|e^{-it_0}|\abs{\gamma(t)} dt,\ \text{using Discussion \ref{cmplxnorm}}\\[0.5em]
+&= \int_a^b\abs{\gamma(t)} dt
+\end{align*}
+\end{proof}
+
+\vspace*{1em}
+
+\begin{theorem}[Triangle Inequality for Integrals]\label{contourtriineq}
+Suppose that $C$ is a contour of length $L$ and $f$ is piecewise continuous on $C$. Then
+\[\abs{\int_C\,f(z)\ dz} \leq \max_{z \in C}\abs{f(z)} \cdot L(C)\]
+\end{theorem}
+\begin{proof}
+Suppose $z:[a,b] \to \cc$ parametrises $C$. By assumption $f(z(t))$ is piecewise continuous on $[a,b]$. Hence,
+\[\max_{z \in C}\abs{f(z)} = \max_{t \in [a,b]}\abs{f(z(t))}\]
+is finite as $f(z(t))$ is continuous on a closed and bounded interval. Thus,
+\begin{align*}
+\abs{\int_C\,f(z)\ dz} &= \abs{\int_a^b\,f(z(t))\,z'(t)\ dz}\\[0.5em]
+ &\leq \int_a^b\abs{f(z(t))\,z'(t)}\, dz,\ \text{by Lemma \ref{intriineq}}\\[0.5em]
+ &= \int_a^b\abs{f(z(t))}\abs{z'(t)}\, dz\\[0.5em]
+ &\leq \int_a^b\max_{t \in [a,b]}\abs{f(z(t))}\abs{z'(t)}\, dz\\[0.5em]
+ &= \max_{t \in [a,b]}\abs{f(z(t))}\int_a^b\abs{z'(t)}\, dz\\[0.5em]
+ &= \max_{t \in [a,b]}\abs{f(z(t))}\cdot L(C)\\[0.5em]
+ &= \max_{z \in C}\abs{f(z)}\cdot L(C)
+\end{align*}
+\end{proof}
+
+\vspace*{1em}
+
+\begin{example}\hfill
+\begin{itemize}
+\item[(1)] Finding an upper bound for
+\[\int_C\frac{z^2 + 1}{z^3 + 2}\ dz,\]
+where $C$ is the semicircle $z(t) = 2e^{it},\ 0 \leq t \leq \pi$.\\
+\\
+All we need to find is an $M > 0$ such that, for all $z \in C$
+\[\abs{\frac{z^2 + 1}{z^2 + 3}} \leq M,\qquad \text{because then}\quad\max_{z \in C}\abs{\frac{z^2 + 1}{z^2 + 3}} \leq M\]
+Suppose $z \in C$, then $\abs{z} = C$, and therefore
+\[|z^2 + 1| \leq \abs{z}^2 + 1 = 5;\]
+also,
+\[|z^3 + 2| \geq |\abs{z}^3 - 2| = |2^3 - 2| = 6.\]
+Together, we get, for any $z \in C$
+\[\abs{\frac{z^2 + 1}{z^2 + 3}} \leq \frac{5}{6}.\]
+Hence, 
+\[\abs{\int_C\frac{z^2 + 1}{z^3 + 2}\ dz} \leq \max_{z \in C}\abs{\frac{z^2 + 1}{z^2 + 3}}\cdot L(C) \leq \frac{5}{6}\cdot L(C) = \frac{5}{6}\cdot 2\pi = \frac{5\pi}{3}\]
+
+\item[(2)] Show that
+\[\lim_{R \to \infty}\int_{C_R}\frac{z^2 + z}{z^4 + 2z^2 + 1}\ dz = 0,\]
+where $C_R$ is the semicircle $z(t) = Re^{it},\ 0 \leq t \leq 2\pi$. Note that $L(C) = 2\pi R$.\\
+\\
+Let $z \in C_R$, then $\abs{z} = R$, and therefore
+\[|z^2 + z| \leq \abs{z}^2 + z = R^2 + R;\]
+also,
+\[|z^4 + 2z^2 + 1| \geq |(z^2 + 1)| = |z^2 + 1|^2 \geq ||z|^2 - 1|^2 = |R^2 - 1|^2 = (R^2 - 1)^2.\]
+Together, we get, for any $z \in C$ and $R > 1$
+\[\abs{\frac{z^2 + z}{z^4 + 2z^2 + 1}} \leq \frac{R^2 + R}{(R^2 - 1)^2}.\]
+Hence, 
+\[\abs{\int_{C_R}\frac{z^2 + z}{z^4 + 2z^2 + 1}\ dz} \leq \frac{R^2 + R}{(R^2 - 1)^2}\cdot 2\pi R  \to 0,\ \text{as } R \to \infty\]
+Therefore,
+\[\lim_{R \to \infty}\int_{C_R}\frac{z^2 + z}{z^4 + 2z^2 + 1}\ dz = 0,\]
+by the Sandwich theorem.
+\end{itemize}
+\end{example}
+
+\vspace*{2em}
+
+\subsection{Problems}
+\vspace{0.1in}
+To be added
+%\begin{problem}\label{prob 12.1}
+%
+%\end{problem}

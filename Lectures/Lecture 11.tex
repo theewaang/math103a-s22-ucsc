@@ -1,0 +1,296 @@
+\vspace*{1em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Integral of $\gamma:[a,b] \to \cc$}
+\end{center}
+\end{mdframed}
+
+\begin{definition}[Definite Integral of $\gamma$]
+Consider a function $\gamma:[a,b] \to \cc$ with \[\gamma(t) = u(t) + iv(t),\] where $u,\,v: [a,b] \to \rr$. The \cdef{definite\ integral\ of} {\color{blue}$\gamma$} is defined as
+\[\int_a^b\gamma(t)\ dt \coloneqq \int_a^bu(t)\ dt + i\int_a^bv(t)\ dt\]
+provided the integrals of $u$ and $v$ exist.\\
+\\
+Improper integrals can be defined in a similar manner.
+\end{definition}
+
+\vspace*{1em}
+
+\begin{example}
+We illustrate this definition by integrating $\gamma(t) = e^{it}$ on $[0,\pi]$.
+\begin{align*}
+\int_0^\pi e^{it}\ dt &= \int_0^\pi\cos t\ dt + \int_0^\pi\sin t\ dt\\[1em]
+&= \Big[\sin t\,\Big]_0^\pi + i\Big[-\cos t\,\Big]_0^\pi\\[1em]
+&= (\sin \pi - \sin 0) + i(-\cos\pi + \cos 0) = 2i
+\end{align*}
+\end{example}
+
+\vspace*{1em}
+
+\begin{definition}[Piecewise Continuity]
+A function $u:[a,b] \to \rr$ is \cdef{piecewise\ continuous\ on} {\color{blue}$[a,b]$} if it is continuous on $[a,b]$ except at a finite number of points, where despite its discontinuity on those points, both one sided limits exist.\\
+\\
+We call $\gamma(t) = u(t) + iv(t)$ \emph{piecewise continuous} if both $u$ and $v$ are. 
+\end{definition}
+
+\vspace*{1em}
+
+\begin{remark}
+The existence of the integrals 
+\[\int_a^bu(t)\ dt \quad \text{and} \quad \int_a^b v(t)\ dt\]
+is guaranteed when $\gamma$ is piecewise continuous.
+\end{remark}
+
+\vspace*{1em}
+
+\begin{proposition}[Properties of the Integral of $\gamma$]\label{paraint}
+Suppose $\gamma$ and $\gamma_1$ are piecewise continuous on $[a,b]$, then
+\begin{itemize}[itemsep=0.5em]
+\item[(1)] $\displaystyle \int_a^bz_0 \gamma(t)\ dt = z_0\int_a^b\gamma(t)\ dt$, for any $z_0 \in \cc$.
+\item[(2)] $\displaystyle \int_a^b \gamma(t) + \gamma_1(t)\ dt = \int_a^b\gamma(t)\ dt + \int_a^b\gamma_1(t)\ dt$.
+\item[(3)] $\displaystyle \int_a^b \gamma(t)\ dt = \int_a^c\gamma(t)\ dt + \int_c^b\gamma(t)\ dt$, for any $c \in [a,b]$.
+\item[(4)] $\displaystyle \int_b^a \gamma(t)\ dt = -\int_a^b\gamma(t)\ dt$.
+\end{itemize}
+\end{proposition}
+\begin{proof}
+These properties follow from the properties of regular real integrals applied to the real and imaginary part of $\gamma$ and $\gamma_1$.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{proposition}[Extension of Fundamental Theorem of Calculus]\label{pathftc}
+Suppose that $\gamma(t) = u(t) + iv(t)$ is continuous on $[a,b]$ and $\Gamma(t) = U(t) + iV(t)$ is differentiable such that $\Gamma'(t) = \gamma(t)$ on $[a,b]$. Then
+\[\int_a^b\gamma(t)\ dt = \Gamma(b) - \Gamma(a)\]
+\end{proposition}
+\begin{proof}
+By assumption $\Gamma' = \gamma$, therefore $U'(t) = u(t)$ and $V'(t) = v(t)$, therefore
+\begin{align*}
+\int_a^b\gamma(t)\ dt &= \int_a^bu(t)\ dt + i\int_a^bv(t)\ dt\\[0.5em]
+&= U(b) - U(a) + i(V(b) - V(a)),\ \text{by the Fundamental Theorem of Calculus}\\[0.5em]
+&= U(b) + iV(b) - (U(a) + iV(a))\\[0.5em]
+&= \Gamma(b) - \Gamma(a)\\[-2.5em]
+\end{align*}
+\end{proof}
+
+\vspace*{1em}
+
+\begin{example}
+We use this proposition to integrate $e^{it}$ on $[0,\pi]$. For this, we first note that
+\[\left(\frac{e^{it}}{i}\right)' = \frac{1}{i}\left(e^{it}\right)' = \frac{i}{i}\,e^{it} = e^{it}.\]
+Therefore, 
+\begin{align*}
+\int_0^\pi e^{it}\ dt = \Bigg[\frac{e^{it}}{i}\Bigg]_0^\pi &= \Big[-ie^{it}\Big]_0^\pi\\[0.5em]
+&= -ie^{i\pi} + ie^{i\cdot 0}\\[0.5em]
+&= i + i = 2i
+\end{align*}
+\end{example}
+
+\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Contours}
+\end{center}
+\end{mdframed}
+
+So far, we have only defined the integral of a complex-valued function in a single real variable over an interval. Integrals of complex-valued functions in a single complex variable are defined over suitable curves in the complex plane called \emph{contours}.
+
+\vspace*{1em}
+
+\begin{definition}[Arcs]\hfill
+\begin{itemize}
+\item[(1)] An \cdef{arc}, or \cdef{curve}, is a collection of points 
+\[C = \setp{z(t)}{t \in [a,b]},\]
+where $z(t) = x(t) + iy(t)$ and $x,\,y: [a,b] \to \rr$ are continuous functions. The function $z(t)$ is called a \cdef{parametrization\ of} {\color{blue}$C$}.
+\item[(2)] An arc (or curve) $C$ is called \cdef{simple} or a \cdef{Jordan\ arc} if it does not cross itself, which is equivalent to saying the function $z(t)$ is injective; that is, if $z(t_1) = z(t_2)$ then $t_1 = t_2$. 
+\item[(3)] If $C$ is simple except for the fact that $z(a) = z(b)$, then $C$ is called a \cdef{simple\ closed\ curve} or a \cdef{Jordan\ curve}.
+\item[(4)] A simple closed curve is \cdef{positively\ oriented} if it is transversed counter-clockwise as $t$ increases from $a$ to $b$. It is called \cdef{negatively\ oriented} if it is transversed clockwise.
+\end{itemize}
+\end{definition}
+
+\vspace*{1em}
+
+\begin{center}
+\begin{minipage}{0.33\textwidth}
+\[\begin{tikzpicture}[scale=0.5]
+    \draw[<->,thick] (-2,0)--(5,0);
+	\draw[<->,thick] (0,-2)--(0,5);
+    \begin{scope}
+        \node(A) at (-2,-2) {};
+        \node(B) at (4.5,4.5){};
+        \draw[use Hobby shortcut,clockwise arrows,thick]
+	(4.5,4.5) .. (2,2) .. (2.5,0.5) .. (2,2) .. (-0.5,0.5) .. (-2,-2);
+    \end{scope}
+    \draw [fill=black] (A) circle (2pt);
+    \draw [fill=black] (B) circle (2pt);
+\end{tikzpicture}\]
+\begin{center}
+\emph{a not simple arc}
+\end{center}
+\end{minipage}
+\begin{minipage}{0.33\textwidth}
+\[\begin{tikzpicture}[scale=0.5]
+    \draw[<->,thick] (-2,0)--(5,0);
+	\draw[<->,thick] (0,-2)--(0,5);
+    \begin{scope}
+        \node(A) at (-2,-2) {};
+        \node(B) at (4.5,4.5){};
+        \draw[use Hobby shortcut,clockwise arrows,thick]
+	(4.5,4.5) .. (3,2) .. (0,1) .. (-2,-2);
+    \end{scope}
+    \draw [fill=black] (A) circle (2pt);
+    \draw [fill=black] (B) circle (2pt);
+\end{tikzpicture}\]
+\begin{center}
+\emph{a simple arc}
+\end{center}
+\end{minipage}
+
+\vspace*{3em}
+
+\begin{minipage}{0.325\textwidth}
+\[\begin{tikzpicture}[scale=0.5]
+    \draw[<->,thick] (-2,0)--(5,0);
+	\draw[<->,thick] (0,-2)--(0,5);
+    \begin{scope}
+        \draw[use Hobby shortcut,closed=true,wise arrows,thick]
+	(4.5,4.5) .. (4,2) .. (3,-2) .. (0,-1) .. (-1.5,-1.5) .. (-1,0) .. (-2,3) .. (-1,4.5) .. (2,4) .. (4.5,4.5);
+    \end{scope}
+\end{tikzpicture}\]
+\begin{center}
+\emph{a simple closed curve\\ with positive orientation}
+\end{center}
+\end{minipage}
+\begin{minipage}{0.325\textwidth}
+\[\begin{tikzpicture}[scale=0.5]
+    \draw[<->,thick] (-2,0)--(5,0);
+	\draw[<->,thick] (0,-2)--(0,5);
+    \begin{scope}
+        \draw[use Hobby shortcut,closed=true,wise arrows,thick]
+	(0,4) .. (-2,2) .. (0,0) .. (0.5,-0.5) .. (0.5,-1) .. (3,-0.75) .. (4,-1) .. (3.5,0) .. (4,1) .. (2.5,2.5) .. (1,2) .. (0,4);
+    \end{scope}
+\end{tikzpicture}\]
+\begin{center}
+\emph{a simple closed curve\\ with negative orientation}
+\end{center}
+\end{minipage}
+\begin{minipage}{0.325\textwidth}
+\[\begin{tikzpicture}[scale=0.5]
+    \draw[<->,thick] (-3.5,0)--(3.5,0);
+	\draw[<->,thick] (0,-3.75)--(0,3.75);
+    \begin{scope}
+        \draw[use Hobby shortcut,closed=true,wiser arrows,thick]
+	(0,3) .. (1.5,1.5) .. (0,0) .. (-1.5,-1.5) .. (0,-3) .. (1.5,-1.5) .. (0,0) .. (-1.5,1.5) .. (0,3);
+    \end{scope}
+\end{tikzpicture}\]
+\begin{center}
+\emph{a not simple closed\\ non-orientable curve}
+\end{center}
+\end{minipage}
+\end{center}
+
+\vspace*{1em}
+
+\begin{example}
+The most frequently encountered arcs and curves are line segments and circles. 
+\begin{itemize}
+\item[(1)] The circle of radius $R$ centered at $z_0$ with positive orientation has as a parametrisation
+\[z(t) = z_0 + Re^{it},\quad t \in [0,2\pi]\]
+\[\begin{tikzpicture}[scale=0.65]
+    \draw[<->,thick] (-1,0)--(5,0);
+	\draw[<->,thick] (0,-1)--(0,5);
+    \node (a) at (2,4.732) {};
+    \node (b) at (3,3) {};
+    \node (c) at (5,3) {};
+    \draw pic["{\footnotesize$t$}", ->,>=stealth,thick,draw, angle eccentricity=1.5, angle radius=0.5cm,teal] {angle=c--b--a};
+	\draw [teal,dashed,thick] (3,3) -- (5.5,3);
+	\draw [teal,thick] (3,3) -- (1.6,5.071);
+	\draw [thick] (3,3) -- (0.55,2.503)node [midway,above,sloped] {$R$};
+    \node[label=below:$z_0$](A) at (3,3) {};
+	\draw [fill=black] (A) circle (1.5pt);
+    \begin{scope}
+        \draw[use Hobby shortcut,closed=true,wise arrows,thick]
+	(3,5.5) .. (5.5,3) .. (3,0.5) .. (0.5,3);
+    \end{scope}
+\end{tikzpicture}\]
+
+\item[(2)] The circle of radius $R$ centered at $z_0$ with negative orientation has as a parametrisation
+\[z(t) = z_0 + Re^{-it},\quad t \in [0,2\pi]\]\\[-1em]
+\[\begin{tikzpicture}[scale=0.65]
+    \draw[<->,thick] (-1,0)--(5,0);
+	\draw[<->,thick] (0,-1)--(0,5);
+    \begin{scope}
+        \draw[use Hobby shortcut,closed=true,wise arrows,thick]
+	(3,5.5) .. (0.5,3) .. (3,0.5) .. (5.5,3);
+    \end{scope}
+\end{tikzpicture}\]
+
+\item[(3)] The line segment from $z_0$ to $z_1$ in $\cc$ has as a parametrisation
+\[z(t) = z_0 + (z_1 - z_0)t = (1-t)z_0 + tz_1,\quad t \in [0,1]\]\\[-1em]
+\[\begin{tikzpicture}
+    \draw[<->,thick] (-1,1.5)--(4,1.5);
+	\draw[<->,thick] (0,1)--(0,4);
+	\begin{scope}
+        \draw[use Hobby shortcut,clockwise arrows,thick]
+	(3.5,3.5) .. (-1,3);
+    \end{scope}    
+    \node[label=below:$z_0$](A) at (-1,3) {};
+    \node[label=below:$z_1$](B) at (3.5,3.5){};
+	\draw [fill=black] (A) circle (2pt);
+    \draw [fill=black] (B) circle (2pt);
+\end{tikzpicture}\]
+\end{itemize}
+\end{example}
+
+\vspace*{1em}
+
+\begin{definition}[Reparametrisation of an arc]
+Suppose an arc $C$ is parametrised by $z:[a,b] \to \cc$. A map
+\[w:[c,d] \to \cc\]
+is called an \cdef{orientation\text{-}preserving\ reparametrisation} of $C$ if there exists a surjective function
+\[\phi:[c,d] \to [a,b]\]
+with continuous derivative such that $\phi(c) = a$ (preserves initial point), $\phi(d) = b$ (preserves final point), $\phi'(s) > 0$ and $w(s) = z(\phi(s))$ ($w$ and $z$ trace out the same arc $C$).
+\end{definition}
+
+%\vspace*{1em}
+
+\begin{example}
+Note that $z(t) = e^{it}$ for $t \in [0,2\pi]$ is a parametrisation of the unit circle. Now, consider
+\[w:[0,\pi] \to \cc,\ s \mapsto e^{2is},\]
+this is, in fact, an orientation-preserving reparametrisation of the unit circle. To conclude this, we produce the following surjective map
+\[\phi:[0,\pi] \to [0,2\pi],\ s \mapsto 2s,\]
+we note that $\phi(0) = 0$ and $\phi(\pi) = 2\pi$, furthermore $\phi'(s) = 2 > 0$ which is clearly continuous. Lastly, $z(\phi(s)) = z(2s) = e^{2is} = w(s)$.
+\end{example}
+
+\vspace*{1em}
+
+\begin{remark}
+Suppose an arc $C$ is parametrised by $z:[a,b] \to \cc$, a map $w:[c,d] \to \cc$ 
+is called an \cdef{orientation\text{-}reversing\ reparametrisation} of $C$ if there exists a surjective function
+\[\psi:[c,d] \to [a,b]\]
+with continuous derivative such that $\psi(c) = b$ and $\psi(d) = b$ (swaps initial and final points), $\psi'(s) < 0$ and $w(s) = z(\psi(s))$ ($w$ and $z$ trace out the same arc $C$).\\
+\\
+Consider the unit circle, which has parametrisation $z(t) = e^{it},\ t \in [0,2\pi]$. Then $w(t) = e^{-it}$ for $0 \leq t \leq 2\pi$ is an orientation-reversing parametrisation. To see this, we consider the surjective function
+\[\psi:[0,2\pi] \to [0,2\pi],\ s \mapsto 2\pi - s;\]
+we note that $\psi(0) = 2\pi$ and $\psi(2\pi) = 0$, furthermore $\psi'(s) = -1 < 0$ and \[z(\psi(s)) = z(2\pi - s) = e^{2\pi i - is} = e^{-is} = w(s),\] since $e^{2\pi i} = 1$.
+\end{remark}
+
+\vspace*{1em}
+
+\begin{definition}[Arc length and Smooth arcs]\hfill
+\begin{itemize}
+\item[(1)] If $C$ is parametrised by $z(t) = x(t) + iy(t)$ and $x'(t),\,y'(t)$ exist and are continuous on $[a,b]$, then $C$ is called a \cdef{differentiable\ arc}.
+\item[(2)] The \cdef{arc\ length} of such a differentiable arc $C$ is
+\[L(C) = \int_a^b \abs{z'(t)}\,dt = \int_a^b\sqrt{x'(t)^2 + y'(t)^2}\,dt\]
+\item[(3)] A differentiable curve parametrised by $z(t)$ is called \cdef{smooth} if $z'(t) \neq 0$ on $[a,b]$.
+\end{itemize}
+\end{definition}
+
+\vspace*{2em}
+
+\subsection{Problems}
+\vspace{0.1in}
+To be added
+%\begin{problem}\label{prob 11.1}
+%
+%\end{problem}

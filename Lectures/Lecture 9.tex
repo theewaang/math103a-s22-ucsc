@@ -1,0 +1,347 @@
+\vspace*{1em}
+
+\begin{mdframed}
+\begin{center}
+{\Large The Logarithmic Function}
+\end{center}
+\end{mdframed}
+
+\begin{discussion}
+The complex logarithmic function arises, just the like the usual real logarithmic function, from trying to solve the following equation for $w$
+\[e^w = z\quad (z \neq 0)\]
+Write $z = re^{i\theta}$ and $w = u + iv$, then 
+\[e^u e^{iv} = e^w = z = re^{i\theta}.\]
+So, $e^u = r$, giving us $u = \ln r = \ln\abs{z}$, and $v = \theta + 2k\pi$ for some $k \in \zz$, that is the possible values of $v$ are exactly $\arg z = \parg z + 2k\pi,\ k \in \zz$.\\[0.5em]
+Therefore, 
+\begin{align*}
+w &= \ln\abs{z} + i\arg(z)\\[0.5em]
+&= \ln\abs{z} + i\parg(z) + 2k\pi i,\ k \in \zz
+\end{align*}
+Essentially, $w$ is not unique, as $v$ is not unique. This is to be expected, since $e^z$ is not injective as it is periodic.\\
+\\
+Multiple functions satisfy the equation we considered, which we package into a \emph{multi-valued function} using $\arg z$.
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{definition}[The Logarithmic Function]
+We define the \cdef{logarithmic\ function} $\log z$ for any $z \neq 0$, following the discussion above, as
+\[\log z \coloneqq \ln\abs{z} + i\arg(z)\]
+Note that $\log z$ is not really a function but a \emph{multi-valued function}, as $\arg z$ is not single-valued.\\
+\\
+The \cdef{principal\ logarithm}, denoted $\plog z$, is defined by taking the principal argument of $z$
+\[\plog z \coloneqq \ln\abs{z} + i\parg z,\quad -\pi < \parg z \leq \pi\]
+The principal branch of $\log$ is a single-valued function.
+\end{definition}
+
+\vspace*{1em}
+
+\begin{proposition}[Properties of the Logarithm]\label{proplog}
+Consider $z \in \cc$. 
+\begin{itemize}
+\item[(1)] $e^{\log z} = z$.
+\item[(2)] $\log e^z = z + 2k\pi i,\ k \in \zz$.
+\item[(3)] $\log z = \plog z + 2k\pi i,\ k \in \zz$.
+\item[(4)] If $z = x \in \rr_{>0}$, then $\plog z = \ln x$.
+\end{itemize}
+\end{proposition}
+\begin{proof}\hfill
+\begin{itemize}
+\item[(1)] Note that 
+\begin{align*}
+e^{\log z} &= e^{\ln\abs{z} + i\arg z}\\[0.5em]
+&= e^{\ln\abs{z}}e^{i(\parg z + 2k\pi)},\ k \in \zz\\[0.5em]
+&= e^{\ln\abs{z}}e^{i\parg z}e^{2k\pi i},\ k \in \zz\\[0.5em]
+&= \abs{z}e^{i\parg z}\\[0.5em]
+&= z
+\end{align*}
+\item[(2)] Note that 
+\begin{align*}
+\log e^z &= \ln\abs{e^z} + i\arg(e^z)\\[0.5em]
+&= \ln e^{\Re z} + i(\Im z + 2k\pi),\ k \in \zz\\[0.5em]
+&= \Re z + i\Im z + 2k\pi i,\ k \in \zz\\[0.5em]
+&= z + 2k\pi i,\ k \in \zz
+\end{align*}
+\item[(3)] Note that
+\begin{align*}
+\log z &= \log e^{\plog z},\ \text{by (1)}\\[0.5em]
+&= \plog z + 2k\pi i,\ k \in \zz,\ \text{by (2)}
+\end{align*}
+\item[(4)] Note that if $z = x \in \rr_{>0}$, then $\parg z = 0$, therefore
+\[\plog z = \ln\abs{z} + i\parg z = \ln x.\]
+\end{itemize}
+\vspace*{-\baselineskip}
+\end{proof}
+
+\vspace*{1em}
+
+\begin{example}\label{logcalc}\hfill
+\begin{itemize}[itemsep=1.5em]
+\item[(1)] $\begin{aligned}[t]
+\log(1 + i\sqrt{3}) &= \ln\abs{1 + i\sqrt{3}} + i\arg(1 + i\sqrt{3})\\[0.5em]
+&= \ln 2 + i\left(\dfrac{\pi}{3} + 2k\pi\right),\ k \in \zz\\[1em]
+\plog(1 + i\sqrt{3}) &= \ln 2 + \dfrac{\pi i}{3}\\[1em]
+\end{aligned}$
+\end{itemize}
+
+\begin{multicols}{2}
+\begin{itemize}
+\item[(2)] $\begin{aligned}[t]
+\log 1 &= \ln\abs{1} + i\arg 1\\[0.5em]
+&= 0 + i\left(0 + 2k\pi\right),\ k \in \zz\\[0.5em]
+&= 2k\pi i,\ k \in \zz\\[1em]
+\plog 1 &= 0\\[1em]
+\end{aligned}$
+
+\item[(3)] $\begin{aligned}[t]
+\log -1 &= \ln\abs{-1} + i\arg 1\\[0.5em]
+&= \ln 1 + i\left(\pi + 2k\pi\right),\ k \in \zz\\[0.5em]
+&= (2k+1)\pi i,\ k \in \zz\\[1em]
+\plog -1 &= \pi i\\[1em]
+\end{aligned}$
+\end{itemize}
+\end{multicols}
+
+\begin{itemize}
+\item[(4)] Familiar properties of logarithms that you know may not hold.
+\begin{itemize}
+\item[(a)] $\plog(-1 + i)^2 \neq 2\plog (-1 + i)$
+\begin{align*}
+\plog(-1 + i)^2 = \plog(-2i) &= \ln\abs{-2i} + i\parg(-2i)\\[0.5em]
+&= \ln 2 + i\left(-\dfrac{\pi}{2}\right)\\[0.5em]
+&= \ln 2 - \dfrac{\pi i}{2}\\[1em]
+2\plog (-1 + i) &= 2\ln\abs{-1 + i} + 2i\arg(-1 + i)\\[0.5em]
+&= 2\ln\sqrt{2} + 2i\left(\dfrac{3\pi}{4}\right)\\[0.5em]
+&= \ln 2 + \dfrac{3\pi i}{2}
+\end{align*}
+\item[(b)] $\log i^2 \neq 2\log i$
+\begin{align*}
+\log i^2 &= \log -1 = (2k+1)\pi i,\ k \in \zz\\[1em]
+2\log i &= 2\ln\abs{i} + 2i\arg i\\[0.5em]
+&= 0 + 2i\left(\dfrac{\pi}{2} + 2k\pi\right),\ k \in \zz\\[0.5em]
+&= (4k + 1)\pi i,\ k \in \zz
+\end{align*}
+\end{itemize}
+\end{itemize}
+\end{example}
+
+\vspace*{1em}
+
+\begin{proposition}
+For all $z,\, w\in \cc^*$
+\begin{multicols}{2}
+\begin{itemize}
+\item[(1)] $\log zw = \log z + \log w$
+\item[(2)] $\log w^{-1} = -\log w$
+\end{itemize}
+\end{multicols}
+\emph{One treats this as an equality of sets. (1) and (2) also gives you $\log z/w = \log z - \log w$.}
+\end{proposition}
+\begin{proof}\hfill
+\begin{itemize}
+\item[(1)] We have
+\begin{align*}
+\log z + \log w &= \ln\abs{z} + i\arg z + \ln\abs{w} + i\arg w\\[0.5em]
+&= \ln\abs{z}\abs{w} + i(\arg z + \arg w)\\[0.5em]
+&= \ln\abs{zw} + i\arg zw,\ \text{by Proposition \ref{prodarg} (1)}\\[0.5em]
+&= \log zw
+\end{align*}
+\item[(2)] We have
+\begin{align*}
+\log w^{-1} &= \ln|w^{-1}| + i\arg w^{-1}\\[0.5em]
+&= \ln\abs{w}^{-1} + i(-\arg w),\ \text{by Proposition \ref{prodarg} (2)}\\[0.5em]
+&= -(\ln\abs{w} + i\arg w)\\[0.5em]
+&= -\log w
+\end{align*}
+\end{itemize}
+This statement does not hold if we replace $\log z$ with $\plog z$.
+\end{proof}
+
+%\vspace*{1em}
+
+\begin{definition}[Branch of a Multi-Valued Functions]
+A \cdef{branch} of a multi-valued function $f$ is a single-valued function $F$ such that
+\begin{itemize}
+\item $F$ is holomorphic on some domain $G$; and
+\item $F$ assigned to each $z\in G$ precisely one value $F(z)$ of $f(z)$.
+\end{itemize}
+%\[\text{\color{red}insert branch cut example}\]
+A portion of a line or curve in the complex plane is called a \cdef{branch\ cut} for $f$ if a branch $f$ is defined on its complement. A point belonging to \emph{every} branch cut of $f$ is a \cdef{branch\ point}.
+\end{definition}
+
+\vspace*{1em}
+
+\begin{proposition}[Branches of $\log$]\label{logbranch}
+Let $\alpha \in \rr$. The function
+\[L_{\alpha}(z) = L_{\alpha}(re^{i\theta}) = \ln r + i\theta,\quad \alpha < \theta < \alpha + 2\pi\]
+is a branch of $f(z) = \log z$. Note that $\Re L_\alpha = u(r,\theta) = \ln r$ and $\Im L_\alpha = v(r,\theta) = \theta$.
+\end{proposition}
+\begin{proof}
+We first remark that if we were to define $L_\alpha$ also on the ray $\theta = \alpha$, it would not be continuous there. For if $z$ is a point on that ray, as one notes that $\lim_{\theta \to \alpha^-}\theta = \alpha$ but $\lim_{\theta \to \alpha^+}\theta \neq \alpha$ as the points close to the ray to the right have arguments near $\alpha + 2\pi$.\\
+\\
+It is clear that $L_\alpha(z)$ is single-valued and, for each $z$, $L_\alpha(z)$ is a value of $\log z$. We need to show $L_\alpha$ is holomorphic. Note that $u(r,\theta) = \ln r$ and $v(r,\theta) = \theta$ have continuous partial derivatives on the domain of definition
+\begin{align*}
+u_r &= \frac{1}{r} & v_r &= 0\\[0.5em]
+u_\theta &= 0 & v_\theta &= 1
+\end{align*}
+Clearly, the Polar Cauchy Riemann equations (\ref{pcreqex}) are satisfied, and therefore $L_\alpha$ is holomorphic. In fact,
+\begin{align*}
+L'_\alpha(z) &= e^{-i\theta} (u_r + iv_r) = e^{-i\theta}\left(\dfrac{1}{r}\right) = \frac{1}{z}
+\end{align*}
+In particular, $\plog z$ for those $z$ such that $-\pi < \parg z < \pi$ is a branch of $\log z$, called the \cdef{principal} \cdef{branch\ of\ the\ logarithm} and 
+\[(\plog z)' = \frac{1}{z}\]
+\end{proof}
+
+\vspace*{1em}
+
+\begin{remark}
+The branch cut for $\log z$ in Proposition \ref{logbranch} is the ray $r> 0,\,\theta = \alpha$
+\[\begin{tikzpicture}[scale=0.75]
+    \draw[->,thick] (0,0)--(5,0);
+	\draw[<->,thick] (0,-1)--(0,5);
+	\draw[<-,>=stealth,thick,dashed,firebrick] (-6,0)--(0,0);
+
+    \draw[->,>=stealth,thick,dashed,indigo] (0,0) -- (5,3);
+    \node (a) at (2.5,1.5) {};
+    \node (b) at (0,0) {};
+    \node (c) at (0.2,0) {};
+    \draw pic["$\color{indigo}\alpha$", ->,>=stealth,thick, draw=indigo, angle eccentricity=1.3, angle radius=1cm] {angle=c--b--a};
+
+	\fill[teal] (0,0) circle (3pt);
+    \node[] (3) at (-2.5,0.5) {\footnotesize\color{firebrick}branch cut for $\plog z$};
+    \node[text width=2.8cm] (3) at (6.5,1.5) {\footnotesize\color{indigo}branch cut for $L_\alpha$ in Proposition \ref{logbranch}};
+
+    \end{tikzpicture}\]
+The branch cut for $\plog z$ is the ray $r> 0,\, \theta = \pi$, i.e., the negative real axis. The origin is a branch point of $\log z$.
+\end{remark}
+
+%\vspace*{1em}
+
+\begin{example}[Integer Powers and Roots]
+The logarithmic function can be used to compute integer powers and roots (as previously seen and defined).
+\begin{itemize}
+\item[(1)] $z^n = e^{n\log z}$
+\item[(2)] $z^{1/n} = e^{\frac{\log z}{n}}$
+\end{itemize}
+\begin{proof}
+We note that
+\begin{align*}
+e^{n\log z} &= e^{n(\ln\abs{z} + i\arg z)} & e^{\frac{\log z}{n}} &= e^{\frac{1}{n}\left(\ln\abs{z} + i\arg z\right)} \\[0.5em]
+ &= e^{n\ln\abs{z}}\cdot e^{in\arg z} & &= e^{\frac{1}{n}\ln\abs{z}}\cdot e^{i\left(\frac{\arg z}{n}\right)}\\[0.5em]
+ &= \abs{z}^n\cdot (e^{i\arg z})^n & &= e^{\frac{1}{n}\ln\abs{z}}\cdot e^{i\left(\frac{\parg z + 2k\pi}{n}\right)}\\[0.5em]
+ &= (\abs{z}e^{i\arg z})^n & &= \sqrt[n]{\abs{z}}\cdot e^{i\left(\frac{\parg z + 2k\pi}{n}\right)}\\[0.5em]
+ &= z^n & &= z^{1/n}
+\end{align*}
+Recall that $z^n$ is single-valued, but $z^{1/n}$ is multi-valued, as complex numbers have $n$ distinct $n^{\text{th}}$ roots (Proposition \ref{distroot}). In fact, using the the principal logarithm, the complex number
+\[e^{\frac{\plog z}{n}}\]
+gives the principal $n^{\text{th}}$ root of $z$. 
+\end{proof}
+\end{example}
+
+\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Power and Exponential Functions}
+\end{center}
+\end{mdframed}
+
+\begin{definition}[Power Function]
+The \cdef{power\ function} $z^\alpha$ for a fixed $c \in \cc$ is the \emph{multi-valued} function
+\[z^c \coloneqq e^{\,c\log z},\quad z \neq 0\]
+\end{definition}
+
+\vspace*{1em}
+
+\begin{proposition}[Branches of $z^c$]
+A branch of $z^c$ is determined by specifying a branch of $\log z$
+\[\log z = \ln\abs{z} + i\arg z,\quad z \neq 0,\ \alpha < \arg z < \alpha + 2\pi\]
+Moreover,
+\[(z^c)' = c z^{c-1},\]
+whenever $z \neq 0,\ \alpha < \arg z < \alpha + 2\pi$.
+\end{proposition}
+\begin{proof}
+We only need to verify that $z^c$ is holomorphic, once a branch of $\log z$ has been specified. Since $z^c = e^{\,c\log z}$ is a composition of two holomorphic functions, $z^c$ itself is holomorphic. Moreover, by the chain rule
+\begin{align*}
+(z^c)' = (e^{\,c\log z})' &= e^{\,c\log z}(c\log z)'\\[0.5em]
+&= e^{\,c\log z}\cdot \frac{c}{z}\\[0.5em]
+&= c\cdot \frac{e^{\,c\log z}}{e^{\log z}} = c\cdot e^{(c-1)\log z} = cz^{c-1}
+\end{align*}
+\end{proof}
+
+%\vspace*{1em}
+
+\begin{discussion}
+The \cdef{principal\ branch} of $z^c$ is defined by specifying the principal branch $\plog z$ of $\log z$. The principal branch of $z^c$ reduces to the usual power function when $z =  x \in \rr$.
+\end{discussion}
+
+\vspace*{2em}
+
+\subsection{Problems}
+\vspace{0.1in}
+
+\begin{problem}\label{prob 9.1}
+Find the all possible values of
+\begin{multicols}{2}
+\begin{itemize}
+\item[(a)] $\log(-5)$
+\item[(b)] $\log(-2 + 2i)$
+\item[(c)] $\log(\sqrt{2} + i\sqrt{6})$
+\item[(d)] $\log(-ei)$
+\item[(e)] $\log(1 + i)$
+\item[(f)] $\log(-\sqrt{3} + i)$
+\end{itemize}
+\end{multicols}
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 9.2}
+Compute
+\begin{multicols}{2}
+\begin{itemize}
+\item[(a)] $\plog(6-6i)$
+\item[(b)] $\plog(-e^2)$
+\item[(c)] $\plog(-12 + 5i)$
+\item[(d)] $\plog((1 + i\sqrt{3})^5)$
+\item[(e)] $\plog(3 - 4i)$
+\item[(f)] $\plog((1+i)^4)$
+\end{itemize}
+\end{multicols}
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 9.3}\hfill
+\begin{itemize}
+\item[(a)] Show that if $\Re z_1 > 0$ and $\Re z_2 > 0$, then
+\[\plog(z_1z_2) = \plog z_1 + \plog z_2.\]
+\item[(b)] Show that for any two non-zero complex numbers $z_1$ and $z_2$,
+\[\plog(z_1z_2) = \plog z_1 + \plog z_2 + 2N\pi i,\]
+where $N \in \set{0,\pm 1}$.
+\end{itemize}
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 9.4}
+Example \ref{logcalc} (4) tells us that it's not necessarily true that $\log z^n = n\log z$, for $n \in \zz_{>0}$.\\[0.5em]
+Writing $z = re^{i\parg z}$, show that, where $n \in \zz_{>0}$
+\[\log(z^{1/n}) = \frac{1}{n}\ln r + i\left(\frac{\parg z + 2(pn + k)\pi}{n}\right),\quad k = 0,\ldots,n-1.\]
+Now, after writing 
+\[\frac{1}{n}\log z = \frac{1}{n}\ln r + i\left(\frac{\parg z + 2qz}{n}\right),\quad q \in \zz,\]
+show that we have equality of sets
+\[\log(z^{1/n}) = \frac{1}{n}\log z\]
+\end{problem}
+
+\vspace{0.1in}
+
+\begin{problem}\label{prob 9.5}
+Find a domain in which the given function $f$ is holomorphic; then find the derivative $f'$.
+\begin{itemize}
+\item[(a)] $f(z) = 3z^2 - e^{2iz} + i\plog z$
+\item[(b)] $f(z) = (z + 1)\plog z$
+\item[(c)] $f(z) = \dfrac{\plog(2z-i)}{z^2 + 1}$
+\item[(d)] $f(z) = \plog(z^2 + 1)$
+\end{itemize}
+\end{problem}
