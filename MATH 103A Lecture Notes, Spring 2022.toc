@@ -21,6 +21,6 @@
 \contentsline {section}{\numberline {11}Lecture 11 (5/03)}{73}{section.11}%
 \contentsline {subsection}{\numberline {11.1}Problems}{77}{subsection.11.1}%
 \contentsline {section}{\numberline {12}Lecture 12 (5/05)}{78}{section.12}%
-\contentsline {subsection}{\numberline {12.1}Problems}{85}{subsection.12.1}%
-\contentsline {section}{\numberline {13}Lecture 13 (5/10)}{86}{section.13}%
-\contentsline {subsection}{\numberline {13.1}Problems}{88}{subsection.13.1}%
+\contentsline {subsection}{\numberline {12.1}Problems}{83}{subsection.12.1}%
+\contentsline {section}{\numberline {13}Lecture 13 (5/10)}{84}{section.13}%
+\contentsline {subsection}{\numberline {13.1}Problems}{89}{subsection.13.1}%

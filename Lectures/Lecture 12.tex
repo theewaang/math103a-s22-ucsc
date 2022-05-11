@@ -294,7 +294,8 @@ Now, if $C$ is a contour, we can write $C = C_1 + \cdots + C_n$, where $C_i$ is 
 \end{tikzpicture}\]
 Parametrise $C$ as $z(t) = e^{it},\ 0 \leq t \leq 2\pi$. Then,\newpage
 \begin{align*}
-\int_C\,f(z)\ dz = \int_C\,z^m\overline{z}^n\ dz &= \int_0^{2\pi}\,(e^{it})^m(\overline{e^{it}})^n\,ie^{it}\ dt\\[0.5em]
+\int_C\,f(z)\ dz &= \int_C\,z^m\overline{z}^n\ dz\\[0.5em]
+ &= \int_0^{2\pi}\,(e^{it})^m(\overline{e^{it}})^n\,ie^{it}\ dt\\[0.5em]
  &= i\int_0^{2\pi}\,(e^{it})^m(e^{-it})^n\,e^{it}\ dt\\[0.5em]
  &= i\int_0^{2\pi}\,e^{imt}e^{-int}e^{it}\ dt\\[0.5em]
  &= i\int_0^{2\pi}\,e^{(m - n + 1)it}\ dt
@@ -341,79 +342,6 @@ Case II.\ $m \neq n-1$
 %\begin{minipage}{0.3\textwidth}
 %
 %\end{minipage}
-\end{itemize}
-\vspace*{1.5em}
-
-Some examples involving a branch of a multi-valued function. 
-
-\begin{itemize}[itemsep=1.5em]
-\item[(4)] Integrate the branch of square root \[f(z) = z^{1/2} = e^{(1/2)\log z},\quad \abs{z}>0,\ 0 < \arg z < 2\pi\] over the contour
-\[C:\ z(t) = Re^{it},\quad R>0,\ 0 \leq t \leq \pi\]\\[-1em]
-\[\begin{tikzpicture}[scale=1.4]
-    \draw[<-,thick] (-1.75,0)--(0,0);
-	\draw[<->,thick] (0,-0.5)--(0,1.75);
-    \begin{scope}
-        \node[label=right:{$C$}](A) at (1,1) {};
-        \node[label=below:{$-R$}](B) at (-1.25,0) {};
-        \node[label=below:{$R$}](C) at (1.25,0) {};
-        \draw[use Hobby shortcut,clockwise arrows,thick]
-	(-1.25,0) .. (0,1.25) .. (1.25,0);
-    \end{scope}
-	\draw[->,thick,dashed,firebrick] (0,0)--(1.75,0);
-    \draw [firebrick,fill=white] (0,0) circle (1.3pt);
-    \draw [fill=black] (B) circle (1.3pt);
-    \draw [fill=black] (C) circle (1.3pt);
-\end{tikzpicture}\]
-Note that $f(z)$ is not defined at the initial point $z = R$ of the contour $C$ as $\arg R = 0$, that is, $f(z(t))$ is not defined for $t = 0$, the integral
-\[\int_C\,f(z)\ dz = \int_0^{\pi}\,f(z(t))\,z'(t)\ dt\]
-nevertheless exists as the integrand $f(z(t))\,z'(t)$ is piecewise continuous on $[0,\pi]$. To see this, we note that for $0 < t \leq \pi$
-\begin{align*}
-f(z(t))\,z'(t) = e^{(1/2)\log Re^{it}}Rie^{it} &= iRe^{(\ln R + it)/2}e^{it}\\[0.5em]
- &= iR(R^{1/2}e^{it/2})e^{it}\\[0.5em]
- &= iR^{3/2}e^{3it/2}\\[0.5em]
- &= iR^{3/2}\left(\cos\frac{3t}{2} + i\sin\frac{3t}{2}\right)\\[0.5em]
- &= R^{3/2}\left(-\sin\frac{3t}{2} + i\cos\frac{3t}{2}\right)
-\end{align*}
-The right hand limits of the real and imaginary parts of $f(z(t))\,z'(t)$ at $t = 0$ exist, and equal $0$ and $R^{3/2}$. Therefore, $f(z(t))\,z'(t)$ is continuous on $[0,\pi]$ with its value at $t = 0$ defined as $iR^{3/2}$. Hence, 
-\begin{align*}
-\int_C\,f(z)\ dz &= \int_0^{\pi}\,f(z(t))\,z'(t)\ dt\\[0.5em]
-&= \int_0^{\pi}\,iR^{3/2}e^{3it/2}\ dt\\[0.5em]
-&= iR^{3/2}\int_0^{\pi}\,e^{3it/2}\ dt\\[0.5em]
-&= iR^{3/2}\Bigg[\frac{e^{3it/2}}{3i/2}\Bigg]_0^{\pi}\\[0.5em]
-&= \frac{2}{3}R^{3/2}\left(e^{3\pi i/2} - e^0\right) = \frac{2}{3}R^{3/2}\left(-i - 1\right) = -\frac{2}{3}R^{3/2}\left(1 + i\right)
-\end{align*}
-
-\item[(5)] Integrate the principal branch of \[f(z) = z^{i-1} = e^{(i - 1)\plog z},\quad \abs{z}>0,\ -\pi < \parg z < \pi\] over the contour
-\[C:\ z(t) = e^{it},\quad R>0,\ -\pi \leq t \leq \pi\]\\[-1em]
-\[\begin{tikzpicture}[scale=1.4]
-    \draw[<-,thick] (1.75,0)--(0,0);
-	\draw[<->,thick] (0,1.75)--(0,-1.75);
-    \begin{scope}
-        \node[label=right:{$C$}](A) at (1,1) {};
-        \draw[use Hobby shortcut,clockwise arrowsend,thick]
-	(-1.234,0.2) .. (0,1.25) .. (1.25,0) .. (0,-1.25) .. (-1.25,0);
-    \end{scope}
-	\draw[->,thick,dashed,firebrick] (0,0)--(-1.75,0);
-    \draw [fill=black] (-1.25,0) circle (1.3pt);
-    \draw [firebrick,fill=white] (0,0) circle (1.3pt);
-\end{tikzpicture}\]
-Since the curve crosses the branc cut, we need to check if integrand $f(z(t))\,z'(t)$ is piecewise continuous on $[-\pi,\pi]$. To see this, we note that for $-\pi < t \leq \pi$
-\begin{align*}
-f(z(t))\,z'(t) = e^{(i - 1)\plog e^{it}}ie^{it} &= ie^{(i-1)(\ln 1 + it)}e^{it}\\[0.5em]
- &= ie^{(i-1)it}e^{it}\\[0.5em]
- &= ie^{(i - 1)it + it}\\[0.5em]
- &= ie^{i^2t}\\[0.5em]
- &= ie^{-t}
-\end{align*}
-The right hand limits of the real and imaginary parts of $f(z(t))\,z'(t)$ at $t = \pi$ exist, and equal $0$ and $e^{-\pi}$. Therefore, $f(z(t))\,z'(t)$ is continuous on $[-\pi,\pi]$ with its value at $t = -\pi$ defined as $ie^{-\pi}$. Hence, 
-\begin{align*}
-\int_C\,f(z)\ dz &= \int_{-\pi}^{\pi}\,f(z(t))\,z'(t)\ dt\\[0.5em]
-&= \int_{-\pi}^{\pi}\,ie^{-t}\ dt\\[0.5em]
-&= i\int_{-\pi}^{\pi}\,e^{-t}\ dt\\[0.5em]
-&= i\Big[-e^{-t}\Big]_{-\pi}^{\pi}\\[0.5em]
-&= i\left(-e^{-\pi} - (-e^{-(-\pi)})\right)\\[0.5em]
-&= i\left(e^{\pi}-e^{-\pi}\right)
-\end{align*}
 \end{itemize}
 \end{example}
 

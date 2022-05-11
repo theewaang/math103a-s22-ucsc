@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12.10) (preloaded format=pdflatex 2022.1.16)  3 MAY 2022 22:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12.10) (preloaded format=pdflatex 2022.1.16)  9 MAY 2022 20:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1728,35 +1728,44 @@ Package empheq Warning: You cannot use \displaybreak inside the `empheq'
 LaTeX Warning: Reference `prob 12.1' on page 80 undefined on input line 152.
 
 [80] [81] [82]
-Overfull \hbox (17.47267pt too wide) detected at line 321
+Overfull \hbox (17.47267pt too wide) detected at line 322
 []
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 351--352
-
- []
-
-[83]
-Underfull \hbox (badness 10000) in paragraph at lines 387--388
-
- []
-
-[84]) [85] (Lectures/Lecture 13.tex
+) [83] (Lectures/Lecture 13.tex [84]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 4.
- [86]
-Underfull \hbox (badness 10000) in paragraph at lines 59--63
+(mdframed)              on input line 75.
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--90
+
+ []
+
+[85]
+Underfull \hbox (badness 10000) in paragraph at lines 114--126
+
+ []
+
+[86]
+Underfull \hbox (badness 10000) in paragraph at lines 134--138
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--153
 
  []
 
 [87]
-Underfull \hbox (badness 10000) in paragraph at lines 74--78
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 169.
+
+Underfull \hbox (badness 10000) in paragraph at lines 196--200
 
  []
 
-) [88] [89] (MATH 103A Lecture Notes, Spring 2022.aux)
+[88]) [89] [90] (MATH 103A Lecture Notes, Spring 2022.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -1765,10 +1774,10 @@ has not changed.
 (rerunfilecheck)             Checksum: F011CFE08A6AF3F7BBE1F6293E64BFC3;3065.
  ) 
 Here is how much of TeX's memory you used:
- 40488 strings out of 478659
- 934047 string characters out of 2845920
- 1312035 words of memory out of 3000000
- 57445 multiletter control sequences out of 15000+600000
+ 40498 strings out of 478659
+ 934235 string characters out of 2845920
+ 1312023 words of memory out of 3000000
+ 57449 multiletter control sequences out of 15000+600000
  487118 words of font info for 217 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  105i,18n,118p,1069b,1920s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1789,10 +1798,10 @@ tino/uplb8a.pfb><C:/Users/bdeew/AppData/Local/Programs/MiKTeX/fonts/type1/urw/p
 alatino/uplr8a.pfb><C:/Users/bdeew/AppData/Local/Programs/MiKTeX/fonts/type1/ur
 w/palatino/uplr8a.pfb><C:/Users/bdeew/AppData/Local/Programs/MiKTeX/fonts/type1
 /urw/palatino/uplri8a.pfb>
-Output written on "MATH 103A Lecture Notes, Spring 2022.pdf" (90 pages, 545232 
+Output written on "MATH 103A Lecture Notes, Spring 2022.pdf" (91 pages, 550783 
 bytes).
 PDF statistics:
- 1194 PDF objects out of 1200 (max. 8388607)
- 349 named destinations out of 1000 (max. 500000)
+ 1205 PDF objects out of 1440 (max. 8388607)
+ 355 named destinations out of 1000 (max. 500000)
  227 words of extra memory for PDF output out of 10000 (max. 10000000)
 
