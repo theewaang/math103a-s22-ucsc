@@ -1,0 +1,140 @@
+\vspace*{1em}
+
+\begin{theorem}[Differentiating Power Series]\label{diftermbyterm}
+A power series 
+\[S(z) = \sum_{k=0}^\infty a_k(z - z_0)^k\]
+can be differentiated term-by-term. That is, at each point interior to its disk of convergence, we have
+\[S'(z) = \sum_{k=1}^\infty\,ka_k(z - z_0)^{k-1}\]
+\end{theorem}
+\begin{proof}
+Let $D_R(z_0)$ be the disk of convergence of our power series, and consider any $z \in D_R(z_0)$. Let $C$ be a simple closed positively oriented contour interior to $D_R(z_0)$ and surrounding $z$. Then, by Cauchy's Integral formula
+\begin{align*}
+S'(z) &= \frac{1}{2\pi i}\int_C\frac{S(w)}{(w - z)^2}\,dw\\[1em]
+ &= \int_C\,g(w)S(w)\,dw,\quad \text{where }g(w) = \frac{1}{2\pi i}\cdot\frac{1}{(w-z)^2}\\[1em]
+ &= \sum_{k=0}^\infty a_k\int_C\,g(w)(w - z_0)^k\,dw,\quad \text{by Theorem \ref{inttermbyterm}}\\[1em]
+ &= \sum_{k=0}^\infty a_k\cdot \frac{1}{2\pi i}\int_C\,\frac{(w - z_0)^k}{(w - z)^2}\,dw\\[1em]
+ &= \sum_{k=0}^\infty a_k\cdot \left((w - z_0)^k\right)'\bigg\vert_{w = z}\quad \text{by Cauchy's Integral formula}\\[1em]
+ &= \sum_{k=1}^\infty\,ka_k(z - z_0)^{k-1}
+\end{align*}
+\end{proof}
+
+\vspace*{1em}
+
+\begin{theorem}[Uniqueness of Taylor Series]\label{taylorunique}
+If a power series
+\[\sum_{k=0}^\infty a_k(z - z_0)^k\]
+converges to a function $f(z)$ on a disk $D_R(z_0)$, then it is the Taylor series of $f$ about $z_0$.
+\end{theorem}
+\begin{proof}
+It suffices to show that
+\[a_k = \frac{f^{(k)}(z_0)}{k!}\]
+Consider, for a fixed positive integer $n$
+\[g(z) = \frac{1}{2\pi i}\cdot \frac{1}{(z - z_0)^{n+1}}\]
+Let $C$ be a circle centered at $z_0$ with radius $r < R$. Then, by Generalised Cauchy's Integral formula
+\begin{align*}
+\frac{f^{(n)}(z_0)}{n!} &= \frac{1}{2\pi i}\int_C\frac{f(z)}{(z - z_0)^{n+1}}\,dz\\[1em]
+ &= \int_C\,g(z)\sum_{k=0}^\infty a_k(z - z_0)^k\,dz,\quad \text{where }g(z) = \frac{1}{2\pi i}\cdot\frac{1}{(z-z_0)^{n+1}}\\[1em]
+ &= \sum_{k=0}^\infty a_k\int_C\,g(z)(z - z_0)^k\,dz\\[1em]
+ &= \sum_{k=0}^\infty a_k\cdot \frac{1}{2\pi i}\int_C\,\frac{1}{(z - z_0)^{(n+1)-k}}\,dz\\[1em]
+ &= a_n\cdot \frac{1}{2\pi i}\int_C\,\frac{1}{z - z_0}\,dz + \sum_{k\neq n} a_k\cdot \frac{1}{2\pi i}\int_C\,\frac{1}{(z - z_0)^{(n+1)-k}}\,dz\\[1em]
+ &= a_n
+\end{align*}
+using Example \ref{laurentex} (4).
+\end{proof}
+
+\vspace*{1em}
+
+\begin{theorem}[Uniqueness of Laurent Series]\label{laurentunique}
+If a series
+\[\sum_{k=0}^\infty a_k(z - z_0)^k + \sum_{k=1}^\infty \frac{a_{-k}}{(z - z_0)^k}\]
+converges to a function $f(z)$ on an annulus $A_{R_1,R_2}(z_0)$, then it is the Laurent series of $f$ on that annulus.
+\end{theorem}
+\begin{proof}
+It is similar to the proof of Theorem \ref{taylorunique}.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{discussion}[Product of Power Series]\label{powserprod}
+Suppose two power series
+\[f(z) = \sum_{k=0}^\infty a_k(z - z_0)^k \quad \text{and} \quad g(z) = \sum_{k=0}^\infty b_k(z - z_0)^k\]
+converge on a disk $D_R(z_0)$. Then $f$ and $g$ are holomorphic on that disk, and hence so is $fg$ by the product rule. Hence, $fg$ necessarily has a Taylor series on $D_R(z_0)$,
+\[f(z)g(z) = \sum_{n=0}^\infty c_n(z - z_0)^n\]
+where
+\begin{align*}
+c_n &= \frac{(fg)^{(n)}(z_0)}{n!}\\[0.5em]
+ &= \frac{1}{n!}\sum_{k=0}^n\binom{n}{k}f^{(k)}(z_0)g^{(n-k)}(z_0),\quad \text{by the general product rule}\\[0.5em]
+ &= \frac{1}{n!}\sum_{k=0}^n\frac{n!}{k!(n-k)!} f^{(k)}(z_0)g^{(n-k)}(z_0)\\[0.5em]
+ &= \sum_{k=0}^n\frac{f^{(k)}(z_0)}{k!}\cdot\frac{g^{(n-k)}(z_0)}{(n-k)!}\\[0.5em]
+ &= \sum_{k=0}^n a_kb_{n-k}
+\end{align*}
+Usually, in practice, only the first several terms are required. They can be found by formally multiplying the series like polynomials.
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{example}
+Find the Maclaurin series for
+\[\frac{\sin z}{1 + z}\]
+The functions $\sin z$ and $1/(1 + z)$ are holomorphic on the unit disk. We have,
+\begin{align*}
+\frac{\sin z}{1 + z} &= \frac{1}{1 + z}\cdot\sin z\\[1em]
+&= \left(\sum_{k=0}^\infty(-1)^kz^k\right)\left(\sum_{k=0}^\infty\frac{(-1)^kz^{2k+1}}{(2k+1)!}\right)\\[1em]
+&= \left(1 - z + z^2 - \cdots\right)\left(z - \frac{z^3}{3!} + \frac{z^5}{5!}-\cdots\right)\\[1em]
+&= \left(z - \frac{z^3}{3!} + \frac{z^5}{5!}-\cdots\right) - z\left(z - \frac{z^3}{3!} + \frac{z^5}{5!}-\cdots\right) + z^2\left(z - \frac{z^3}{3!} + \frac{z^5}{5!}-\cdots\right) - \cdots\\[1em]
+&= \left(z - \frac{z^3}{3!} + \frac{z^5}{5!}-\cdots\right) - \left(z^2 - \frac{z^4}{3!} + \frac{z^6}{5!}-\cdots\right) + \left(z^3 - \frac{z^5}{3!} + \frac{z^7}{5!}-\cdots\right) - \cdots\\[1em]
+&= z - z^2 + \frac{5}{6}\,z^3 - \frac{5}{6}\,z^4 + \cdots
+\end{align*}
+\end{example}
+
+\vspace*{1em}
+
+\begin{discussion}[Quotient of Power Series]\label{powserquot}
+Similarly, if $f$ and $g$ are holomorphic on a disk $D_R(z_0)$ and $g(z) \neq 0$ on $D_R(z_0)$, then we can write
+\[\frac{f(z)}{g(z)} = \sum_{n=0}^\infty d_n(z - z_0)^n\]
+where
+\[d_n = \frac{(f/g)^{(n)}(z_0)}{n!}\]
+In practice, the coefficients can be found by formally dividing the series like polynomials.
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{example}
+Find the Laurent series for
+\[\frac{1}{\sin z}\]
+on the annulus $0 < \abs{z} < \pi$. We have,
+\begin{align*}
+\frac{1}{\sin z} &= \frac{1}{\displaystyle\sum_{k=0}^\infty\frac{(-1)^kz^{2k+1}}{(2k+1)!}}\\[1em]
+&= \frac{1}{z - \dfrac{z^3}{3!} + \dfrac{z^5}{5!}-\cdots}\\[1em]
+&= \frac{1}{z}\cdot\frac{1}{1 - \dfrac{z^2}{3!} + \dfrac{z^4}{5!}-\cdots}
+\end{align*}
+The series $1 - \dfrac{z^2}{3!} + \dfrac{z^4}{5!}-\cdots$ is non-zero on the disk $\abs{z} < \pi$, so we can perform long division of the series dividing and collect the first few terms, which gives us
+\[\frac{1}{1 - \dfrac{z^2}{3!} + \dfrac{z^4}{5!}-\cdots} = 1 + \frac{z^2}{3!} + \left(\frac{1}{(3!)^2} - \frac{1}{5!}\right)z^4 + \cdots\]
+Therefore,
+\begin{align*}
+\frac{1}{\sin z} &= \frac{1}{z}\cdot\left(1 + \frac{1}{6}\,z^2 + \frac{7}{360}\,z^4 + \cdots\right)\\[0.5em]
+ &= \frac{1}{z} + \frac{z}{6} + \frac{7}{360}\,z^3 + \cdots
+\end{align*}
+%\begin{center}
+%{\renewcommand{\arraystretch}{2.5}%
+%\begin{tabular}{c|*{10}{p{0.5em}}}
+%\multicolumn{1}{c}{} &&& $1$ & $+$ & $\dfrac{z^2}{3!}$&\\
+%\cline{2-11}
+%$1 - \dfrac{z^2}{3!} + \dfrac{z^4}{5!}-\cdots$ &&& $1$ & & &\\
+%\multicolumn{1}{c}{} & $-$ & $\bigg($ & $1$ & $-$ & $\dfrac{z^2}{3!}$ & $+$ & $\dfrac{z^4}{5!}$ & $-$ & $\cdots$ & $\bigg)$\\[0.5em]
+%\cline{3-11}
+%\multicolumn{1}{c}{} & & & & & $\dfrac{z^2}{3!}$ & $-$ & $\dfrac{z^4}{5!}$ & $+$ & $\cdots$\\
+%\multicolumn{1}{c}{} & & & $-$ & $\bigg($ & $\dfrac{z^2}{3!}$ & $-$ & $\dfrac{z^4}{(3!)^2}$ & $+$ & $\cdots\bigg)$
+%\end{tabular}
+%}
+%\end{center}
+\end{example}
+
+\vspace*{2em}
+
+\subsection{Problems}
+\vspace{0.1in}
+To be added
+%\begin{problem}\label{prob 12.1}
+%
+%\end{problem}

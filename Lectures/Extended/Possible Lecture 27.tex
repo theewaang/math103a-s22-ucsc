@@ -1,0 +1,203 @@
+\vspace*{1em}
+
+\begin{mdframed}[backgroundcolor=paleyellow,linewidth=1pt]
+\begin{center}
+{\sc\Large Part VI. Applications of Residue Calculus}
+\end{center}
+\end{mdframed}
+
+\begin{discussion}
+We will now apply the theory of residues to compute several types of improper integrals from calculus. Additionally, we will prove
+\begin{itemize}
+\item[(1)] \emph{Cauchy's Argument Principle}. The winding number of the image of a curve under a \emph{meromorphic} function depends only on the zeros and poles of that function.
+\item[(2)] \emph{Rouche's theorem}. A useful criterion for locating zeros of holomorphic functions. 
+\end{itemize}
+\end{discussion}
+
+\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Background on Improper Integrals}
+\end{center}
+\end{mdframed}
+
+\begin{definition}
+Suppose $f(x)$ is a real-valued function in a single real variable.
+\begin{itemize}
+\item[(1)] If $f(x)$ is continuous on $[0,\infty)$, therefore integrable, then the improper integral of $f$ over that interval is defined to be
+\[\int_0^\infty\,f(x)\,dx \coloneqq \lim_{R \to \infty}\int_0^R\,f(x)\,dx\]
+If the limit exists, the integral is said to converge. It is said to diverge otherwise.
+
+\item[(2)] If $f(x)$ is continuous on $\rr$, then the improper integral of $f$ over $\rr$ is defined to be
+\[\int_{-\infty}^\infty\,f(x)\,dx \coloneqq \lim_{R_1 \to \infty}\int^0_{-R_1}\,f(x)\,dx + \lim_{R_2 \to \infty}\int_0^{R_2}\,f(x)\,dx\]
+The integral is said to converge if both the limits exist. It is said to diverge otherwise.
+
+\item[(3)] The \cdef{Cauchy\ Principal\ Value} of the improper integral in (2) is the value of the limit
+\[\pv{\int_{-\infty}^\infty\,f(x)\,dx} \coloneqq \lim_{R \to \infty}\int^R_{-R}\,f(x)\,dx\]
+\end{itemize}
+\end{definition}
+
+\vspace*{1em}
+
+\begin{lemma}\label{cpv}
+If 
+\[\int_{-\infty}^\infty\,f(x)\,dx\]
+converges, then the Cauchy principal value exists and
+\[\pv{\int_{-\infty}^\infty\,f(x)\,dx} = \int_{-\infty}^\infty\,f(x)\,dx\]
+\end{lemma}
+\begin{proof}
+Since the integral converges, the limits
+\[I_1 = \lim_{R_1 \to \infty}\int^0_{-R_1}\,f(x)\,dx \quad \text{and} \quad I_2 = \lim_{R_2 \to \infty}\int_0^{R_2}\,f(x)\,dx\]
+exist, i.e. $I_1,\,I_2 \in \rr$. By definition, for every $\epsilon > 0$ there exist $M_1,\,M_2 > 0$ such that whenever $R_1 > M_1$ and $R_2 > M_2$, then
+\[\abs{\int^0_{-R_1}\,f(x)\,dx - I_1} < \epsilon \quad \text{and} \quad \abs{\int_0^{R_2}\,f(x)\,dx - I_2} < \epsilon\]
+respectively.\\[0.5em]
+Then, for any $R > \max\set{M_1,\,M_2}$ we have simultaneously
+\[\abs{\int^0_{-R}\,f(x)\,dx - I_1} < \epsilon \quad \text{and} \quad \abs{\int_0^{R}\,f(x)\,dx - I_2} < \epsilon\]
+That is,
+\[I_1 = \lim_{R \to \infty}\int^0_{-R} \quad \text{and} \quad I_2 = \lim_{R \to \infty}\int_0^{R}\,f(x)\,dx\]
+Hence,
+\begin{align*}
+\int_{-\infty}^\infty\,f(x)\,dx = I_1 + I_2 &=  \lim_{R \to \infty}\int^0_{-R}\,f(x)\,dx + \lim_{R \to \infty}\int_0^{R}\,f(x)\,dx\\[1em]
+ &=  \lim_{R \to \infty}\left(\int^0_{-R}\,f(x)\,dx + \int_0^{R}\,f(x)\,dx\right)\\[1em]
+ &=  \lim_{R \to \infty}\int^R_{-R}\,f(x)\,dx\\[1em]
+ &=  \pv{\int_{-\infty}^\infty\,f(x)\,dx}
+\end{align*}
+\end{proof}
+
+\vspace*{1em}
+
+\begin{remark}
+The converse of Lemma \ref{cpv} is false in general: even if the Cauchy principal value exists, the integral may diverge. For example,
+\begin{align*}
+\pv{\int_{-\infty}^\infty\,\frac{2x}{1 + x^2}\,dx} &= \lim_{R \to \infty}\int^R_{-R}\,\frac{2x}{1 + x^2}\,dx\\[1em]
+ &= \lim_{R \to \infty}\Big[\ln(1 + x^2)\Big]_{-R}^R\\[1em]
+ &= 0
+\end{align*}
+On the other hand,
+\begin{align*}
+\int_{-\infty}^\infty\,\frac{2x}{1 + x^2}\,dx &= \lim_{R_1 \to \infty}\int^0_{-R_1}\,f(x)\,dx + \lim_{R_2 \to \infty}\int_0^{R_2}\,f(x)\,dx\\[1em]
+ &= \lim_{R_1 \to \infty}\Big[\ln(1 + x^2)\Big]^0_{-R_1} + \lim_{R_2 \to \infty}\Big[\ln(1 + x^2)\Big]_0^{R_2}\\[1em]
+ &= \lim_{R_1 \to \infty}-\ln(1 + R_1^2) + \lim_{R_2 \to \infty}\ln(1 + R_2^2);
+\end{align*}
+note that these limits diverge, the first to $-\infty$ and the second to $+\infty$, and thus the integral diverges.
+\end{remark}
+
+\vspace*{1em}
+
+\begin{lemma}
+Suppose $f(x)$ is an even function and continuous on $\rr$. If 
+\[\pv{\int_{-\infty}^\infty\,f(x)\,dx}\]
+exists, then the improper integral exists and
+\[\int_{-\infty}^\infty\,f(x)\,dx = \pv{\int_{-\infty}^\infty\,f(x)\,dx}\]
+Moreover,
+\[\int_0^\infty\,f(x)\,dx = \frac{1}{2}\cdot\pv{\int_{-\infty}^\infty\,f(x)\,dx}\]
+\end{lemma}
+\begin{proof}
+We have,
+\begin{align*}
+\int_{-\infty}^\infty\,f(x)\,dx &=  \lim_{R_1 \to \infty}\int^0_{-R_1}\,f(x)\,dx + \lim_{R_2 \to \infty}\int_0^{R_2}\,f(x)\,dx\\[1em]
+ &=  \lim_{R_1 \to \infty}\frac{1}{2}\int^{R_1}_{-R_1}\,f(x)\,dx + \lim_{R_2 \to \infty}\frac{1}{2}\int_{R_2}^{R_2}\,f(x)\,dx,\quad \text{since $f$ is even}\\[1em]
+ &=  \frac{1}{2}\cdot\pv{\int_{-\infty}^\infty\,f(x)\,dx} + \frac{1}{2}\cdot\pv{\int_{-\infty}^\infty\,f(x)\,dx}\\[1em]
+ &=  \pv{\int_{-\infty}^\infty\,f(x)\,dx}
+\end{align*}
+Along the way we also proved
+\[\int_0^\infty\,f(x)\,dx = \frac{1}{2}\cdot\pv{\int_{-\infty}^\infty\,f(x)\,dx}\]
+\end{proof}
+
+\vspace*{1em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Improper Integrals of Rational Functions}
+\end{center}
+\end{mdframed}
+
+\begin{discussion}
+We make the following assumptions for this section.
+\begin{itemize}
+\item[(1)] $f(x) = p(x)/q(x)$ is a rational function with real coefficients, and $p(x)$ and $q(x)$ have no factors in common.
+\item[(2)] $q(x)$ has no real zeros.
+\item[(3)] $f(x)$ is an even function.
+\end{itemize}
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{discussion}\label{stepsintegral}
+We describe a method to compute integrals of the form
+\[\int_{-\infty}^\infty\frac{p(x)}{q(x)}\,dx \quad \text{and} \quad \int_0^\infty\frac{p(x)}{q(x)}\,dx\]
+\begin{itemize}[leftmargin=4em,itemsep=1em]
+\item[Step 1.] Treating $f$ as a complex function, identify the singularities of $f$ that lie above the real axis. Let's label them $z_1,\ldots,z_n$.
+
+\item[Step 2.] Define a semicircular contour $\Gamma_R = C_R + L_R$ as follows
+\[\begin{tikzpicture}[scale=1.4]
+    \draw[<->,thick] (-1.75,0)--(1.75,0);
+	\draw[<->,thick] (0,-0.5)--(0,1.75);
+    \begin{scope}
+        \node[label=right:{$C_R$}](A) at (1,1) {};
+        \draw[use Hobby shortcut,clockwise arrows,very thick,firebrick]
+	(-1.25,0) .. (0,1.25) .. (1.25,0);
+        \node[label=right:{$L_R$}](B) at (-1.1,-0.3) {};
+        \draw[clockwise arrowsmult,very thick,firebrick]
+	(-1.26,0)--(1.26,0);
+    \end{scope}
+\end{tikzpicture}\]
+where $C_R$ is the upper semicircle parametrised as $z(t) = Re^{it},\ 0 \leq t \leq \pi$, and $L_R$ is the line segment from $-R$ to $R$. Where $R$ is chosen such that $R > \max_{i=1}^n\abs{z_i}$, so that $z_i$'s lie in the interior of $C$.
+
+\item[Step 3.] We apply Cauchy's Residue theorem
+\[\int_{L_R}\,f(z)\,dz + \int_{C_R}\,f(z)\,dz = \int_{\Gamma}\,f(z)\,dz = 2\pi i\sum_{i=1}^n\res{z_i}f(z)\]
+Parametrise $L_R$ as $z(x) = x,\ -R \leq x \leq R$. Then,
+\[\int_{L_R}\,f(z)\,dz = \int_{-R}^R\,f(x)\,dx\]
+Hence, 
+\[\pv{\int_{-\infty}^\infty\,f(x)\,dx} = \lim_{R \to \infty}\int_{-R}^R\,f(x)\,dx = 2\pi i\sum_{i=1}^n\res{z_i}f(z) - \lim_{R \to \infty}\int_{C_R}\,f(z)\,dz\]
+Since $f(x)$ is even,
+\[\int_{-\infty}^\infty\,f(x)\,dx = \pv{\int_{-\infty}^\infty\,f(x)\,dx}\]
+
+\item[Step 4.] Prove that
+\[\lim_{R \to \infty}\int_{C_R}\frac{p(z)}{q(z)}\,dz = 0\]
+This can always be proved if, for instance, $\deg q(z) - \deg p(z) \geq 2$. 
+\end{itemize}
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{example}
+Compute $\displaystyle \int_0^\infty\frac{1}{1 + x^4}\,dx$.\\
+\\
+The singularities of $f(z) = 1/(1 + z^4)$ are solutions to the equation $z^4 = -1$, which are given by, for $k = 0,\,1,\,2,\,3$
+\begin{align*}
+z_k &= e^{i(\pi/4 + 2k\pi/4)}\\[0.5em]
+ &= e^{i\pi/4} (e^{i\pi/2})^k = \frac{i^k(1 + i)}{\sqrt{2}}
+\end{align*}
+Of these four singularities, $z_0$ and $z_1$ lie above the real axis; moreover $\abs{z_0} = \abs{z_1} = 1$.\\
+\\
+We integrate $f(z)$ over the semicircular contour $\Gamma_R$ where $R > 1$. Using the residue theorem, we have
+\[\int_{-R}^R\frac{1}{1 + x^4}\,dx = 2\pi i\left(\res{z_0}f(z) + \res{z_1}f(z) \right) - \int_{C_R}\frac{1}{1 + z^4}\,dz\]
+Let $p(z) = 1$ and $q(z) = 1 + z^4$, which are clearly holomorphic. At each singularity $z_k$, we have $p(z_k) = 1 \neq 0,\ q(z_k) = 0$ and $q'(z_k) = 4z_k^3 \neq 0$; therefore the singularities are simple poles. Hence,
+\[\res{z_k}f(z) = \frac{p(z_k)}{q'(z_k)} = \frac{1}{4z_k^3} = \frac{z_k}{4z_k^4} = -\frac{z_k}{4}\]
+On $C_R$, we note that $\abs{z} = R$, therefore 
+\[|z^4 + 1| \geq ||z|^4 - 1| = R^4 - 1\]
+and so,
+\begin{align*}
+\abs{\int_{C_R}\frac{1}{1 + z^4}\,dz} &\leq L(C_R)\cdot \max_{z \in C_R}\frac{1}{|1 + z^4|}\\[0.5em]
+ &\leq \frac{\pi R}{R^4 - 1} \to 0,\ \text{as }R \to \infty
+\end{align*}
+Thus,
+\begin{align*}
+\int_0^\infty\frac{1}{1 + x^4}\,dx &= \frac{1}{2}\cdot\pv{\int_{-\infty}^\infty\frac{1}{1 + x^4}\,dx}\\[1em]
+ &= \pi i\left(\res{z_0}f(z) + \res{z_1}f(z) \right)\\[1em]
+ &= -\frac{\pi i}{4}\left(z_0 + z_1 \right)\\[1em]
+ &= -\frac{\pi i}{4}\left(\frac{1 + i}{\sqrt{2}} + \frac{-1 + i}{\sqrt{2}} \right)\\[1em]
+ &= \frac{\pi}{2\sqrt{2}}
+\end{align*}
+\end{example}
+
+\vspace*{2em}
+
+\subsection{Problems}
+\vspace{0.1in}
+To be added
+%\begin{problem}\label{prob 12.1}
+%
+%\end{problem}

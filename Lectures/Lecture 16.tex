@@ -1,0 +1,172 @@
+\vspace*{1em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Cauchy's Integral Formula}
+\end{center}
+\end{mdframed}
+
+\begin{discussion}
+Cauchy's Integral Formula is a remarkable theorem. It asserts that if a function is holomorphic inside and on $C$, a simple closed contour, then its values interior to $C$ are completely determined by its values on $C$. 
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{theorem}[Cauchy's Integral Formula]\label{cintform}
+Let $C$ be a simple closed contour, with positive orientation, and let $f$ be a function that is holomorphic at all points on and interior to $C$. The for any $z_0 \in \mathrm{int}(C)$, we have
+\[f(z_0) = \frac{1}{2\pi i}\int_C\,\frac{f(z)}{z - z_0}\,dz\]
+\end{theorem}
+\begin{proof}
+Our strategy is to show that for all $\epsilon > 0$, we get
+\[\abs{\int_C\,\frac{f(z)}{z - z_0}\,dz - f(z)\cdot 2\pi i} < \epsilon\]
+because then
+\[\int_C\,\frac{f(z)}{z - z_0}\,dz - f(z)\cdot 2\pi i = 0\]
+Let $\epsilon > 0$, and since, by assumption, $f$ is holomorphic on $z_0$, it's continuous on $z_0$. So, there exists a $\delta > 0$ such that
+\[\text{if }\ \abs{z - z_0} < \delta,\quad \text{then }\ \abs{f(z) - f(z_0)} < \frac{\epsilon}{2\pi}\]
+Let $\rho > 0$ be small enough such that the circle $C_\rho = C_\rho(z_0)$ centered at $z_0$ of radius $\rho$ lies in the interior of $C$; assume $C_\rho$ has positive orientation. 
+\[\begin{tikzpicture}[scale=0.6]
+    \begin{scope}
+    \draw[use Hobby shortcut,closed=true,fill=indigo,fill opacity=1/15,draw opacity=0]
+	(3,3) .. (6,3) .. (3,-1) .. (-1,-2.5) .. (-2,-1.5) .. (-4,0) .. (-2,3) .. (-1,4.5) .. (2,5);
+    \draw[use Hobby shortcut,closed=true,clockwise arrowsend]
+	(3,3) .. (6,3) .. (3,-1) .. (-1,-2.5) .. (-2,-1.5) .. (-4,0) .. (-2,3) .. (-1,4.5) .. (2,5);
+	\draw[use Hobby shortcut,closed=true,fill=white,clockwise arrowsend]
+	(0,-1.5) .. (-1.5,0) .. (0,1.5) .. (1.5,0);
+    \end{scope}
+    \node[label=below:{$C$}](A) at (6.5,1) {};
+    \draw [fill=black] (0,0) circle (2pt);
+    \node[label=below:{$z_0$}](A) at (0,0) {};
+    \draw[](0,0)--(1.3,0.748) node[sloped,midway,above]{\footnotesize $\rho$};
+\end{tikzpicture}\]
+We may assume $\rho < \delta$, then for every point $z \in C_\rho$, since $\abs{z - z_0} = \rho < \delta$, we have
+\[\abs{f(z) - f(z_0)} < \frac{\epsilon}{2\pi},\quad \text{therefore }\ \max_{z \in C_\rho}\abs{f(z) - f(z_0)} < \frac{\epsilon}{2\pi}\]
+Now, note that 
+\[\frac{f(z)}{z - z_0}\]
+is holomorphic on the region consisting of $C,\,C_\rho$ and all points that are interior to $C$ but exterior to $C_\rho$. So, by Corollary \ref{deformation}, we have
+\[\int_C\,\frac{f(z)}{z - z_0}\,dz = \int_{C_\rho}\,\frac{f(z)}{z - z_0}\,dz\]
+and then
+\begin{align*}
+\abs{\int_C\,\frac{f(z)}{z - z_0}\,dz - f(z)\cdot 2\pi i} &= \abs{\int_{C_\rho}\frac{f(z)}{z - z_0} - f(z)\cdot 2\pi i}\\[1em]
+ &= \abs{\int_{C_{\rho}}\frac{f(z)}{z - z_0} - f(z)\int_{C_{\rho}}\,\frac{1}{z - z_0}\,dz}\\[1em]
+ &= \abs{\int_{C_{\rho}}\frac{f(z) - f(z_0)}{z - z_0}\,dz}\\[1em]
+ &\leq \max_{z \in C_{\rho}}\abs{\frac{f(z) - f(z_0)}{z - z_0}}\cdot L(C_{\rho})\\[1em]
+ &= \max_{z \in C_{\rho}}\frac{\abs{f(z) - f(z_0)}}{\rho}\cdot (2\pi\rho)\\[1em]
+ &= \frac{1}{\rho}\max_{z \in C_{\rho}}\abs{f(z) - f(z_0)}\cdot (2\pi\rho)\\[1em]
+ &< \frac{\epsilon}{2\pi}\cdot 2\pi\\[1em]
+ &= \epsilon
+\end{align*}
+and the claim follows.
+\end{proof}
+
+\vspace*{1em}
+
+Among other things, Cauchy's Integral formula is useful for computing integrals. 
+\begin{example}\hfill
+\begin{itemize}[itemsep=2em]
+\item[(1)] Let's compute $\displaystyle \int_C\, \frac{\cos z}{z(z^2 + 2)}\, dz$, where $C$ is the unit circle, positively oriented.\\
+\\
+Consider
+\[f(z) = \frac{\cos z}{z^2 + 2}\]
+Then $f$ is holomorphic on all points on and interior to $C$, as they don't include $\pm 2i$ and $0$ is in the interior or $C$. Therefore, by Cauchy's Integral Formula (Theorem \ref{cintform}) we have
+\[\int_C\, \frac{\cos z}{z(z^2 + 2)}\, dz = \int_C\, \frac{f(z)}{z - 0}\, dz = 2\pi i\cdot f(0) = \pi i.\]
+
+\item[(2)] Let's compute $\displaystyle \int_C\, \frac{e^{z^2}}{z - 1}\, dz$, where $C$ is a positively oriented circle with radius $2$.\\
+\\
+Consider $f(z) = e^{z^2}$, then $f$ is entire, and therefore holomorphic on all points on and interior to $C$. Therefore, by Cauchy's Integral Formula (Theorem \ref{cintform}) we have
+\[\int_C\, \frac{e^{z^2}}{z - 1}\, dz = 2\pi if(1) = 2\pi ie.\]
+
+\item[(3)] Let's compute $\displaystyle \int_C\, \frac{z^2 + 1}{z^2 - 1}\, dz = \int_C\, \frac{z^2 + 1}{(z - 1)(z + 1)}\, dz$, where $C$ is as follows
+\[\]
+The contour $C$ is not simple but it can be decomposed as a sum of simple closed contours $C = C_1 - C_2$
+\[\]
+So, 
+\[\int_C\, \frac{z^2 + 1}{(z - 1)(z + 1)}\,dz = \int_{C_1}\, \frac{z^2 + 1}{(z - 1)(z + 1)}\,dz - \int_{C_2}\, \frac{z^2 + 1}{(z - 1)(z + 1)}\,dz\]
+For $C_1$, consider
+\[f(z) = \frac{z^2 + 1}{z + 1},\]
+then $f$ is holomorphic on all points on and interior to $C_1$, as they don't include $-1$, and $1$ is in the interior or $C_1$. Therefore by Cauchy's Integral Formula (Theorem \ref{cintform}) we have
+\[\int_{C_1}\, \frac{z^2 + 1}{(z - 1)(z + 1)}\,dz = \int_{C_1}\, \frac{f(z)}{z - 1}\,dz = 2\pi i\cdot f(1) = 2\pi i\]
+For $C_2$, consider
+\[g(z) = \frac{z^2 + 1}{z - 1},\]
+then $g$ is holomorphic on all points on and interior to $C_2$, as they don't include $1$, and $-1$ is in the interior or $C_2$. Therefore by Cauchy's Integral Formula (Theorem \ref{cintform}) we have
+\[\int_{C_2}\, \frac{z^2 + 1}{(z - 1)(z + 1)}\,dz = \int_{C_2}\, \frac{g(z)}{z + 1}\,dz = 2\pi i\cdot g(-1) = -2\pi i\]
+Hence, 
+\[\int_C\, \frac{z^2 + 1}{(z - 1)(z + 1)}\,dz = \int_{C_1}\, \frac{z^2 + 1}{(z - 1)(z + 1)}\,dz - \int_{C_2}\, \frac{z^2 + 1}{(z - 1)(z + 1)}\,dz = 2\pi i + 2\pi i = 4\pi i.\]
+\end{itemize}
+\end{example}
+
+\vspace*{1em}
+
+\begin{theorem}[Generalised Cauchy's Integral Formula]\label{gencintform}
+Let $C$ be a simple closed contour, with positive orientation, and let $f$ be a function that is holomorphic at all points on and interior to $C$. The for any $z_0 \in \mathrm{int}(C)$, we have that $f^{(n)}(z_0)$ exists and
+\[f^{(n)}(z_0) = \frac{n!}{2\pi i}\int_C\,\frac{f(z)}{(z - z_0)^{n+1}}\,dz\]
+\end{theorem}
+\begin{proof}
+We prove by induction, with the base case $n = 0$ being just Theorem \ref{cintform}. Assume the statements holds for $n = k$, we need to prove  that
+\[f^{(k+1)}(z_0) \coloneqq \lim_{h \to 0}\frac{f^{(k)}(z_0 + h) - f^{(k)}(z_0)}{h} = \frac{(k+1)!}{2\pi i}\int_C\,\frac{f(z)}{(z - z_0)^{(k+1)+1}}\,dz\]
+We assume $\abs{h}$ is small enough such that $z + h \in \mathrm{int}(C)$, then by the inductive hypothesis
+\begin{align*}
+f^{(k)}(z_0 + h) &= \frac{k!}{2\pi i}\int_C\,\frac{f(z)}{(z - (z_0 + h))^{k+1}}\,dz\\[1em]
+f^{(k)}(z_0) &= \frac{k!}{2\pi i}\int_C\,\frac{f(z)}{(z - z_0)^{k+1}}\,dz
+\end{align*}
+Recall the algebraic identity, that for $a,\,b \in \cc$ we have
+\[a^{k+1} - b^{k+1} = (a - b)(a^k + a^{k-1}b + \cdots + ab^{k-1} + b^k),\]
+We will apply this to $a = \dfrac{1}{z - z_0 - h}$ and $b = \dfrac{1}{z - z_0}$, and we also note $\lim_{h \to 0}a = b$. Then,
+\begin{align*}
+\lim_{h \to 0}&\,\frac{f^{(k)}(z_0 + h) - f^{(k)}(z_0)}{h}\\[1em]
+&= \lim_{h \to 0}\,\frac{k!}{2\pi i}\int_C\,\frac{f(z)}{h}\left(\frac{1}{(z - z_0 - h)^{k+1}} - \frac{1}{(z - z_0)^{k+1}}\right)\,dz\\[1em]
+ &= \lim_{h \to 0}\,\frac{k!}{2\pi i}\int_C\,\frac{f(z)}{h}\left(\frac{1}{z - z_0 - h} - \frac{1}{z - z_0}\right)(a^k + a^{k-1}b + \cdots + ab^{k-1} + b^k)\,dz \\[1em]
+ &= \lim_{h \to 0}\,\frac{k!}{2\pi i}\int_C\,\frac{f(z)}{h}\left(\frac{h}{(z - z_0 - h)(z - z_0)}\right)(a^k + a^{k-1}b + \cdots + ab^{k-1} + b^k)\,dz \\[1em]
+ &= \lim_{h \to 0}\,\frac{k!}{2\pi i}\int_C\,\left(\frac{f(z)}{(z - z_0 - h)(z - z_0)}\right)(a^k + a^{k-1}b + \cdots + ab^{k-1} + b^k)\,dz \\[1em]
+ &= \frac{k!}{2\pi i}\int_C\,\lim_{h \to 0}\,\left(\frac{f(z)}{(z - z_0 - h)(z - z_0)}\right)(a^k + a^{k-1}b + \cdots + ab^{k-1} + b^k)\,dz \\[1em]
+ &= \frac{k!}{2\pi i}\int_C\,\left(\frac{f(z)}{(z - z_0)^2}\right)(b^k + b^{k-1}b + \cdots + b\cdot b^{k-1} + b^k)\,dz\\[1em]
+ &= \frac{k!}{2\pi i}\int_C\,\frac{f(z)}{(z - z_0)^2}\cdot(k+1)\cdot b^k\,dz \\[1em]
+ &= \frac{(k+1)!}{2\pi i}\int_C\,\frac{f(z)}{(z - z_0)^2}\cdot\frac{1}{(z - z_0)^k}\,dz \\[1em]
+ &= \frac{(k+1)!}{2\pi i}\int_C\,\frac{f(z)}{(z - z_0)^{(k+1)+1}}\,dz 
+\end{align*}
+Thus we have our result by the principle of mathematical induction. 
+\end{proof}
+
+%\vspace*{1em}
+
+\begin{example}
+Compute the integral
+\[\frac{1}{2\pi i}\int_C\,\frac{(1 + z)^n}{z^{k+1}}\,dz\]
+where $C$ is any simple closed positively oriented contour whose interior contains $0$ and $0 \leq k \leq n$.\\
+\\
+Let $f(z) = (1 + z)^n$, since $f$ is entire, $f$ is holomorphic on all points on and interior to $C$. Since $0$ is in the interior of $C$, then generalised Cauchy's Integral formula (Theorem \ref{gencintform}) gives us
+\begin{align*}
+\frac{1}{2\pi i}\int_C\,\frac{(1 + z)^n}{z^{k+1}}\,dz &= \frac{1}{k!}\left(\frac{k!}{2\pi i}\int_C\,\frac{(1 + z)^n}{(z - 0)^{k+1}}\,dz\right) = \frac{1}{k!}\cdot f^{(k)}(0)
+\end{align*}
+We have, 
+\[f^{(k)}(z) = n(n-1)\cdots (n-(k-1))(1 + z)^{n-k},\]
+and therefore
+\[f^{(k)}(0) = n(n-1)\cdots (n-(k-1)) = \frac{n!}{(n-k)!}\]
+Hence, 
+\[\frac{1}{2\pi i}\int_C\,\frac{(1 + z)^n}{z^{k+1}}\,dz = \frac{1}{k!}\cdot f^{(k)}(0) = \frac{n!}{k!(n-k)!} = \binom{n}{k}\]
+\end{example}
+
+\vspace*{1em}
+
+\begin{theorem}[Derivatives of Holomorphic functions are Holomorphic]\label{holsmooth}
+Suppose that $f$ is holomorphic at $z_0 \in \cc$, then for all $n\in \zz_{>0}$, $f^{(n)}$ is also holomorphic at $z_0$. 
+\end{theorem}
+\begin{proof}
+Suppose $f$ is holomorphic at $z_0 \in \cc$. Choose an open disk $D_\epsilon(z_0)$ on which $f$ is differentiable. To conclude $f'$ exists and is holomorphic at $z_0$, it's enough to find a neighbourhood of $z_0$ where $f''(w)$ exists for all $w$ in that neighbourhood. Let $C$ be the positive oriented circle of radius $\epsilon/2$ centered at $z_0$, then $f$ is holomorphic on all points on and interior to $C$. So, by generalised Cauchy's Integral formula (Theorem \ref{gencintform}),
+\[f''(w) = \frac{2!}{2\pi i}\int_C\,\frac{f(z)}{(z - w)^3}\,dz\]
+for any $w$ in the interior of $C$. Thus, $f'$ is differentiable in the open set $D_{\epsilon/2}(z_0)$, and hence $f'$ is holomorphic at $z_0$. Induction then gives us that $f^{(n)}$ is holomorphic at $z_0$ for any $n\in \zz_{>0}$.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{corollary}
+If $f(z) = u(x,y) + iv(x,y)$ is holomorphic at $z = x + iy$, then $u$ and $v$ have continuous partial derivatives of all orders at $(x,y)$. 
+\end{corollary}
+
+\vspace*{2em}
+
+\subsection{Problems}
+\vspace{0.1in}
+To be added
+%\begin{problem}\label{prob 12.1}
+%
+%\end{problem}

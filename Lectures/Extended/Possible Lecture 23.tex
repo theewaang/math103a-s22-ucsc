@@ -1,0 +1,153 @@
+\vspace*{1em}
+
+\begin{mdframed}[backgroundcolor=paleyellow,linewidth=1pt]
+\begin{center}
+{\sc\Large Part V. Residue Calculus}
+\end{center}
+\end{mdframed}
+
+\begin{definition}[Isolated Singularity]
+A singular point $z_0$ of a function $f$ is called \cdef{isolated} if there exists a deleted disk $D_R(z_0)\setminus\set{z_0}$ on which $f$ is holomorphic.
+\end{definition}
+
+\vspace*{1em}
+
+\begin{example}\hfill
+\begin{itemize}[itemsep=1em]
+\item[(1)] A rational function
+\[r(z) = \frac{p(z)}{q(z)}\]
+has only isolated singularities: they are the zeros of $q(z)$.
+
+\item[(2)] The principal branch of the logarithm has a singularity at $0$ but it is \emph{not isolated}. This is because any deleted disk around $0$ will necessarily contain points on the branch cut $\rr_{<0}$.
+
+\item[(3)] $f(z) = \dfrac{1}{\sin(\pi/z)}$ has a singular point at $z = 0$, and also whenever
+\begin{align*}
+\sin\left(\frac{\pi}{z}\right) = 0 &\iff \frac{\pi}{z} = k\pi,\quad k \in \zz\\[0.5em]
+ &\iff z = \frac{1}{k},\quad k \in \zz
+\end{align*}
+The singular point $0$ is not isolated. Consider any deleted disk $D_{\epsilon}(0)\setminus\set{0}$ where $\epsilon > 0$, then we can find a positive integer $n$ such that $0 < 1/n < \epsilon$. So, $1/n \in D_{\epsilon}(0)\setminus\set{0}$ but $f$ is holomorphic at $1/n$.\\[0.5em]
+On the other hand, the singular points $1/k$ are isolated since $f$ is holomorphic on the delted disk $D_R(0)\setminus\set{0}$ for $R = 1/k(k+1)$. 
+\end{itemize}
+\end{example}
+
+\vspace*{1em}
+
+\begin{definition}[Isolated Singularity at $\infty$]
+A function has an \emph{isolated singularity at $\infty$} if there exists an $R > 0$ such that $f$ is holomorphic on the annulus $R < \abs{z} < \infty$. Equivalently, if $f(1/z)$ has an isolated singularity at $0$.
+\end{definition}
+
+\vspace*{1em}
+
+\begin{definition}[Residues]
+Let $z_0$ be an isolated singularity of $f$ so that $f$ on the annuli
+\[\begin{cases}0 < \abs{z - z_0} < R & \text{if } z_0 \neq \infty\\[0.5em] R < \abs{z} < \infty & \text{if } z_0 = \infty \end{cases}\]
+When $z_0 \neq \infty$, the \cdef{residue\ of} {\color{blue}$f$} \cdef{at} {\color{blue}$z_0$} is the coefficient
+\[\res{z_0}f(z) \coloneqq a_{-1} = \frac{1}{2\pi i}\int_C\,f(z)\,dz\]
+in the Laurent series expansion of $f$ on the annulus $0 < \abs{z - z_0} < R$.\\
+\\
+When $z_0 = \infty$, the \cdef{residue\ of} {\color{blue}$f$} \cdef{at} {\color{blue}$\infty$} is defined as
+\[\res{\infty}f(z) \coloneqq \frac{1}{2\pi i}\int_{C_{R_0}}\,f(z)\,dz\]
+where $C_{R_0}$ is a \emph{negatively oriented} circle centered at $0$ with radius $R_0 > R$.
+\end{definition}
+
+\vspace*{1em}
+
+\begin{example}\hfill
+\begin{itemize}[itemsep=1em]
+\item[(1)] Compute $\displaystyle \int_C\frac{e^z - 1}{z^4}\,dz$, where $C$ is the unit circle with positive orientation.\\[0.5em]
+Since $0$ is an isolated singularity of $f(z) = (e^z - 1)/z^4$, and $C$ is a contour around $0$, we need to only compute $\res{0}f(z)$.\\[0.5em]
+The function has a Laurent series on $0 < \abs{z} < \infty$, which is
+\begin{align*}
+\frac{e^z - 1}{z^4} &= \frac{1}{z^4}\left(\sum_{k=0}^\infty\frac{z^k}{k!} - 1\right)\\[0.5em]
+ &= \frac{1}{z^4}\sum_{k=1}^\infty\frac{z^k}{k!}\\[0.5em]
+ &= \sum_{k=1}^\infty\frac{z^{k-4}}{k!}\\[0.5em]
+ &= \frac{1}{z^3} + \frac{1}{2z^2} + \frac{1}{6z} + \sum_{k=0}^\infty\frac{z^k}{(k+4)!}
+\end{align*}
+Therefore $\res{0}f(z) = \dfrac{1}{6}$, hence 
+\[\int_C\frac{e^z - 1}{z^4} = 2\pi i\cdot\res{0}f(z) = \frac{\pi i}{3}\]
+
+\item[(2)] Compute $\displaystyle \int_C\,\cos\left(\frac{1}{z^2}\right)dz$, where $C$ is the unit circle with positive orientation.\\[0.5em]
+Since $0$ is an isolated singularity of $f(z) = \cos(1/z^2)$, and $C$ is a contour around $0$, we need to only compute $\res{0}f(z)$.\\[0.5em]
+The function has a Laurent series on $0 < \abs{z} < \infty$, which is
+\begin{align*}
+\cos\left(\frac{1}{z^2}\right) &= \sum_{k=0}^\infty\frac{(-1)^k}{(2k)!}\left(\frac{1}{z^2}\right)^{2k}\\[0.5em]
+ &= 1 - \frac{1}{2z^2} + \frac{1}{24z^4} - \cdots
+\end{align*}
+Therefore $\res{0}f(z) = 0$, hence 
+\[\int_C\,\cos\left(\frac{1}{z^2}\right)dz = 2\pi i\cdot\res{0}f(z) = 0\]
+
+\item[(3)] Compute $\displaystyle \int_C\,\frac{1}{z(z-2)^5}\, dz$, where $C$ is the circle $\abs{z - 2} = 1$ with positive orientation.\\[0.5em]
+Since $2$ is an isolated singularity of $f(z) = 1/z(z-2)^5$, and $C$ is a contour around $2$, we need to only compute $\res{2}f(z)$.\\[0.5em]
+The function has a Laurent series on $0 < \abs{z - 2} < 2$, which is
+\begin{align*}
+\frac{1}{z(z-2)^5} &= \frac{1}{(z - 2)^5}\left(\frac{1}{2 + (z - 2)}\right)\\[0.5em]
+ &= \frac{1}{2(z - 2)^5}\cdot\frac{1}{1 + \dfrac{z - 2}{2}}\\[0.5em]
+ &= \frac{1}{2(z - 2)^5}\sum_{k=0}^\infty(-1)^k\left(\frac{z - 2}{2}\right)^k,\quad \text{since }\abs{\frac{z - 2}{2}} < 1\\[0.5em]
+ &= \sum_{k=0}^\infty(-1)^k\frac{(z - 2)^{k-5}}{2^{k+1}}\\[0.5em]
+ &= \frac{1}{2z^5} - \frac{1}{4z^4} + \frac{1}{8z^3} - \frac{1}{16z^2} + \frac{1}{32z} - \sum_{k=0}^\infty(-1)^{k}\frac{(z - 2)^{k}}{2^{k+6}}
+\end{align*}
+Therefore $\res{0}f(z) = \dfrac{1}{32}$, hence 
+\[\int_C\,\frac{1}{z(z-2)^5}\,dz = 2\pi i\cdot\res{0}f(z) = \frac{\pi i}{16}\]
+\end{itemize}
+\end{example}
+
+\vspace*{1em}
+
+\begin{theorem}[Cauchy's Residue Theorem]\label{rescalc}
+Let $C$ be a positively oriented simple closed contour. If $f$ is holomorphic everywhere on and interior to $C$, except at finitely many singularities $z_1,\ldots,z_n$ lying interior to $C$, then
+\[\int_C\,f(z)\,dz = 2\pi i\cdot \sum_{i = 1}^n\res{z_i}f(z)\]
+\end{theorem}
+\begin{proof}
+Since there are finitely many singularities of $f$ interior to $C$, they are necessarily isolated. For each $i$, let $C_i$ be a positively oriented circle centered at $z_i$ such that
+\begin{itemize}
+\item[(a)] the regions $R_i$ enclosed by $C_i$ are pairwise disjoint; and
+\item[(b)] the regions $R_i$ are interior to $C$, which is possibly since $z_i$ is interior to $C$.
+\end{itemize}
+\[\text{\color{red}add image here}\]
+Then $f$ is holomorphic everywhere on $C_i$'s and at all points that are interior to $C$ but exterior to $C_i$'s. Then, by the Generalised Cauchy-Goursat theorem (Theorem \ref{cgthmgen})
+\begin{align*}
+\int_C\,f(z)\,dz &= \sum_{i=1}^n\int_{C_i}\,f(z)\,dz\\[1em]
+ &= \sum_{i=1}^n 2\pi i\cdot \res{z_i}f(z)\\[0.5em]
+ &= 2\pi i\cdot \sum_{i = 1}^n\res{z_i}f(z)
+\end{align*}
+\end{proof}
+
+\vspace*{1em}
+
+\begin{example}\label{resexample}
+Compute $\displaystyle \int_C\frac{4z - 5}{z(z - 1)}\,dz$, where $C$ is the circle $\abs{z} = 2$ with positive orientation. The function
+\[f(z) = \frac{4z - 5}{z(z - 1)}\]
+has isolated singularities at $0$ and $1$, both of which lie interior to $C$. So, we apply the residue theorem for which we need to compute $\res{0}f(z)$ and $\res{1}f(z)$.
+\begin{itemize}[itemsep=0.5em]
+\item[$\bullet$] To compute $\res{0}f(z)$, we note that the function has a Laurent series on $0 < \abs{z} < 1$, which is
+\begin{align*}
+\frac{4z - 5}{z(z - 1)} &= \frac{4z - 5}{z}\cdot\frac{1}{z - 1}\\[0.5em]
+ &= \frac{5 - 4z}{z}\cdot\frac{1}{1 - z}\\[0.5em]
+ &= \left(\frac{5}{z} - 4\right)\sum_{k=0}^\infty z^k\\[0.5em]
+ &= \frac{5}{z}\sum_{k=0}^\infty z^k - 4\sum_{k=0}^\infty z^k\\[0.5em]
+ &= 5\sum_{k=0}^\infty z^{k-1} - 4\sum_{k=0}^\infty z^k\\[0.5em]
+ &= \frac{5}{z} + \sum_{k=0}^\infty z^k
+\end{align*}
+Therefore $\res{0}f(z) = 5$.
+\item[$\bullet$] To compute $\res{1}f(z)$, we note that the function has a Laurent series on $0 < \abs{z - 1} < 1$, which is
+\begin{align*}
+\frac{4z - 5}{z(z - 1)} = \frac{4z - 5}{z - 1}\cdot\frac{1}{z} &= \frac{4(z - 1) - 1}{z - 1}\cdot\frac{1}{1 + (z - 1)}\\[0.5em]
+ &= \left(4 - \frac{1}{z - 1}\right)\sum_{k=0}^\infty (-1)^k (z-1)^k\\[0.5em]
+ &= 4\sum_{k=0}^\infty (-1)^k(z-1)^k - \frac{1}{z - 1}\sum_{k=0}^\infty (-1)^k(z - 1)^k\\[0.5em]
+ &= 4\sum_{k=0}^\infty (-1)^k(z-1)^k - \sum_{k=0}^\infty (-1)^k(z - 1)^{k-1}\\[0.5em]
+ &= -\frac{1}{z - 1} + 5\sum_{k=0}^\infty(-1)^k(z-1)^k
+\end{align*}
+Therefore $\res{1}f(z) = -1$.
+\end{itemize}
+Thus,
+\[\int_C\frac{4z - 5}{z(z - 1)}\,dz = 2\pi i\left(\res{0}f(z) + \res{1}f(z)\right) = 8\pi i\]
+\end{example}
+
+\vspace*{2em}
+
+\subsection{Problems}
+\vspace{0.1in}
+To be added
+%\begin{problem}\label{prob 12.1}
+%
+%\end{problem}

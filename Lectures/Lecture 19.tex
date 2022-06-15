@@ -1,0 +1,129 @@
+\vspace*{1em}
+
+\begin{proof}[Proof of Theorem \ref{taylor} (Taylor's Theorem)]
+First, let's assume that $z_0 = 0$, so $f$ is holomorphic on $D_R(0)$. Let $z \in D_R(0)$, and write $r_z = \abs{z}$. Let $r_0$ be a real number such that $r_z < r_0 < R$, and $C_0$ the circle of radius $r_0$ centered at $0$.\\[0.5em]
+Since $z$ is now in the interior of $C_0$, by Cauchy's Integral formula (Theorem \ref{cintform}), we have
+\[f(z) = \frac{1}{2\pi i} \int_{C_0}\frac{f(w)}{w - z}\,dw\]
+For any positive integer $n$, and any $a \in \cc$ we have the formula
+\begin{align*}
+1 + a + \cdots + a^{n-1} &= \frac{1 - a^n}{1 - a}\\[0.5em]
+ &= \frac{1}{1 - a} - \frac{a^n}{1 - a^n}\\[1em]
+\frac{1}{1 - a} &= \frac{a^n}{1 - a^n} + \sum_{k=0}^{n-1}\,a^k
+\end{align*}
+Using this, we write
+\begin{align*}
+\frac{1}{w - z} &= \frac{1}{w}\left(\frac{1}{1 - z/w}\right)\\[0.5em]
+ &= \frac{1}{w}\left(\frac{(z/w)^n}{1 - z/w} + \sum_{k=0}^{n-1}\left(\frac{z}{w}\right)^k\right)\\[0.5em]
+ &= \frac{z^n}{w^n(w - z)} + \sum_{k=0}^{n-1}\frac{z^k}{w^{k+1}}\tag{$*$}
+\end{align*}
+Let's now compute the remainder, 
+\begin{align*}
+\rho_n(z) &= f(z) - \sum_{k=0}^{n-1}\frac{f^{(k)}(0)}{k!}\,z^k\\[1em]
+ &= \frac{1}{2\pi i} \int_{C_0}\frac{f(w)}{w - z}\,dw - \sum_{k=0}^{n-1}\frac{z^k}{k!}\,\frac{k!}{2\pi i} \int_{C_0}\frac{f(w)}{(w - 0)^{k+1}}\,dw,\quad \text{by Theorem \ref{gencintform}}\\[1em]
+ &= \frac{1}{2\pi i} \int_{C_0}\frac{f(w)}{w - z}\,dw - \sum_{k=0}^{n-1}\frac{1}{2\pi i} \int_{C_0}\,\frac{z^k}{w^{k+1}}\,f(w)\,dw\\[1em]
+ &= \frac{1}{2\pi i} \int_{C_0}\,f(w)\left(\frac{1}{w - z} - \sum_{k=0}^{n-1}\frac{z^k}{w^{k+1}}\right) dw\\[1em]
+ &= \frac{1}{2\pi i} \int_{C_0}\,f(w)\,\frac{z^n}{w^n(w - z)}\, dw,\quad \text{by ($*$)}
+\end{align*}
+Let's use this to prove $\rho_n(z) \to 0$. We have,
+\begin{align*}
+\abs{\rho_n(z)} &= \frac{1}{2\pi}\abs{\int_{C_0}\,f(w)\,\frac{z^n}{w^n(w - z)}\, dw}\\[1em]
+&\leq \frac{1}{2\pi} \max_{w \in C_0}\abs{f(w)\,\frac{z^n}{w^n(w - z)}}\cdot L(C_0)\\[1em]
+&= r_0\cdot\max_{w \in C_0}\abs{f(w)}\,\frac{\abs{z}^n}{\abs{w}^n\abs{w - z}}\\[1em]
+&= \frac{r_z^nr_0}{r_0^n}\cdot\max_{w \in C_0}\frac{\abs{f(w)}}{\abs{w - z}}\\[1em]
+&\leq \frac{r_z^nr_0}{r_0^n}\cdot\max_{w \in C_0}\frac{\abs{f(w)}}{\abs{\abs{w} - \abs{z}}},\quad \text{by reverse triangle inequality}\\[1em]
+&= \frac{r_z^nr_0}{r_0^n(r_0 - r_z)}\cdot\max_{w \in C_0}\abs{f(w)}\\[1em]
+&= \frac{Mr_0}{(r_0 - r_z)}\,\left(\frac{r_z}{r_0}\right)^n,\quad \text{where $M = \max_{w \in C_0}\abs{f(w)}$}
+\end{align*}
+Note that, since $\dfrac{r_z}{r_0} < 1$, we have $\dfrac{Mr_0}{(r_0 - r_z)}\,\left(\dfrac{r_z}{r_0}\right)^n \to 0$, and hence
+\[\lim_{n \to \infty}\rho_n(z) = 0\]
+Thus, we have proved the claim for $z_0 = 0$.\\
+\\
+Now, assume that $z_0 \neq 0$, so $f$ is holomorphic on the disk $D_R(z_0)$. Then $g(z) \coloneqq f(z + z_0)$ is holomorphic on $D_R(0)$. Therefore, by our arguments above, we have
+\[f(z + z_0) = g(z) = \sum_{k = 0}^\infty\frac{g^{(k)}(0)}{k!}\,z^k = \sum_{k = 0}^\infty\frac{f^{(k)}(z_0)}{k!}\,z^k\]
+Replacing $z$ with $z - z_0$ gets us
+\[f(z) = \sum_{k = 0}^\infty\frac{f^{(k)}(z_0)}{k!}\,(z - z_0)^k\]
+\end{proof}
+
+\vspace*{1em}
+
+The Taylor series of $f$ about $z_0 = 0$ is commonly referred to as a \cdef{Maclaurin\ series}.
+\begin{example}[Maclaurin series of Elementary Functions]\label{macelseries}
+We will derive the following Maclaurin series expansions of the most common elementary functions. We will frequently use them to compute Maclaurin and Taylor series expansions of other functions. You should try and remember them!
+\begin{itemize}
+\item[(1)] $\displaystyle\frac{1}{1 - z} = \sum_{k = 0}^\infty\,z^k$,\ for $\abs{z} < 1$
+\item[(2)] $\displaystyle e^z = \sum_{k = 0}^\infty\,\frac{z^k}{k!}$,\ for $\abs{z} < \infty$
+\item[(3)] $\displaystyle \sin z = \sum_{k = 0}^\infty(-1)^k\frac{z^{2k + 1}}{(2k + 1)!}$,\ for $\abs{z} < \infty$
+\item[(4)] $\displaystyle \cos z = \sum_{k = 0}^\infty(-1)^k\frac{z^{2k}}{(2k)!}$,\ for $\abs{z} < \infty$
+\end{itemize}
+\begin{proof}[Answer]\hfill
+\begin{itemize}
+\item[(1)] Let $f(z) = 1/(1 - z)$, then $f$ has a singularity at $z = 1$. So, $f$ is holomorphic on the open disk $D_1(0)$. By Theorem \ref{taylor}, $f$ has a Maclaurin series on this disk. One can show inductively that for any $k$ we have,
+\[f^{(k)}(z) = \frac{k!}{(1 - z)^{k+1}}\]
+Therefore $f^{(k)}(0) = k!$, and hence
+\[\frac{1}{1 - z} = f(z) = \sum_{k = 0}^\infty\frac{f^{(k)}(0)}{k!}\,z^k = \sum_{k = 0}^\infty\,z^k\]
+
+\item[(2)] Since $f(z) = e^z$ is entire, it has a Maclaurin series everywhere, by Theorem \ref{taylor}. We have,
+\[f^{(k)}(0) = e^0 = 1\]
+Hence, 
+\[e^z = f(z) = \sum_{k = 0}^\infty\frac{f^{(k)}(0)}{k!}\,z^k = \sum_{k = 0}^\infty\,\frac{z^k}{k!}\]
+
+\item[(3)] We have,
+\begin{align*}
+\sin z = \frac{1}{2i}\left(e^{iz} - e^{-iz}\right) &= \frac{1}{2i}\left(\sum_{k = 0}^\infty\,\frac{i^kz^k}{k!} - \sum_{k = 0}^\infty\,\frac{(-i)^kz^k}{k!}\right)\\[1em]
+ &= \frac{1}{2i}\sum_{k = 0}^\infty\,\frac{i^kz^k}{k!}\left(1 - (-1)^k\right)\\[1em]
+ &= \frac{1}{2i}\sum_{k = 0}^\infty\,\frac{i^{2k+1}z^{2k+1}}{(2k+1)!}\cdot 2\\[1em]
+ &= \frac{1}{2i}\sum_{k = 0}^\infty\,i^{2k}\frac{z^{2k+1}}{(2k+1)!}\cdot (2i)\\[1em]
+ &= \sum_{k = 0}^\infty(-1)^{k}\frac{z^{2k+1}}{(2k+1)!}
+\end{align*}
+
+\item[(4)] We can differentiate a power series term by term (a fact that requires a proof, and we haven't given one yet). So,
+\begin{align*}
+\cos z = (\sin z)' &= \sum_{k = 0}^\infty\left((-1)^{k}\frac{z^{2k+1}}{(2k+1)!}\right)'\\[1em]
+ &= \sum_{k = 0}^\infty(-1)^{k}\frac{(2k+1)\,z^{2k}}{(2k+1)!}\\[1em]
+ &= \sum_{k = 0}^\infty(-1)^{k}\frac{z^{2k}}{(2k)!}
+\end{align*}
+\end{itemize}
+\end{proof}
+\end{example}
+
+\vspace*{1em}
+
+\begin{remark}
+The power series in Example \ref{macelseries} are the usual Maclaurin series for these functions when $z = x$ is real. This provides additional justification that we chose the correct definitions when we extended these elementary functions to the complex plane. 
+\end{remark}
+
+\vspace*{1em}
+
+\begin{example}
+We use power series in Example \ref{macelseries} to compute Maclaurin or Taylor series expansions of other functions.
+\begin{itemize}
+\item[(a)] Maclaurin series of $f(z) = \dfrac{1}{1 + z}$. We have,
+\[\frac{1}{1 + z} = \frac{1}{1 - (-z)} = \sum_{k = 0}^\infty\,(-z)^k = \sum_{k = 0}^\infty(-1)^kz^k\]
+for $\abs{z} = \abs{-z} < 1$. 
+
+\item[(b)] Taylor series of $f(z) = \dfrac{1}{1 - z}$ about $z_0 = i$. We have,
+\begin{align*}
+\frac{1}{1 - z} = \frac{1}{(1-i) - (z - i)} &= \frac{1}{1 - i}\left(\frac{1}{1 - \dfrac{z - i}{1 - i}}\right)\\[1em]
+&= \sum_{k = 0}^\infty\,\left(\frac{z - i}{1 - i}\right)^k,\ \text{for }\abs{\frac{z - i}{1 - i}} <1\\[1em]
+&= \sum_{k = 0}^\infty\,\frac{(z - i)^k}{(1 - i)^{k+1}}
+\end{align*}
+for $\abs{z - i} < \abs{1-i} = \sqrt{2}$.
+
+\item[(b)] Maclaurin series of $f(z) = z^2e^{2z}$. We have,
+\begin{align*}
+z^2e^{2z} &= z^2\sum_{k = 0}^\infty\,\frac{(2z)^k}{k!}\\[1em]
+ &= \sum_{k = 0}^\infty\,\frac{2^k\,z^{k+2}}{k!}\\[1em]
+ &= \sum_{k = 2}^\infty\,\frac{2^{k-2}\,z^{k}}{(k-2)!}
+\end{align*}
+for $\abs{z - i} < \abs{1-i} = \sqrt{2}$. 
+\end{itemize}
+\end{example}
+
+\vspace*{2em}
+
+\subsection{Problems}
+\vspace{0.1in}
+To be added
+%\begin{problem}\label{prob 12.1}
+%
+%\end{problem}

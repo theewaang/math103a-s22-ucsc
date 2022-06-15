@@ -1,0 +1,167 @@
+\vspace*{1em}
+
+\begin{theorem}[Characterisation of Zeros]\label{zero-order}
+Suppose that $f$ is holomorphic at $z_0 \in \cc$. Then the following are equivalent:
+\begin{itemize}
+\item[(1)] $z_0$ is a zero of $f$ of order $n$.
+\item[(2)] $f(z) = (z - z_0)^ng(z)$ for some unique holomorphic function $g$ such that $g(z_0) \neq 0$.
+\end{itemize}
+\end{theorem}
+\begin{proof}\hfill
+\begin{itemize}[leftmargin=4.5em,itemsep=1.5em]
+\item[(1) $\Rightarrow$ (2)] Let's assume $z_0$ is a zero of order $n \geq 1$, so $f^{(n)}(z_0) \neq 0$ and $f^{(k)}(z_0) = 0$ for $0 \leq k < n$. Since $f$ is holomorphic at $z_0$, it has a Taylor expansion on some disk $D_\epsilon(z_0)$
+\begin{align*}
+f(z) &= \sum_{k=0}^\infty \frac{f^{(k)}(z_0)}{k!}(z - z_0)^k\\[0.5em]
+ &= \sum_{k=n}^\infty \frac{f^{(k)}(z_0)}{k!}(z - z_0)^k\\[0.5em]
+ &= (z - z_0)^n\sum_{k=n}^\infty \frac{f^{(k)}(z_0)}{k!}(z - z_0)^{k - n}\\[0.5em]
+ &= (z - z_0)^n\sum_{k=0}^\infty \frac{f^{(k + n)}(z_0)}{(k+n)!}(z - z_0)^k
+\end{align*}
+Define
+\[g(z) = \sum_{k=0}^\infty \frac{f^{(k + n)}(z_0)}{(k+n)!}(z - z_0)^k\]
+Clearly $g$ is holomorphic at $z_0$, since it converges on $D_\epsilon(z_0)$. Moreover,
+\[g(z_0) = \frac{f^{(n)}(z_0)}{n!} \neq 0\]
+
+\item[(2) $\Rightarrow$ (1)] Assume $f(z) = (z - z_0)^ng(z)$ for some holomorphic function $g$ such that $\phi(z_0) \neq 0$. Since $g$ is holomorphic at $z_0$, then there's a disk $D_\epsilon(z_0)$ on which $g$ has a Taylor expansion. Hence,
+\begin{align*}
+f(z) &= (z - z_0)^ng(z)\\[0.5em]
+ &= (z - z_0)^n\sum_{k=0}^\infty \frac{g^{(k)}(z_0)}{k!}(z - z_0)^k\\[0.5em]
+ &= \sum_{k=0}^\infty \frac{g^{(k)}(z_0)}{k!}(z - z_0)^{k + n}\\[0.5em]
+ &= \sum_{k=n}^\infty \frac{g^{(k - n)}(z_0)}{(k - n)!}(z - z_0)^k
+\end{align*}
+Since Taylor expansions are unique (Theorem \ref{taylorunique}), the above series is the Taylor expansion of $f$ on $D_\epsilon(z_0)$, so
+\begin{align*}
+\frac{f^{(k)}(z_0)}{k!} &= 0,\quad 0 \leq k < n\\[0.5em]
+\frac{f^{(n)}(z_0)}{n!} &= g(z_0) \neq 0
+\end{align*}
+Therefore $f^{(n)}(z_0) \neq 0$ and $f^{(k)}(z_0) = 0$ for $0 \leq k < n$. Hence $z_0$ is a zero of $f$ of order $n$.
+\end{itemize}
+\vspace*{-\baselineskip}
+\end{proof}
+
+\vspace*{1em}
+
+\begin{example}
+The function $p(z) = z^3 - 1$ has a zero at $1$. Define $g(z) = 1 + z + z^2$, then
+\[p(z) = (z - 1)(1 + z + z^2) = (z - 1)g(z)\]
+Clearly $g(z)$ is holomorphic at $1$ and $g(1) = 3 \neq 0$. So, by Theorem \ref{zero-order}, $p$ has a simple zero at $1$.
+\end{example}
+
+\vspace*{1em}
+
+\begin{theorem}[Zeros of non-zero Holomorphic Functions]
+Suppose that
+\begin{itemize}
+\item[(a)] $f$ is holomorphic at $z_0$;
+\item[(b)] $f(z_0) = 0$ but $f$ is not identically zero on any neighbourhood of $z_0$.
+\end{itemize}
+Then $z_0$ is an isolated zero of $f$.
+\end{theorem}
+\begin{proof}
+By (a), there's a disk $D_R(z_0)$ on which we can write
+\[f(z) = \sum_{k=0}^\infty\frac{f^{(k)}(z_0)}{k!}(z - z_0)^k\]
+Consider the set $S = \{m \in \zz\ :\ f^{(k)}(z_0) = 0,\text{for }\ 0 \leq k < m\}$, it is non-empty since $1 \in S$ as $f(z_0) = 0$. Note that $S$ is either a singleton, or the set of all positive integers. The latter implies $f$ is identically zero, which cannot be the case by (b); hence we have the former. Thus $S = \set{n}$ for some $n > 0$, so we have \[f(z_0) = f'(z_0) = \cdots = f^{(n-1)}(z_0) = 0 \quad \text{and} \quad f^{(n)}(z_0) \neq 0.\] Thus, $f(z)$ has a zero of order $n$ at $z_0$, and so
+\[f(z) = (z - z_0)^ng(z)\]
+for a holomorphic function $g(z)$ such that $g(z_0) \neq 0$. Since $g$ is continuous and non-zero at $z_0$, there exists a disk $D_\epsilon(z_0)$ on which $g(z) \neq 0$ for every $z \in D_\epsilon(z_0)$. Therefore, $f(z) \neq 0$ for every $z \in D_\epsilon(z_0)\setminus\set{z_0}$, and hence $z_0$ is an isolated zero of $f$.
+\end{proof}
+
+\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Zeros and Poles}
+\end{center}
+\end{mdframed}
+\begin{theorem}[Zeros and Poles]\label{zero-pole}
+Suppose that
+\begin{itemize}
+\item[(a)] $p(z)$ and $q(z)$ are holomorphic at $z_0 \in \cc$; and
+\item[(b)] $p(z_0) \neq 0$ and $q(z)$ has a zero of order $n$ at $z_0$,
+\end{itemize}
+then $f(z) = \dfrac{p(z)}{q(z)}$ has a pole of order $n$ at $z_0$.
+\end{theorem}
+\begin{proof}
+Since $q(z)$ is holomorphic at $z_0$ and has a zero of order $n$ at $z_0$, by the (proof of) preceding theorem $z_0$ is an isolated zero. Hence $f$ has an isolated singularity at $z_0$.\\[0.5em]
+Since $z_0$ is a zero of order $n$, then 
+\[q(z) = (z - z_0)^ng(z)\]
+for a holomorphic function $g(z)$ such that $g(z_0) \neq 0$. Writing $\phi(z) = \dfrac{p(z)}{g(z)}$, we have
+\[f(z) = \frac{p(z)}{q(z)} = \frac{p(z)}{(z - z_0)^ng(z)} = \frac{\phi(z)}{(z - z_0)^n}\]
+Moreover, $\phi(z_0) \neq 0$ and is holomorphic at $z_0$ since $p(z)$ and $g(z)$ are holomorphic at $z_0$ and $g(z_0) \neq 0$. The claim follows.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{example}
+Consider 
+\[f(z) = \frac{1}{1 - \cos z}\]
+Using Theorem \ref{zero-pole}, we show that $f$ has a pole of order $2$ at $0$.\\
+\\
+Let $p(z) = 1$ and $q(z) = 1 - \cos z$, clearly they're both holomorphic at $0$. Moreover $p(0) = 1 \neq 0$ and $q(z)$ has a zero of order $2$ since
+\begin{align*}
+q(0) &= 1 - \cos 0 = 0\\[0.5em]
+q'(0) &= \sin 0 = 0\\[0.5em]
+q''(0) &= \cos 0 = 1 \neq 0
+\end{align*}
+Therefore, by Theorem \ref{zero-pole}, $f$ has a pole of order $2$ at $0$.
+\end{example}
+
+\vspace*{1em}
+
+\begin{theorem}[Residue at a Simple Pole]\label{respolesimp}
+Suppose that $p(z)$ and $q(z)$ are holomorphic at $z_0 \in \cc$. If $p(z_0) \neq 0$ and $z_0$ is a simple zero of $q(z)$, then 
+\[\res{z_0}\frac{p(z)}{q(z)} = \frac{p(z_0)}{q'(z_0)}\]
+\end{theorem}
+\begin{proof}
+By Theorem \ref{zero-pole}, $p(z)/q(z)$ has a simple pole at $z_0$. As in the proof of Theorem \ref{zero-pole}, we first write $q(z) = (z - z_0)g(z)$ and then
+\[\frac{p(z)}{q(z)} = \frac{\phi(z)}{(z - z_0)}\]
+where $\phi(z) = p(z)/g(z)$ where $g$ is a holomorphic function with $g(z_0) \neq 0$. Therfore, by Theorem \ref{poleorder},
+\[\res{z_0}\frac{p(z)}{q(z)} = \phi(z_0) = \frac{p(z_0)}{g(z_0)}\]
+Since $q(z) = (z - z_0)g(z)$, we have that $q'(z) = g(z) + (z - z_0)g'(z)$ and therefore $q'(z_0) = g(z_0)$. Hence
+\[\res{z_0}\frac{p(z)}{q(z)} = \frac{p(z_0)}{q'(z_0)}\]
+\end{proof}
+
+\vspace*{1em}
+
+\begin{example}\hfill
+\begin{itemize}[itemsep=1em]
+\item[(1)] Consider \[f(z) = \cot z = \frac{\cos z}{\sin z}\] Let $p(z) = \cos z$ and $q(z) = \sin z$, and $z_k = k\pi,\ k \in \zz$. Clearly both $p$ and $q$ are holomorphic at $z_k$ as they are entire. Moreover,
+\begin{align*}
+p(z_k) &= \cos k\pi = (-1)^k \neq 0\\[0.5em]
+q(z_k) &= \sin k\pi = 0\\[0.5em]
+q'(z_k) &= \cos k\pi = (-1)^k \neq 0
+\end{align*}
+Hence, $z_k$ is a simple pole for each $k \in \zz$, and
+\[\res{z_k}\cot z = \frac{p(z_k)}{q'(z_k)} = \frac{(-1)^k}{(-1)^k} = 1\]
+Let $C$ be the positively oriented circle of radius $k\pi + 1$ centered at $0$. Then by Cauchy's Residue theorem
+\begin{align*}
+\int_C\,\cot z\,dz &= 2\pi i\sum_{n=-k}^k\res{z_n}\cot z\\[0.5em]
+ &= 2\pi i(2k + 1)
+\end{align*}
+
+\item[(2)] Consider \[f(z) = \frac{z - \sin z}{z^2\sin z}\] Let $p(z) = z - \sin z$ and $q(z) = z^2\sin z$. Clearly both $p$ and $q$ are holomorphic at $\pi$ as they are entire. Moreover,
+\begin{align*}
+p(\pi) &= \pi - \sin \pi = \pi \neq 0\\[0.5em]
+q(\pi) &= \pi^2\sin \pi = 0\\[0.5em]
+q'(\pi) &= 2\pi\sin \pi + \pi^2\cos \pi = -\pi^2 \neq 0
+\end{align*}
+Hence, $\pi$ is a simple pole and
+\[\res{\pi}\frac{z - \sin z}{z^2\sin z} = \frac{p(\pi)}{q'(\pi)} = \frac{\pi}{-\pi^2} = -\frac{1}{\pi}\]
+
+\item[(3)] Consider \[f(z) = \frac{z}{z^4 + 4}\] Let $p(z) = z$ and $q(z) = z^4 + 4$. Clearly both $p$ and $q$ are holomorphic at $1 + i$ as they are entire. Moreover,
+\begin{align*}
+p(1+i) &= 1 + i \neq 0\\[0.5em]
+q(1+i) &= (1+i)^4 + 4 = 0\\[0.5em]
+q'(1+i) &= 4(1+i)^3 \neq 0
+\end{align*}
+Hence, $1+i$ is a simple pole and
+\[\res{1+i}\frac{z}{z^4 + 4} = \frac{p(1+i)}{q'(1+i)} = \frac{1+i}{4(1+i)^4} = \frac{1}{8i}\]
+\end{itemize}
+\end{example}
+
+\vspace*{2em}
+
+\subsection{Problems}
+\vspace{0.1in}
+To be added
+%\begin{problem}\label{prob 12.1}
+%
+%\end{problem}

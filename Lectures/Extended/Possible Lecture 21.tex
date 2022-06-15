@@ -1,0 +1,156 @@
+\vspace*{1em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Absolute \& Uniform Convergence}
+\end{center}
+\end{mdframed}
+
+\begin{theorem}[Power Series Converge Absolutely]\label{powserconabs}
+If a power series $\sum_{k=0}^\infty a_k(z - z_0)^k$ converges for $z = w \neq z_0$, then it converges absolutely on the disk $D_R(z_0)$, where $R = \abs{w - z_0}$.
+\end{theorem}
+\begin{proof}
+By assumption, the series $\sum_{k=0}^\infty a_k(w - z_0)^k$ converges, then by Corollary \ref{tailbound} we can find an $M > 0$ such that $\abs{a_k(w - z_0)^k} \leq M$ for every $k$. Consider any $z \in D_R(z_0)$, then $\abs{z - z_0} < R = \abs{w - z_0}$. Define,
+\[\rho = \frac{\abs{z - z_0}}{\abs{w - z_0}} < 1\] 
+Then,
+\begin{align*}
+|a_k(z - z_0)^k| &= |a_k(w - z_0)^k|\cdot\abs{\frac{z - z_0}{w - z_0}}^k\\[0.5em]
+&= |a_k(w - z_0)^k|\cdot\rho^k\\[0.5em]
+&\leq M\rho^k
+\end{align*}
+Note that the series $\sum_{k=0}^\infty M\rho^k$ converges since $\rho < 1$, and hence $\sum_{k=0}^\infty\abs{a_k(z - z_0)^k}$ by the comparison test from calculus. Therefore the series $\sum_{k=0}^\infty a_k(z - z_0)^k$ converges absolutely.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{remark}
+Theorem \ref{powserconabs} asserts that if a series converges at a point $w \neq z_0$, then it also converges on a disk, the largest such disk is called the \cdef{disk\ of\ convergence} and its radius is called the \cdef{radius\ of\ convergence}. Necessarily, a series does not converge outside its disk of convergence.
+\end{remark}
+
+\vspace*{1em}
+
+\begin{definition}[Uniform Convergence of Series]
+Consider a power series $\sum_{k=0}^\infty a_k(z - z_0)^k$ with disk of convergence $D_R(z_0)$. Let $G$ be a region in the disk, then we say that the series \cdef{converges\ uniformly} if for any $\epsilon > 0$, there exists an $N \in \zz_{>0}$ such that
+\[\text{for every $z \in G$, we have $\abs{\rho_n(z)} < \epsilon$, whenever $n \geq N$}\]
+In particular, our choice of $N$ \emph{only} depends on $\epsilon$ and is independent of $z$; that is, we can choose an $N$ that works uniformly for all $z \in G$.
+\end{definition}
+
+\vspace*{1em}
+
+\begin{theorem}[Power Series are Uniformly Convergent]
+Let $\sum_{k=0}^\infty a_k(z - z_0)^k$ be a power series of with disk of convergence $D_R(z_0)$, and consider any $w \in D_R(z_0)$. Then, the power series converges uniformly on the closed disk $\overline{D}_r(z_0)$, where $r = \abs{w - z_0}$.
+\end{theorem}
+\begin{proof}
+By Theorem \ref{powserconabs}, the series
+\[\sum_{k=0}^\infty|a_k(w - z_0)^k|\]
+converges. Let's consider the remainders
+\begin{align*}
+\rho_n(z) &= \sum_{k=0}^\infty a_k(z - z_0)^k - \sum_{k=0}^{n-1} a_k(z - z_0)^k = \sum_{k=n}^\infty a_k(z - z_0)^k = \lim_{m \to \infty}\sum_{k=n}^m a_k(z - z_0)^k\\[0.5em]
+\sigma_n &= \sum_{k=0}^\infty |a_k(w - z_0)^k| - \sum_{k=0}^{n-1} |a_k(w - z_0)^k| = \sum_{k=n}^\infty |a_k(w - z_0)^k| = \lim_{m \to \infty}\sum_{k=n}^m |a_k(w - z_0)^k|
+\end{align*}
+For any $z \in \overline{D}_r(z_0)$, we have $\abs{z - z_0} \leq r = \abs{w - z_0}$, and hence, 
+\begin{align*}
+\abs{\rho_n(z)} = \lim_{m \to \infty} \abs{\sum_{k=n}^m a_k(z - z_0)^k} &\leq \lim_{m \to \infty} \sum_{k=n}^m \abs{a_k}\abs{z - z_0}^k\\[0.5em]
+ &\leq \lim_{m \to \infty} \sum_{k=n}^m \abs{a_k}\abs{w - z_0}^k\\[0.5em]
+ &= \sigma_n
+\end{align*}
+Since $\sum_{k=0}^\infty\abs{a_k(w - z_0)^k}$ converges, we have $\sigma_n \to 0$. Therefore, for any $\epsilon > 0$ we can find a positive integer $N$ such that $\abs{\sigma_n} < \epsilon$ whenever $n \geq N$. By our computations above, we therefore get $\abs{\rho_n(z)} < \abs{\sigma_n} < \epsilon$, for any $z \in \overline{D}_r(z_0)$ and $n \geq N$. Thus, our series converges absolutely in $\overline{D}_r(z_0)$.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{theorem}[Power Series are Continuous]\label{contpowerseries}
+A power series
+\[S(z) = \sum_{k=0}^\infty a_k(z - z_0)^k\]
+is a continuous function on its disk of convergence. 
+\end{theorem}
+\begin{proof}
+Let $D_R(z_0)$ be disk of convergence of our power series, and consider any $w \in D_R(z_0)$. Since the power series converges uniformly, we can find, for any $\epsilon > 0$, a positive integer $N$ such that \[\abs{\rho_n(z)} < \frac{\epsilon}{3}\] for any $n \geq N$ and $z \in D_r(z_0)$, where $r = \abs{w - z_0}$. Also, since $s_n(z)$ is a polynomial for each $n$, it is a continuous function. In particular, $s_{N + 1}(z)$ is a continuous function. Therefore for our $\epsilon$, we can find a $\delta > 0$ such that
+\[\text{if } \abs{z - w}< \delta,\quad \text{then } \abs{s_{N+1}(z) - s_{N+1}(w)}< \frac{\epsilon}{3}\]
+So, for any $z$ such that $\abs{z - w} < \delta$, we get
+\begin{align*}
+\abs{S(z) - S(w)} &= \abs{s_{N+1}(z) + \rho_{N+1}(z) - (s_{N+1}(w) - \rho_{N+1}(w))}\\[0.5em]
+ &\leq \abs{s_{N+1}(z) - s_{N+1}(w)} + \abs{\rho_{N+1}(z)} + \abs{\rho_{N+1}(w)}\\[0.5em]
+ &< \frac{\epsilon}{3} + \frac{\epsilon}{3} + \frac{\epsilon}{3}\\[0.5em]
+ &= \epsilon
+\end{align*}
+Thus $S(z)$ is continuous.
+\end{proof}
+
+%\vspace*{1em}
+
+\begin{theorem}[Integrating Power Series]\label{inttermbyterm}
+Let $C$ be any contour interior to the disk of convergence of the power series
+\[S(z) = \sum_{k=0}^\infty a_k(z - z_0)^k\]
+Let $g(z)$ be any function that is continuous on $C$, then
+\[\int_C\,g(z)S(z)\,dz = \sum_{k=0}^\infty a_k\int_C\,g(z)(z - z_0)^k\,dz\]
+\end{theorem}
+\begin{proof}
+We have our usual remainder \[\rho_n(z) = S(z) - s_n(z) = S(z) - \sum_{k=0}^{n-1} a_k(z - z_0)^k.\]
+We now consider the following remainder
+\begin{align*}
+\sigma_n(z) &= \int_C\,g(z)S(z)\,dz - \sum_{k=0}^{n-1} a_k\int_C\,g(z)(z - z_0)^k\,dz\\[1em]
+ &= \int_C\,g(z)\left(S(z) - \sum_{k=0}^{n-1} a_k(z - z_0)^k\right)dz\\[1em]
+ &= \int_C\,g(z)\rho_n(z)\,dz
+\end{align*}
+Let $\epsilon > 0$. Since $g$ is continuous on $C$, it's bounded on $C$, therefore we can find an $M > 0$ such that $\abs{g(z)} \leq M$ for every $z \in C$.\\[0.5em]
+Since $S(z)$ is uniformly convergent on its disk of convergence $D_R(z_0)$, we can find a positive integer $N$ such that \[\abs{\rho_n(z)} < \frac{\epsilon}{M\cdot L(C)}\] for any $n \geq N$ and $z \in D_r(z_0)$. Then, 
+\begin{align*}
+\abs{\sigma_n(z)} &= \abs{\int_C\,g(z)\rho_n(z)\,dz}\\[1em]
+ &\leq  \max_{z \in C}\abs{g(z)}{\rho_n(z)}\cdot L(C)\\[1em]
+ &<  M\cdot\frac{\epsilon}{M\cdot L(C)}\cdot L(C)\\[0.5em]
+ &= \epsilon
+\end{align*}
+Thus $\sigma_n(z) \to 0$.
+\end{proof}
+
+%\vspace*{1em}
+%
+%\begin{remark}
+%In the case $g(z)$ is the constant function $1$, this theorem is telling us that we can integrate power series term-by-term.
+%\[\int_C\,\left(\sum_{k=0}^\infty a_k(z - z_0)^k\right)dz = \sum_{k=0}^\infty a_k\int_C\,(z - z_0)^k\,dz\]
+%\end{remark}
+
+\vspace*{1em}
+
+\begin{corollary}[Power Series are Holomorphic]
+A power series
+\[S(z) = \sum_{k=0}^\infty a_k(z - z_0)^k\]
+is a holomorphic function on its disk of convergence. 
+\end{corollary}
+\begin{proof}
+We have that power series are continuous by Theorem \ref{contpowerseries}. Let $C$ be any closed contour lying in the interior of its disk of convergence. Then, by Theorem \ref{inttermbyterm}
+\begin{align*}
+\int_C\,S(z)\,dz &= \sum_{k=0}^\infty a_k\int_C\,(z - z_0)^k\,dz\\[1em]
+ &= \sum_{k=0}^\infty a_k\cdot 0,\quad \text{since $(z - z_0)^k$ has an anti-derivative}\\[0.5em]
+ &= 0
+\end{align*}
+Thus, by Morera's theorem (Theorem \ref{morera}), $S(z)$ is holomorphic.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{example}
+The function
+\[f(z) = \begin{cases}\dfrac{\sin z}{z} & \text{if } z \neq 0\\[1em] 1 & \text{if } z = 0 \end{cases}\] 
+is entire.\\
+\\
+For any $z \in \cc$, we have
+\[\sin z = \sum_{k=0}^\infty\frac{(-1)^kz^{2k + 1}}{(2k + 1)!}\]
+When $z \neq 0$, we have
+\[\frac{\sin z}{z} = \sum_{k=0}^\infty\frac{(-1)^kz^{2k}}{(2k + 1)!};\]
+and when $z = 0$ we also have
+\[1 = \sum_{k=0}^\infty\frac{(-1)^kz^{2k}}{(2k + 1)!}\]
+Hence,
+\[f(z) = \sum_{k=0}^\infty\frac{(-1)^kz^{2k}}{(2k + 1)!}\]
+for any $z \in \cc$, and is thus entire.
+\end{example}
+
+\vspace*{2em}
+
+\subsection{Problems}
+\vspace{0.1in}
+To be added
+%\begin{problem}\label{prob 12.1}
+%
+%\end{problem}

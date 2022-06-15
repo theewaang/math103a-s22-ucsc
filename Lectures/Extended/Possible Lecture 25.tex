@@ -1,0 +1,149 @@
+\vspace*{1em}
+
+\begin{example}\hfill
+\begin{itemize}[itemsep=1em]
+\item[(1)] We've seen earlier that the function
+\[g(z) = \begin{cases}\dfrac{\sin z}{z} & \text{if } z \neq 0\\[1em] 1 & \text{if } z = 0 \end{cases}\] 
+is entire. Consider now the function
+\[f(z) = \frac{\sin z}{z}\]
+we have that $f$ has an isolated singularity at $0$. We have seen that its Laurent series on the annulus $0 < \abs{z} < \infty$ is
+\[f(z) = \sum_{k=0}^\infty\frac{(-1)^kz^{2k}}{(2k + 1)!},\]
+so the principal part of $f$ at $0$ is zero and thus $f$ has a removable singularity at $0$.
+
+\item[(2)] The function
+\[f(z) = \frac{1 - \cos z}{z^2}\]
+also has a removable singularity at $0$. The Laurent series on $0 < \abs{z} < \infty$ is
+\begin{align*}
+\frac{1 - \cos z}{z^2} &= \frac{1}{z^2}\left(1 - \sum_{k=0}^\infty \frac{(-1)^k z^{2k}}{(2k)!}\right)\\[0.5em]
+ &= -\frac{1}{z^2}\sum_{k=1}^\infty \frac{(-1)^k z^{2k}}{(2k)!}\\[0.5em]
+ &= \sum_{k=1}^\infty \frac{(-1)^{k+1} z^{2k - 2}}{(2k)!}\\[0.5em]
+ &= \sum_{k=0}^\infty \frac{(-1)^{k} z^{2k}}{(2k+2)!}
+\end{align*}
+So the principal part of $f$ at $0$ is zero, and therefore the function has a removable singularity at $0$. The entire function we obtain by ``removing the singularity" is
+\[g(z) = \begin{cases}\dfrac{1 - \cos z}{z^2} & \text{if } z \neq 0\\[1em] \quad\dfrac{1}{2} & \text{if } z = 0 \end{cases}\]
+
+\item[(3)] The function $f(z) = e^{1/z}$ has an isolated singularity at $0$. The Laurent series on $0 < \abs{z} < \infty$ is
+\begin{align*}
+e^{1/z} &= \sum_{k=0}^\infty\,\frac{1}{k!}\left(\frac{1}{z}\right)^k
+\end{align*}
+So the principal part of $f$ at $0$ has infinitely many terms, and therefore the function has an essential singularity at $0$.
+
+\item[(4)] The function
+\[f(z) = \frac{1}{z^2(1 - z)}\]
+has an isolated singularity at $0$. The Laurent series on $0 < \abs{z} < 1$ is
+\begin{align*}
+\frac{1}{z^2(1 - z)} = \frac{1}{z^2}\cdot \frac{1}{1 - z} &= \frac{1}{z^2}\sum_{k=0}^\infty z^k\\[0.5em]
+ &= \sum_{k=0}^\infty z^{k-2}\\[0.5em]
+ &= \underbrace{\frac{1}{z^2} + \frac{1}{z}}_{\text{principal part}} + \sum_{k=0}^\infty z^k
+\end{align*}
+Clearly then $f$ has a pole of order $2$ at $0$.
+
+\item[(5)] The function
+\[f(z) = \frac{z^2 + z - 2}{z + 1}\]
+has an isolated singularity at $-1$. The Laurent series on $0 < \abs{z + 1} < 1$ is
+\begin{align*}
+\frac{z^2 + z - 2}{z + 1} &= \frac{z(z + 1) - 2}{z + 1}\\[0.5em]
+ &= z - \frac{2}{z + 1}\\[0.5em]
+ &= -\frac{2}{z + 1} - 1 + (z + 1)
+\end{align*}
+Clearly then $f$ has a simple pole at $-1$.
+\end{itemize}
+\end{example}
+
+\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Residues at Poles}
+\end{center}
+\end{mdframed}
+The following theorem gives a characterisation of poles and provides an efficient method for computing the residue at poles.
+\begin{theorem}[Residue at Poles]\label{poleorder}
+Let $z_0 \in \cc$ be an isolated singularity of $f$. Then the following are equivalent:
+\begin{itemize}
+\item[(1)] $z_0$ is a pole of order $n$.
+\item[(2)] $f(z) = \dfrac{\phi(z)}{(z - z_0)^n}$ for some unique holomorphic function $\phi$ such that $\phi(z_0) \neq 0$.
+\end{itemize}
+Moreover, if (1) (or (2)) is true, the residue of $f$ at $z_0$ is given as
+\[\res{z_0}f(z) = \frac{\phi^{(n-1)}(z_0)}{(n-1)!}\]
+\end{theorem}
+\begin{proof}\hfill
+\begin{itemize}[leftmargin=4.5em,itemsep=1.5em]
+\item[(1) $\Rightarrow$ (2)] Let's assume $z_0$ is a pole of order $n \geq 1$. Then
+\[f(z) = \sum_{k=0}^\infty\,a_k(z - z_0)^k + \frac{a_{-1}}{z - z_0} + \frac{a_{-2}}{(z - z_0)^2} + \cdots + \frac{a_{-n}}{(z - z_0)^n}\]
+with $a_{-n} \neq 0$, on an annulus $0 < \abs{z - z_0} < R$. Define
+\[\phi(z) = \begin{cases} (z - z_0)^nf(z) & \text{if } z \neq z_0\\[0.5em] \quad a_{-n} & \text{if } z = z_0 \end{cases}\]
+Clearly $f(z) = \dfrac{\phi(z)}{(z - z_0)^n}$, and $\phi$ has the following series expansion on $\abs{z - z_0} < R$
+\[\phi(z) = \sum_{k=0}^\infty\,a_k(z - z_0)^{k + n} + a_{-1}(z - z_0)^{n-1} + a_{-2}(z - z_0)^{n-2} + \cdots + a_{-n}\]
+Hence $\phi(z)$ is holomorphic on the disk and thus at $z_0$, and is necessarily unique. Moreover, $\phi(z_0) = a_{-n} \neq 0$.
+
+\item[(2) $\Rightarrow$ (1)] Assume
+\[f(z) = \frac{\phi(z)}{(z - z_0)^n}\]
+for some holomorphic function $\phi$ such that $\phi(z_0) \neq 0$. Since $\phi$ is holomorphic at $z_0$, then there's a disk $\abs{z - z_0} < R$ on which $\phi$ has a Taylor expansion
+\[\phi(z) = \sum_{k=0}^\infty \frac{\phi^{(k)}(z_0)}{k!}(z - z_0)^k\]
+Hence,
+\begin{align*}
+f(z) &= \frac{\phi(z)}{(z - z_0)^n}\\[0.5em]
+ &= \frac{1}{(z - z_0)^n}\sum_{k=0}^\infty \frac{\phi^{(k)}(z_0)}{k!}(z - z_0)^k\\[0.5em]
+ &= \sum_{k=0}^\infty \frac{\phi^{(k)}(z_0)}{k!}(z - z_0)^{k - n}\\[0.5em]
+ &= \frac{\phi(z_0)}{(z - z_0)^n} + \frac{\phi^{(1)}(z_0)}{1!(z - z_0)^{n - 1}} + \cdots + \frac{\phi^{(n-1)}(z_0)}{(n-1)!(z - z_0)} + \sum_{k=n}^\infty \frac{\phi^{(k)}(z_0)}{k!}(z - z_0)^{k - n}\\[0.5em]
+ &= \frac{\phi(z_0)}{(z - z_0)^n} + \frac{\phi^{(1)}(z_0)}{1!(z - z_0)^{n - 1}} + \cdots + \frac{\phi^{(n-1)}(z_0)}{(n-1)!(z - z_0)} + \sum_{k=0}^\infty \frac{\phi^{(k + n)}(z_0)}{(k+n)!}(z - z_0)^{k}
+\end{align*}
+Since $\phi(z_0) \neq 0$ by assumption, this tells us that $f$ has a pole of order $n$ at $z_0$. Moreover, it's clear from the series that
+\[\res{z_0}f(z) = \frac{\phi^{(n-1)}(z_0)}{(n-1)!}\]
+\end{itemize}
+\vspace*{-\baselineskip}
+\end{proof}
+
+\vspace*{1em}
+
+\begin{example}\hfill
+\begin{itemize}[itemsep=1em]
+\item[(1)] The function $f(z) = \dfrac{z + 4}{z^2 + 1}$ has isolated singularities at $\pm i$.\\[0.5em]
+Let's compute the residue first at $i$. Define
+\[\phi(z) = \frac{z + 4}{z + i}\]
+then clearly $f(z) = \dfrac{\phi(z)}{z - i}$ and $\phi$ is holomorphic and non-zero at $i$.\\[0.5em]
+By Theorem \ref{poleorder}, $i$ is a simple pole and
+\[\res{i}f(z) = \phi(i) = \frac{i + 4}{2i}\]
+For $-i$, define \[\phi(z) = \frac{z + 4}{z - i}\]
+then clearly $f(z) = \dfrac{\phi(z)}{z + i}$ and $\phi$ is holomorphic and non-zero at $-i$.\\[0.5em]
+By Theorem \ref{poleorder}, $-i$ is a simple pole and
+\[\res{-i}f(z) = \phi(i) = \frac{i - 4}{2i}\]
+
+\item[(2)] The function $f(z) = \dfrac{z^3 + 2z}{(z - i)^3}$ has an isolated singularity at $i$.\\[0.5em]
+Let's compute the residue at $i$. Define $\phi(z) = z^3 + 2z$. Then clearly
+\[\phi(z) = \frac{\phi(z)}{(z - i)^3}\]
+and $\phi$ is holomorphic and non-zero at $i$. By Theorem \ref{poleorder}, $i$ is a pole of order $3$ and
+\[\res{i}f(z) = \frac{\phi''(i)}{2!} = \frac{6i}{2} = 3i\]
+
+\item[(3)] The function $f(z) = \dfrac{(\log z)^3}{z^2 + 1}$ has an isolated singularity at $\pm i$. Here $\log z$ is the branch
+\[\log z = \ln\abs{z} + i\arg z, \quad 0 < \arg z < 2\pi\]
+Let's compute the residue at $i$. Define
+\[\phi(z) = \frac{(\log z)^3}{z + i}\]
+then clearly $f(z) = \dfrac{\phi(z)}{z - i}$ and $\phi$ is holomorphic and non-zero at $i$ since
+\[\phi(i) = \frac{(\log i)^3}{2i} = \frac{(i\pi/2)^3}{2i} = -\frac{\pi^3}{16}\]
+By Theorem \ref{poleorder}, $i$ is a simple pole and
+\[\res{i}f(z) = \phi(i) = -\frac{\pi^3}{16}\]
+\end{itemize}
+\end{example}
+
+\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Zeros of Holomorphic Functions}
+\end{center}
+\end{mdframed}
+\begin{definition}[Zeros of Holomorphic Functions]
+Suppose that $f$ is holomorphic at $z_0 \in \cc$. We say that $f$ has a \cdef{zero\ of\ order} {\color{blue}$n$} \cdef{at} {\color{blue}$z_0$} if for some $n$ we have $f^{(n)}(z_0) \neq 0$ and $f^{(k)}(z_0) = 0$ for $0 \leq k < n$, in particular $f(z_0) = 0$. A zero of order $1$ is called a \cdef{simple\ zero}.\\[0.5em]
+A zero is \cdef{isolated} if there exists an $\epsilon > 0$ such that $f(z) \neq 0$ for every $z \in D_\epsilon(z_0)\setminus\set{z_0}$.
+\end{definition}
+
+\vspace*{2em}
+
+\subsection{Problems}
+\vspace{0.1in}
+To be added
+%\begin{problem}\label{prob 12.1}
+%
+%\end{problem}

@@ -1,0 +1,453 @@
+\vspace*{1em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Cauchy-Goursat Theorem}
+\end{center}
+\end{mdframed}
+
+\begin{discussion}
+The Cauchy-Goursat theorem gives a sufficient condition for the integral of a function over a simple closed curve to be zero. The theorem has powerful implications, ultimately it leads to
+\begin{itemize}
+\item The Cauchy Integral formula.
+\item The theory of residues for computing contour integrals.
+\item A method to evaluate real-valued functions in a real variable, using contour integration.
+\end{itemize}
+Historically, a weaker version of the theorem was first proved by Cauchy. We prove this first.\\
+\\
+We first note the following.
+\begin{itemize}
+\item[(1)] Contour integrals are related to line (or path) integrals. We note this by writing our function $f(z) = f(x + iy) = u(x,y) + i\,v(x,y)$ and formally writing $dz = dx + i\,dy$. Then formally,
+\begin{align*}
+\int_C\,f(z)\ dz &= \int_C\, (u + iv)(dx + idy)\\[1em]
+&= \int_C\, u\,dx - v\,dy + i\int_C\,u\,dy + v\,dx
+\end{align*}
+
+\item[(2)] \textbf{Green's Theorem.} Suppose $C$ is a simple closed contour in $\rr^2$ and let $R$ be the region enclosed by $C$ and including $C$. If $P(x,y)$ and $Q(x,y)$ have continuous partial derivatives on $R$. Then
+\[\int_C\,P\,dx + Q\,dy = \iint_R\,\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\ dA = \iint_R\,(Q_x - P_y)\ dA\]
+\end{itemize}
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{theorem}[Weak Cauchy Integral Theorem]
+Let $C$ be a simple closed contour, and let $R$ denote the region consisting of $C$ and its interior. If $f$ is holomorphic on $R$ and $f'$ continuous on $R$, then
+\[\int_C\,f(z)\ dz = 0.\]
+\end{theorem}
+\begin{proof}
+If $f(z) = u(x,y) + i\,v(x,y)$ is holomorphic on $R$, then the Cauchy-Riemann equations hold, and so $u_x = v_y$ and $u_y = -v_x$ on $R$, and $f'(z) = u_x + i\,v_x = v_y - i\,u_y$.\\[0.5em]
+Since $f'$ is continuous, so are $u_x,\,u_y,\,v_x$ and $v_y$. Hence, 
+\begin{align*}
+\int_C\,f(z)\ dz &= \int_C\, u\,dx - v\,dy + i\int_C\,u\,dy + v\,dx\\[1em]
+ &= \iint_R (-v_x-u_y)\ dA + i\iint_R (u_x - v_y)\ dA,\quad \text{by Green's theorem}\\[1em]
+ &= 0,\quad \text{using Cauchy-Riemann equations}\\[-3em]
+\end{align*}
+\end{proof}
+
+%\vspace*{1em}
+
+Goursat was the first to prove that the assumption on the continuity of $f'$ can be omitted. This turns out to be essential for the theory of holomorphic functions. The problem is that it may be difficult to prove the derivative of holomorphic function is continuous. 
+
+\begin{theorem}[Cauchy-Goursat Theorem]\label{cgthm}
+Let $C$ be a simple closed contour, and let $R$ denote the region consisting of $C$ and its interior. If $f$ is holomorphic on $R$, then
+\[\int_C\,f(z)\ dz = 0.\]
+\end{theorem}
+\begin{proof}[Proof (skipped in class)]
+\textbf{For simplicity, we will assume $\mathbold{C}$ is a square.} The idea is to ``divide and conquer". We break the curve into a finite number of smaller squares on which we can estimate the integral. We first construct a sequence of positively oriented curves $S^{(k)}$, each of which is the boundary of a square region $R^{(k)}$.\\
+\\
+To begin with, set $S^{(0)} = C$. Then, inductively, after the first $k$ squares have been chosen, we define $(k+1)^{\text{th}}$ square as follows. Divide $S^{(k)}$ into four congruent squares with positive orientation: $S^{(k)}_1,\,S^{(k)}_2,\,S^{(k)}_3,\,S^{(k)}_4$.
+\[\begin{tikzpicture}[scale=0.7]
+    \begin{scope}
+    \draw[clockwise arrowsnewsquare,thick]
+	(3,-3) -- (3,3) -- (-3,3) -- (-3,-3) -- (3,-3);
+	\draw[thick]
+	(0,-3) -- (0,3);
+	\draw[thick]
+	(-3,0) -- (3,0);
+	\draw[-{Straight Barb[left]},forest,thick]
+	(-2.25,0.25) -- (-0.75,0.25);	
+	\draw[-{Straight Barb[left]},forest,thick]
+	(0.75,0.25) -- (2.25,0.25);	
+	\draw[-{Straight Barb[left]},forest,thick]
+	(-0.75,-0.25) -- (-2.25,-0.25);	
+	\draw[-{Straight Barb[left]},forest,thick]
+	(2.25,-0.25) -- (0.75,-0.25);	
+	\draw[-{Straight Barb[left]},forest,thick]
+	(0.25,2.25) -- (0.25,0.75);	
+	\draw[-{Straight Barb[left]},forest,thick]
+	(-0.25,0.75) -- (-0.25,2.25);	
+	\draw[-{Straight Barb[left]},forest,thick]
+	(0.25,-0.75) -- (0.25,-2.25);	
+	\draw[-{Straight Barb[left]},forest,thick]
+	(-0.25,-2.25) -- (-0.25,-0.75);	
+    \end{scope}
+    \node[label=above:{$S^{(k)}$}] at (0,3.25) {};
+    \node[label=below right:{\footnotesize$S_4^{(k)}$}](A) at (1.5,-1.5) {};
+    \node[label=below left:{\footnotesize$S_3^{(k)}$}](A) at (-1.5,-1.5) {};
+    \node[label=above right:{\footnotesize$S_1^{(k)}$}](A) at (1.5,1.5) {};
+    \node[label=above left:{\footnotesize$S_2^{(k)}$}](A) at (-1.5,1.5) {};
+\end{tikzpicture}\]\\
+Note that the integral of $f$ along the shared boundaries of these squares cancel. Hence, 
+\[\sum_{i=1}^4\int_{S^{(k)}_i}f(z)\ dz = \int_{S^{(k)}}f(z)\ dz\]
+We choose $S^{(k+1)}$ to be one of the squares $S^{(k)}_j$ such that 
+\[\abs{\int_{S^{(k+1)}}f(z)\ dz} = \abs{\int_{S^{(k)}_j}f(z)\ dz} = \abs{\max_{i=1}^4\int_{S^{(k)}_i}f(z)\ dz}\]
+At this point, we have a sequence $S^{(0)},\ldots,S^{(k)},\ldots$. Note that, by triangle inequality
+\begin{align*}
+\abs{\int_{S^{(k)}}f(z)\ dz} & \leq \sum_{i=1}^4\abs{\int_{S^{(k)}_i}f(z)\ dz} \leq 4\abs{\int_{S^{(k+1)}}f(z)\ dz}
+\end{align*}
+So, inductively we get
+\[\abs{\int_{C}\,f(z)\ dz} = \abs{\int_{S^{(0)}}f(z)\ dz} \leq 4^n\abs{\int_{S^{(n)}}f(z)\ dz} \tag{$*$}\]
+We record some more facts. Denote by $d^{(n)}$ the length of the diagonal of the $n^{\text{th}}$ square $S^{(n)}$ and denote by $P^{(n)}$ its perimeter. Then,
+\begin{align*}
+d^{(n)} &= \frac{1}{2^n}\cdot d^{(0)}\\[0.5em]
+p^{(n)} &= \frac{1}{2^n}\cdot p^{(0)}
+\end{align*}
+Also, $d^{(n)},\,p^{(n)} \to 0$, as $n \to \infty$.\\
+\\
+Next, consider the associated sequence of regions
+\[R = R^{(0)} \supseteq R^{(1)} \supseteq \cdots \supseteq R^{(k)} \supseteq \cdots.\]
+Each $R^{(k)}$ is compact (closed and bounded) and hence, using a fact from topology, there exists a unique point
+\[z_0 \in \bigcap_{i\geq 0}R^{(i)}.\]
+Since $z_0 \in R^{(0)} = R$, $f$ is holomorphic at $z_0$. So, we define the following function on $R$
+\[\psi(z) = \begin{cases} \dfrac{f(z) - f(z_0)}{z - z_0} - f'(z_0) & \text{if $z \neq z_0$}\\[1em] 0 & \text{if $z = z_0$} \end{cases}\]
+and we note
+\[\lim_{z \to z_0}\psi(z) = f'(z_0) - f'(z_0) = 0 = \psi(z_0),\]
+and therefore $\psi$ is continuous at $z_0$. We can write
+\[f(z) = f(z_0) + (z-z_0)(\psi(z) + f'(z_0)) = f(z_0) + f'(z_0)(z - z_0) + \psi(z)(z - z_0)\]
+Note that $f(z_0)$ and $f'(z_0)(z - z_0)$ have antiderivatives on $\cc$, hence, by Theorem \ref{FTCoCI}, we have
+\begin{align*}
+\int_{S^{(n)}}f(z)\ dz &= \int_{S^{(n)}}f(z_0)\ dz + \int_{S^{(n)}}f'(z_0)(z - z_0)\ dz + \int_{S^{(n)}}\psi(z)(z - z_0)\ dz\\[1em]
+&= 0 + 0 + \int_{S^{(n)}}\psi(z)(z - z_0)\ dz\\[1em]
+&= \int_{S^{(n)}}\psi(z)(z - z_0)\ dz
+\end{align*}
+Consider $\epsilon > 0$. Since $\psi$ is continuous at $z_0$ with $\psi(z_0) = 0$, choose $\delta > 0$ such that
+\[\text{if } \abs{z - z_0} < \delta,\quad \text{then } \abs{\psi(z)} < \epsilon\]
+Since $d^{(n)} \to 0$, as $n \to \infty$, we choose an $N \in \zz_{>0}$ such that $|d^{(n)}|< \delta$ for every $n \geq N$. Thus, if $z \in S^{(N)}$, then $\abs{z - z_0} < |d^{(N)}| < \delta$ and therefore $\abs{\psi(z)} < \epsilon$ for every $z \in S^{(N)}$. Hence, 
+\[\max_{z \in S^{(N)}} \abs{z - z_0} < d^{(N)} \quad \text{and} \quad \max_{z \in S^{(N)}} \abs{\psi(z)} < \epsilon\]
+Hence, we obtain
+\begin{align*}
+\abs{\int_{S^{(N)}}f(z)\ dz} &= \abs{\int_{S^{(N)}}\psi(z)(z - z_0)\ dz}\\[1em]
+ &\leq \max_{z \in S^{(N)}}\abs{\psi(z)}\abs{z - z_0}\cdot L(S^{(N)})\\[0.5em]
+ &< \epsilon\cdot d^{(N)}\cdot L(S^{(N)})\\[0.5em]
+ &= d^{(N)}p^{(N)}\epsilon\\[0.5em]
+ &= \frac{1}{4^N}\,d^{(0)}p^{(0)}\epsilon
+\end{align*}
+By ($*$), we have
+\begin{align*}
+\abs{\int_C\,f(z)\ dz} &\leq 4^N\abs{\int_{S^{(N)}}f(z)\ dz}\\[1em]
+ &< 4^N\cdot \frac{1}{4^N}\,d^{(0)}p^{(0)}\epsilon\\[1em]
+ &= d^{(0)}p^{(0)}\epsilon
+\end{align*}
+Since $\epsilon > 0$ is arbitrary, we necessarily get that
+\[\abs{\int_C\,f(z)\ dz} \leq 0\]
+Thus, 
+\[\int_C\,f(z)\ dz = 0\]
+\end{proof}
+
+\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Simply Connected Domains}
+\end{center}
+\end{mdframed}
+
+\begin{definition}[Simply Connected Domain]
+A domain $G$ is called \cdef{simply\ connected} if it has the following property: if $C$ is any simple closed contour lying in $G$ and $z$ is interior to $C$, then $z \in G$.\\[0.5em]
+Intuitively, a simply connected domain is a domain that has no ``holes".\\
+\\
+Open disks, complex plane, interior of any simple closed contour etc. are all examples of simply connected domains. While deleted open disks, $\cc\setminus\set{p}$ etc. are examples of non-simply connected domains.
+\end{definition}
+
+\vspace*{1em}
+
+A result similar to Theorem \ref{cgthm} holds for closed contours, not necessarily simple, provided they lie in a simply connected domain.
+\begin{theorem}[Cauchy-Goursat Theorem for Simply Connected Domain]\label{cgthmsc}
+Suppose $f$ is holomorphic on a simply connected $G$. If $C$ is any closed contour lying in $G$, then
+\[\int_C\, f(z)\ dz = 0.\]
+\end{theorem}
+\begin{proof}
+We are presented with two cases: $C$ has finitely many self-intersections, or infinitely many self-intersections. Let's focus on the first cases, where the proof is a consequence of Theorem \ref{cgthm}.\\
+\\
+Suppose $C$ has $n$-many self-intersections, then those points of self-intersections allow us to write \[C = C_1 + C_2 + \cdots + C_{n+1},\] where each $C_i$ is a simple closed contour that all, necessarily, lie in $G$.
+\[\begin{tikzpicture}[scale=1.4]
+    \begin{scope}
+    \draw[use Hobby shortcut,closed=true,fill=dirt,fill opacity=1/10,dashed]
+	(7.75,0) .. (5,-1.5) .. (3,-1) .. (1,-1.5) .. (-1,-1.25) .. (-1.5,-1.5) .. (-3.75,0) .. (-1.5,1) .. (-1,1) .. (1,1.5) .. (3,1) .. (5,1.5) .. (7.75,0);
+    \end{scope}
+    \node[label=below:{$G$}] at (3,-1.25) {};
+\begin{scope}
+        \node[label=above:{$C$}] at (1.75,0.5) {};
+        \node[label=below:{\color{teal}$C_1$}](A) at (-2,-0.5) {};
+        \node[label=below:{\color{firebrick}$C_2$}](B) at (0,-0.5) {};
+        \node[label=below:{\color{indigo}$C_{n+1}$}](B) at (6,-0.5) {};
+        \draw[use Hobby shortcut,clockwise arrows,thick]
+	(-1,0) .. (-2,-0.5) .. (-3,0) .. (-2,0.5) .. (-1,0);
+        \draw[use Hobby shortcut,clockwise arrowsnew,thick]
+	(-1,0) .. (0,0.5) .. (1.5,0);
+        \draw[use Hobby shortcut,clockwise arrowsnew,thick]
+	(1.5,0) .. (0,-0.5) .. (-1,0);
+        \draw[use Hobby shortcut,thick]
+	(2.5,0.5) .. (2,0.35) .. (1.5,0);
+        \draw[use Hobby shortcut,thick]
+	(1.5,0) .. (2,-0.35) .. (2.5,-0.5);
+        \draw[use Hobby shortcut,thick]
+	(5,0) .. (4.5,0.325) .. (4,0.5);
+        \draw[use Hobby shortcut,thick]
+	(4,-0.5) .. (4.5,-0.325) .. (5,0);
+        \draw[use Hobby shortcut,clockwise arrowsmult,thick]
+	(5,0) .. (6,-0.5) .. (7,0) .. (6,0.5) .. (5,0);
+	\draw[loosely dotted,thick]
+	(2.75,0.5)  -- (3.75,0.5);
+	\draw[loosely dotted,thick]
+	(2.75,-0.5)  -- (3.75,-0.5);
+    \end{scope}
+\end{tikzpicture}\]
+Therefore $f$ is holomorphic at each point interior of and on $C_i$, hence by Theorem \ref{cgthm} we get
+\[\int_{C_i}\,f(z)\ dz = 0\]
+Finally, we have\\
+\[\int_C\,f(z)\ dz = \sum_{i=1}^n\int_{C_i}\,f(z)\ dz = 0\]
+as claimed.\\
+\\
+The proof in the case the contour has infinitely many self-intersections is subtle , so we assume validity without a proof. 
+\end{proof}
+
+\vspace*{1em}
+
+\begin{corollary}[Antiderivatives of Holomorphic Functions]\label{holantisc}
+If $f$ is holomorphic on a simply connected domain $G$, then $f$ has an antiderivative on $G$.
+\end{corollary}
+\begin{proof}
+By Theorem \ref{cgthmsc}, 
+\[\int_C\,f(z)\ dz = 0\]
+for any closed contour $C$ lying in $G$. By Theorem \ref{FTCoCI}, this is equivalent to $f$ having an antiderivative on $G$.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{corollary}[Entire Functions have Antiderivatives]
+Suppose $f$ is entire, then $f$ has an antiderivative on $\cc$ which is necessarily also entire.
+\end{corollary}
+\begin{proof}
+$\cc$ is simply connected, the result follows from Corollary \ref{holantisc}.
+\end{proof}
+
+%\vspace*{2em}
+\newpage
+
+\begin{mdframed}
+\begin{center}
+{\Large Multiply Connected Domains}
+\end{center}
+\end{mdframed}
+
+\begin{definition}[Multiply Connected Domain]
+A domain $G$ is called \cdef{multiply\ connected} if it not simply connected.
+\end{definition}
+
+\vspace*{1em}
+
+We can generalise Theorem \ref{cgthmsc} to a multiply connected domain with finitely many holes.
+\begin{theorem}[Generalised Cauchy-Goursat Theorem]\label{cgthmgen}
+Suppose that
+\begin{itemize}
+\item[(1)] $C$ is a simple closed positively oriented contour.
+\item[(2)] $C_1,\ldots,C_n$ are simple closed negatively oriented contours enclosing regions $R_1,\ldots,R_n$. Further assume that the regions are pairwise disjoint and interior to $C$.
+\end{itemize}
+If $f$ is holomorphic on each contour and the region consisting of all points interior to $C$ but exterior to each $C_i$, then
+\[\int_C\,f(z)\ dz + \sum_{i=1}^n\int_{C_i}f(z)\ dz = 0\]\\
+\[\begin{tikzpicture}[scale=1.3]
+    \begin{scope}
+    \draw[use Hobby shortcut,closed=true,fill=forest,fill opacity=1/10,draw opacity=0]
+	(6.5,0) .. (5,-1.5) .. (3,-1) .. (1,-1.5) .. (-1,-1.25) .. (-1.5,-1.5) .. (-3.75,-0.5) .. (-3.5,-0.5) .. (-3.75,0.5) .. (-1.5,1) .. (-1,1) .. (1,1.5) .. (3,1) .. (5,1.5) .. (6.5,0);
+    \draw[use Hobby shortcut,closed=true,clockwise arrowsnewbound,thick]
+	(6.5,0) .. (5,-1.5) .. (3,-1) .. (1,-1.5) .. (-1,-1.25) .. (-1.5,-1.5) .. (-3.75,-0.5) .. (-3.5,-0.5) .. (-3.75,0.5) .. (-1.5,1) .. (-1,1) .. (1,1.5) .. (3,1) .. (5,1.5) .. (6.5,0);
+    \end{scope}
+    \node[label=above:{$C$}] at (3,1.25) {};
+\begin{scope}
+        \node[label=below left:{$C_1$}](A) at (-2,-1) {};
+        \node[label=below:{$C_2$}](B) at (1,-0.5) {};
+        \node[label=below:{$C_n$}](B) at (5,-0.5) {};
+        \draw[use Hobby shortcut,closed=true,clockwise arrowsmulthole,fill=white,thick]
+	(4,0) .. (5,1) .. (6,0) .. (5,-0.5) .. (4,0);
+        \draw[use Hobby shortcut,closed=true,clockwise arrowsmulthole,fill=white,thick]
+	(-0.5,0) .. (0,0.75) .. (0.5,0.5) .. (1,0.5) .. (2,0) .. (1,-0.5) .. (0.5,-0.5) .. (0,-0.75) .. (-0.5,0);
+		\draw[use Hobby shortcut,closed=true,clockwise arrowsmulthole,fill=white,thick]
+	(-2.75,-0.25) .. (-2,0.5) .. (-1.25,-0.25) .. (-2,-1) .. (-2.75,-0.25);
+	\draw[loosely dotted,thick]
+	(2.5,0)  -- (3.5,0);
+	\end{scope}
+\end{tikzpicture}\qquad\quad\]\\[-4.5em]
+\end{theorem}
+\begin{proof}
+We prove this using induction.\\
+\\
+\emph{Base Case. $n=1$.} Assume $C$ and $C_1$ are contour satisfying the hypotheses. Let $z_1,\,z_2$ be points on $C$ while $w_1,\,w_2$ be points on $C_1$. Join $z_1$ to $w_1$ with a polygon line $L_1$, and also join $z_2$ to $w_2$ with a polygon line $L_2$.\\
+\\
+Define contour $\Gamma_1$ and $\Gamma_2$ as follows.
+\begin{itemize}
+\item[$\Gamma_1$:] Start with $z_1$ and follow to $w_1$ along $L_1$, then $w_1$ to $w_2$ along $C_1$ (we'll call this $C_{11}$), then $w_2$ to $z_2$ along $L_2$, and finally $z_2$ to $z_1$ along $C$ (we'll call this $C'$). So, 
+\[\Gamma_1 = L_1 + C_{11} + L_2 + C'\]
+\item[$\Gamma_2$:] Start with $z_2$ and follow to $w_2$ along $-L_2$, then $w_2$ to $w_1$ along $C_1$ (we'll call this $C_{12}$), then $w_1$ to $z_1$ along $-L_1$, and finally $z_1$ to $z_2$ along $C$ (we'll call this $C''$). So, 
+\[\Gamma_2 = -L_2 + C_{12} - L_1 + C''\]
+\end{itemize}
+We note $C' + C'' = C$ and $C_{11} + C_{12} = C$.
+%\[\begin{tikzpicture}[scale=1.3]
+%    \begin{scope}
+%    \draw[use Hobby shortcut,closed=true,fill=forest,fill opacity=1/10,draw opacity=0]
+%	(2.5,0) .. (2,-1) .. (2.5,-1.6) .. (0,-1.2) .. (-3,-1) .. (-2.5,0) .. (-3,1) .. (0,2) .. (1.6,1.4) .. (3,1) .. (2,0.4) .. (2.5,0);
+%    \draw[use Hobby shortcut,closed=true,clockwise arrowsnewbound,thick]
+%	(2.5,0) .. (2,-1) .. (2.5,-1.6) .. (0,-1.2) .. (-3,-1) .. (-2.5,0) .. (-3,1) .. (0,2) .. (1.6,1.4) .. (3,1) .. (2,0.4) .. (2.5,0);
+%    \end{scope}
+%    \node[label=above:{$C$}] at (3,1.25) {};
+%\begin{scope}
+%        \node[label=below:{$C_1$}](B) at (5,-0.5) {};
+%        \draw[use Hobby shortcut,closed=true,clockwise arrowsmulthole,fill=white,thick]
+%	(-1,0) .. (0,1) .. (1,0) .. (0,-0.5) .. (-1,0);
+%		\draw[use Hobby shortcut,thick,-{Straight Barb[left]}]
+%	(-1,0) .. (0,1) .. (1,0);
+%	\end{scope}
+%\end{tikzpicture}\]
+%
+%\[\begin{tikzpicture}[scale=1.3]
+%    \begin{scope}
+%    \draw[use Hobby shortcut,fill=forest,fill opacity=1/10,draw opacity=0]
+%	(2.5,0) .. (2,-1) .. (2.5,-1.6) .. (0,-1.2) .. (-3,-1) .. (-2.5,0);
+%    \draw[use Hobby shortcut,clockwise arrowsnewbound,thick]
+%	(2.5,0) .. (2,-1) .. (2.5,-1.6) .. (0,-1.2) .. (-3,-1) .. (-2.5,0);
+%    \end{scope}
+%    \node[label=above:{$C$}] at (3,1.25) {};
+%\begin{scope}
+%        \node[label=below:{$C_1$}](B) at (5,-0.5) {};
+%        \draw[use Hobby shortcut,clockwise arrowsmulthole,fill=white,thick]
+%	(1,0) .. (0,-0.5) .. (-1,0);
+%	\end{scope}
+%\end{tikzpicture}\]
+\[\text{\color{red} insert image}\]
+Then $f$ is holomorphic in the interior of and on the simple closed curves $\Gamma_1$ and $\Gamma_2$, so by Theorem \ref{cgthm} we have
+\[\int_{\Gamma_1}f(z)\ dz = \int_{\Gamma_2}f(z)\ dz = 0\]
+So, this gives us
+\begin{align*}
+0 &= \int_{\Gamma_1}f(z)\ dz + \int_{\Gamma_2}f(z)\ dz\\[1em]
+ &= \left(\int_{L_1}f(z)\ dz + \int_{C_{11}}f(z)\ dz + \int_{L_2}f(z)\ dz + \int_{C'}f(z)\ dz\right)\\[1em]
+ &\qquad + \left(-\int_{L_2}f(z)\ dz + \int_{C_{12}}f(z)\ dz - \int_{L_1}f(z)\ dz + \int_{C''}f(z)\ dz\right)\\[1em]
+ &= \int_{C'}f(z)\ dz + \int_{C''}f(z)\ dz + \int_{C_{11}}f(z)\ dz + \int_{C_{12}}f(z)\ dz\\[1em]
+ &= \int_{C}f(z)\ dz + \int_{C_1}f(z)\ dz
+\end{align*}
+\emph{Inductive Step.} Assume the statement holds for $n = k$, that is
+\[\int_C\,f(z)\ dz + \sum_{i=1}^k\int_{C_i}f(z)\ dz = 0\]
+for any $k$-many contours satisfying the hypotheses.\\
+\\
+Now, let $C_1,\ldots,C_k,C_{k+1}$ be any $k+1$-many contours. Introduce a polygon line $L$ that separates $C_1,\ldots,C_k$ from $C_{k+1}$, say with end points $z_1$ and $z_2$. We define $\Gamma_1$ and $\Gamma_2$ as follows.
+\begin{itemize}
+\item[$\Gamma_1$:] Start with $z_1$ and follow to $z_2$ along $C$ (we'll call this $C'$), then $z_2$ to $z_1$ along $-L$. So, 
+\[\Gamma_1 = C' - L\]
+\item[$\Gamma_2$:] Start with $z_1$ and follow to $z_2$ along $L$, then $z_2$ to $z_1$ along $C$ (we'll call this $C''$). So, 
+\[\Gamma_2 = C'' + L\]
+\end{itemize}
+We note $C' + C'' = C$.
+\[\text{\color{red}insert image}\]
+We note that
+\begin{align*}
+\int_{\Gamma_1}f(z)\ dz + \int_{\Gamma_2}f(z)\ dz &= \left(\int_{C'}f(z)\ dz - \int_{L}\,f(z)\ dz\right) + \left(\int_{C''}f(z)\ dz + \int_{L}\,f(z)\ dz\right)\\[1em]
+ &= \int_{C'}f(z)\ dz + \int_{C''}f(z)\ dz\\[1em]
+ &= \int_C\,f(z)\ dz \tag{$\dagger$}
+\end{align*}
+By the inductive hypothesis
+\[\int_{\Gamma_1}\,f(z)\ dz + \sum_{i=1}^k\int_{C_i}f(z)\ dz = 0\tag{1}\]
+and by the computation in the base case we have
+\[\int_{\Gamma_2}\,f(z)\ dz + \int_{C_{k+1}}f(z)\ dz = 0\tag{2}\]
+Adding (1) and (2) and using ($\dagger$) we have
+\[0 = \int_{\Gamma_1}\,f(z)\ dz + \sum_{i=1}^k\int_{C_i}f(z)\ dz + \int_{\Gamma_2}\,f(z)\ dz + \int_{C_{k+1}}f(z)\ dz = \int_C\,f(z)\ dz + \sum_{i=1}^{k+1}\int_{C_i}f(z)\ dz\]
+Thus, we have proved our result using the principle of mathematical induction. 
+\end{proof}
+
+\vspace*{1em}
+
+\begin{corollary}[Principle of Deformation of Paths]\label{deformation}
+Suppose $C_1$ and $C_2$ are positively oriented simple closed contours with $C_1$ interior to $C_2$.
+\[\begin{tikzpicture}[scale=0.6]
+    \begin{scope}
+    \draw[use Hobby shortcut,closed=true,fill=indigo,fill opacity=1/15,draw opacity=0]
+	(3,3) .. (6,3) .. (3,-1) .. (-1,-2.5) .. (-2,-1.5) .. (-4,0) .. (-2,3) .. (-1,4.5) .. (2,5);
+    \draw[use Hobby shortcut,closed=true,clockwise arrowsend,thick]
+	(3,3) .. (6,3) .. (3,-1) .. (-1,-2.5) .. (-2,-1.5) .. (-4,0) .. (-2,3) .. (-1,4.5) .. (2,5);
+	\draw[use Hobby shortcut,closed=true,fill=white,clockwise arrowsend,thick]
+	(0,-1.5) .. (-1.75,0) .. (0,2.5) .. (2,0);
+    \end{scope}
+    \node[label=below:{$C_2$}](A) at (6.5,1) {};
+    \node[label=below:{$C_1$}](A) at (0,0) {};
+\end{tikzpicture}\]
+If $f$ is holomorphic on the region consisting of $C_1$ and $C_2$ and all the points between them, then
+\[\int_{C_1}f(z)\ dz = \int_{C_2}f(z)\ dz\]
+\end{corollary}
+\begin{proof}
+Applying Theorem \ref{cgthmgen} to $C_2$ and $-C_1$, we get
+\[\int_{C_2}f(z)\ dz + \int_{-C_1}f(z)\ dz = 0.\]
+Therefore, 
+\[\int_{C_1}f(z)\ dz = \int_{C_2}f(z)\ dz\]\\[-2em]
+\end{proof}
+
+%\vspace*{1em}
+
+Among other things, the principle of deformation of paths is useful for integrating over complicated contours. Often, we can just replace this contour with a circle.
+\begin{example}
+Let $C$ be any simple closed contour whose interior contains $0$. We show that
+\[\int_C\frac{1}{z}\ dz = 2\pi i.\]
+Since $0$ is interior to $C$, we can choose an $\epsilon > 0$ small enough such that $C_\epsilon = C_\epsilon(0)$ is contained in the interior of $C$. The region containing $C$ and $C_\epsilon$ and points between them does not contain $0$, so $1/z$ is holomorphic there. By Corollary \ref{deformation},
+\begin{align*}
+\int_C\,f(z)\ dz &= \int_{C_\epsilon}f(z)\ dz\\[1em]
+ &= \int_0^{2\pi}\frac{1}{\epsilon e^{it}}\,ie^{it}\ dt = \int_0^{2\pi}\,i\ dt = 2\pi i
+\end{align*}
+\end{example}
+
+\vspace*{1em}
+
+\begin{definition}[Singularities]
+Suppose $f$ is not holomorphic at $z_0$, but every neighbourhood of $z_0$ contains a point at which $f$ is holomorphic, then $z_0$ is called a \cdef{singular\ point} (or \cdef{singularity}) \emph{of $f$}.\\[1em]
+\[\begin{tikzpicture}[scale=0.65]
+    \draw[<->,thick] (-1,0)--(5,0);
+	\draw[<->,thick] (0,-1)--(0,5);
+	\filldraw[firebrick,fill opacity=1/10,dashed](3,3) circle (2.5);
+    \fill (3,3) circle (2pt);
+    \node[] at (2.65,2.65) {$z_0$};
+	\filldraw[indigo,fill opacity=1/10,dashed](3.9,3.9) circle (0.95);
+    \fill (3.9,3.9) circle (2pt);
+    \node[] at (3.45,3.9) {\footnotesize$w$};
+    \node[] (3) at (8.5,1) {\footnotesize\color{firebrick}$f$ is not holomorphic here};
+    \node[] (1) at (7.75,5) {\footnotesize\color{indigo}$f$ is holomorphic here};
+    \node[] (2) at (4.1,3.9) {};
+    \node[] (4) at (4.5,2.3) {};
+	\path[every node/.style={font=\sffamily\small},<-,>=stealth, thick,indigo]
+    (2) edge[bend right] node [left] {} (1);
+    \path[every node/.style={font=\sffamily\small},->,>=stealth, thick,firebrick]
+    (3) edge[bend right] node [left] {} (4);
+  \end{tikzpicture}\]
+\end{definition}
+
+\vspace*{1em}
+
+\begin{example}\hfill
+\begin{itemize}
+\item[(1)] $f(z) = \dfrac{1}{z}$ has a singularity at $0$.
+\item[(2)] $f(z) = \abs{z}^2$ has no singular points, as $f$ is only differentiable at $0$ but is nowhere holomorphic.
+\item[(3)] $f(z) = \dfrac{z^2 + 3}{(z + 1)(z^2 + 5)}$ has singularities at those $z$ where
+\[(z + 1)(z^2 + 5) = 0.\]
+That is, at $-1,\, i\sqrt{5}$ and $-i\sqrt{5}$.
+\end{itemize}
+\end{example}
+
+\vspace*{1em}
+
+\begin{remark}
+More generally, the generalised Generalised Cauchy-Goursat Theorem (Theorem \ref{cgthmgen}) and its Corollary \ref{deformation} provide a technique for integrating functions over contours whose interior contains singularities of that function. The idea is to introduce small circles around the singular points, and apply the theorem (or corollary). It is usually easy to integrate over a circle. 
+\end{remark}
+
+\vspace*{2em}
+
+\subsection{Problems}
+\vspace{0.1in}
+To be added
+%\begin{problem}\label{prob 12.1}
+%
+%\end{problem}

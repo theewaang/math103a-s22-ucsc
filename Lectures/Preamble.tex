@@ -5,7 +5,7 @@
 \usepackage{mathtools}
 \usepackage{tikz}
 \usepackage{tikz-cd}
-\usetikzlibrary{decorations.pathmorphing,decorations.pathreplacing,quotes,angles,hobby}
+\usetikzlibrary{decorations.pathmorphing,decorations.pathreplacing,quotes,angles,hobby,arrows.meta}
 \usepackage{pgfplots}
 \usepackage{tikz-3dplot}
  \usepackage{graphicx}
@@ -88,6 +88,33 @@
    }}}}
    
 \tikzset{
+  clockwise arrowsmult/.style={
+    postaction={
+      decorate,
+      decoration={
+        markings,
+        mark=between positions 0.1 and 0.95 step 20pt with {\arrow[scale=1.2,indigo]{>}},
+   }}}}
+   
+\tikzset{
+  clockwise arrowsmult4/.style={
+    postaction={
+      decorate,
+      decoration={
+        markings,
+        mark=between positions 0.3 and 0.8 step 15pt with {\arrow[scale=1.2,indigo]{>}},
+   }}}}
+   
+\tikzset{
+  clockwise arrowsmulthole/.style={
+    postaction={
+      decorate,
+      decoration={
+        markings,
+        mark=between positions 0.02 and 1 step 20pt with {\arrow[scale=1.2,indigo]{>}},
+   }}}}
+   
+\tikzset{
   clockwise arrowsend/.style={
     postaction={
       decorate,
@@ -103,6 +130,24 @@
       decoration={
         markings,
         mark=between positions 0.1 and 1 step 20pt with {\arrow[scale=1.2,firebrick]{<}},
+   }}}}
+   
+\tikzset{
+  clockwise arrowsnewbound/.style={
+    postaction={
+      decorate,
+      decoration={
+        markings,
+        mark=between positions 0 and 1 step 20pt with {\arrow[scale=1.2,firebrick]{<}},
+   }}}}
+   
+\tikzset{
+  clockwise arrowsnewsquare/.style={
+    postaction={
+      decorate,
+      decoration={
+        markings,
+        mark=between positions 0.03 and 1 step 20pt with {\arrow[scale=1.2,forest]{>}},
    }}}}
    
 \tikzset{
@@ -209,6 +254,8 @@
 \newcommand\card{\scalebox{1.5}{\raisebox{-0.55ex}{\#}}}
 \newcommand{\refp}[1]{\textnormal{(\ref{#1})}}
 \newcommand{\ls}[2]{\bigg(\dfrac{#1}{#2}\bigg)}
+\newcommand{\res}[1]{\underset{z = {#1}}{\operatorname{Res}}\,}
+\newcommand{\pv}[1]{\mathsf{P.V.}#1}
 
 \newcommand{\rlarrows}[1]{\mathrel{\substack{\xrightarrow{#1} \\[-.5ex] \xleftarrow{#1}}}}
 \newcommand{\rlrarrows}[1]{\mathrel{\substack{\xrightarrow{#1} \\[-.5ex] \xleftarrow{#1} \\[-.5ex] \xrightarrow{#1}}}}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12.10) (preloaded format=pdflatex 2022.1.16)  9 MAY 2022 20:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12.10) (preloaded format=pdflatex 2022.1.16)  14 JUN 2022 19:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1355,49 +1355,49 @@ LaTeX Font Info:    Overwriting symbol font `AMSb' in version `normal'
 (Font)                  U/msb/m/n --> U/msb/m/n on input line 3.
 LaTeX Font Info:    Overwriting symbol font `AMSb' in version `bold'
 (Font)                  U/msb/m/n --> U/msb/m/n on input line 3.
-LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 3
-9.
+LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 4
+5.
  (C:\Users\bdeew\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ppl.fd
 File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
 )
 LaTeX Font Info:    Trying to load font information for OML+zplm on input line 
-39.
+45.
 
 (C:\Users\bdeew\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omlzplm.fd
 File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
 )
 LaTeX Font Info:    Trying to load font information for OMS+zplm on input line 
-39.
+45.
 
 (C:\Users\bdeew\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omszplm.fd
 File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
 )
 LaTeX Font Info:    Trying to load font information for OMX+zplm on input line 
-39.
+45.
 
 (C:\Users\bdeew\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omxzplm.fd
 File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
 )
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 11.40997pt on input line 39.
+(Font)              scaled to size 11.40997pt on input line 45.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 39.
+(Font)              scaled to size 8.33606pt on input line 45.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 39.
+(Font)              scaled to size 6.25204pt on input line 45.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 11.40997pt on input line 39.
+(Font)              scaled to size 11.40997pt on input line 45.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 39.
+(Font)              scaled to size 8.33606pt on input line 45.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 39.
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 39
+(Font)              scaled to size 6.25204pt on input line 45.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 45
 .
 
 (C:\Users\bdeew\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 
-39.
+45.
 
 (C:\Users\bdeew\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
@@ -1405,17 +1405,18 @@ File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 [1
 
 {C:/Users/bdeew/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-(MATH 103A Lecture Notes, Spring 2022.toc)
-\tf@toc=\write6
-\openout6 = `"MATH 103A Lecture Notes, Spring 2022.toc"'.
-
-
+(MATH 103A Lecture Notes, Spring 2022.toc
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.45 
-      [1] (Lectures/Lecture 1.tex
+l.34 ...line {17.1}Problems}{116}{subsection.17.1}
+                                                  % [1])
+\tf@toc=\write6
+\openout6 = `"MATH 103A Lecture Notes, Spring 2022.toc"'.
+
+ [2]
+(Lectures/Lecture 1.tex
 Underfull \hbox (badness 10000) in paragraph at lines 4--8
 
  []
@@ -1431,7 +1432,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 39--44
 
  []
 
-[2] [3] [4]
+[3] [4] [5]
 LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 1
 57.
 
@@ -1442,7 +1443,7 @@ Package mdframed Info: mdframed detected package amsthm
  changed the theorem header of amsthm
 (mdframed)              on input line 180.
 
-[5]
+[6]
 Package mdframed Info: Not enough space on this page on input line 183.
 
 Overfull \hbox (2.46687pt too wide) in paragraph at lines 185--186
@@ -1451,7 +1452,7 @@ Overfull \hbox (2.46687pt too wide) in paragraph at lines 185--186
 e com-plex num-bers as points in the $[][]$
  []
 
-[6]
+[7]
 Underfull \hbox (badness 10000) in paragraph at lines 239--240
 
  []
@@ -1461,12 +1462,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 267--268
 
  []
 
-[7] [8] [9]
+[8] [9] [10]
 Underfull \hbox (badness 10000) in paragraph at lines 412--414
 
  []
 
-) [10] (Lectures/Lecture 2.tex [11]
+) [11] (Lectures/Lecture 2.tex [12]
 Overfull \hbox (4.82663pt too wide) in paragraph at lines 63--64
 [][]\T1/ppl/b/n/10.95 Definition 2.3 \T1/ppl/m/n/10.95 (Com-plex Con-ju-ga-tion
 )\T1/ppl/b/n/10.95 . []\T1/ppl/m/n/10.95 Given a com-plex num-ber $\OML/zplm/m/
@@ -1474,7 +1475,7 @@ it/10.95 z \OT1/zplm/m/n/10.95 = \OML/zplm/m/it/10.95 x \OT1/zplm/m/n/10.95 + \
 OML/zplm/m/it/10.95 iy$\T1/ppl/m/n/10.95 , its $[][]$,
  []
 
-[12]
+[13]
 Underfull \hbox (badness 10000) in paragraph at lines 124--128
 
  []
@@ -1484,7 +1485,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 144--148
 
  []
 
-[13]
+[14]
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
 (Font)              scaled to size 9.37807pt on input line 178.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
@@ -1502,11 +1503,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 194--195
 
  []
 
-[14] [15] [16]) [17] (Lectures/Lecture 3.tex
+[15] [16] [17]) [18] (Lectures/Lecture 3.tex
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 47.
- [18]
+ [19]
 Package mdframed Info: Not enough space on this page on input line 50.
 
 Underfull \hbox (badness 10000) in paragraph at lines 65--68
@@ -1518,7 +1519,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 92--96
 
  []
 
-[19] [20]
+[20] [21]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 185.
@@ -1540,35 +1541,35 @@ Underfull \hbox (badness 10000) in paragraph at lines 197--198
 
  []
 
-[21] [22] [23]) [24] (Lectures/Lecture 4.tex
+[22] [23] [24]) [25] (Lectures/Lecture 4.tex
 Underfull \hbox (badness 10000) in paragraph at lines 23--24
 
  []
 
-[25]
+[26]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 99.
 Package mdframed Info: Not enough space on this page on input line 103.
- [26]
+ [27]
 Package mdframed Info: Not enough space on this page on input line 103.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 106.
- [27]
+ [28]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 164.
- [28]
+ [29]
 Underfull \hbox (badness 10000) in paragraph at lines 191--194
 
  []
 
-[29]) [30] (Lectures/Lecture 5.tex [31]
+[30]) [31] (Lectures/Lecture 5.tex [32]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 73.
- [32] [33]
+ [33] [34]
 Underfull \hbox (badness 10000) in paragraph at lines 158--160
 
  []
@@ -1577,7 +1578,7 @@ LaTeX Font Info:    Font shape `U/msa/m/n' will be
 (Font)              scaled to size 7.91925pt on input line 168.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 7.91925pt on input line 168.
-[34] [35] [36]) [37] (Lectures/Lecture 6.tex
+[35] [36] [37]) [38] (Lectures/Lecture 6.tex
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 4.
@@ -1586,16 +1587,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 13--17
 
  []
 
-[38]
+[39]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 88.
- [39]
+ [40]
 Underfull \hbox (badness 10000) in paragraph at lines 130--134
 
  []
 
-[40] [41] [42] [43] [44]) [45] (Lectures/Lecture 7.tex
+[41] [42] [43] [44] [45]) [46] (Lectures/Lecture 7.tex
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 4.
@@ -1608,11 +1609,11 @@ zplm/m/it/10.95 y[]\OT1/zplm/m/n/10.95 )$ \T1/ppl/m/it/10.95 and sat-isfy the $
 [][]$ 
  []
 
-[46] [47] [48] [49] [50] [51]) [52] (Lectures/Lecture 8.tex
+[47] [48] [49] [50] [51] [52]) [53] (Lectures/Lecture 8.tex
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 4.
- [53]
+ [54]
 Underfull \hbox (badness 10000) in paragraph at lines 76--77
 
  []
@@ -1622,11 +1623,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 106--109
 
  []
 
-[54]
+[55]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 129.
- [55] [56] [57]) [58] (Lectures/Lecture 9.tex
+ [56] [57] [58]) [59] (Lectures/Lecture 9.tex
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 4.
@@ -1640,20 +1641,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 29--33
 
  []
 
-[59] [60] [61]
+[60] [61] [62]
 Underfull \hbox (badness 10000) in paragraph at lines 180--186
 
  []
 
-[62]
+[63]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 244.
- [63] [64]) [65] (Lectures/Lecture 10.tex
+ [64] [65]) [66] (Lectures/Lecture 10.tex
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 63.
- [66] [67]
+ [67] [68]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 166.
@@ -1662,11 +1663,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 171--175
 
  []
 
-[68]
+[69]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 193.
- [69] [70] [71]) [72] (Lectures/Lecture 11.tex
+ [70] [71] [72]) [73] (Lectures/Lecture 11.tex
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 4.
@@ -1680,11 +1681,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 31--34
 
  []
 
-[73]
+[74]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 91.
- [74] [75]
+ [75] [76]
 Underfull \hbox (badness 10000) in paragraph at lines 218--219
 
  []
@@ -1694,16 +1695,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 229--230
 
  []
 
-[76]
+[77]
 Underfull \hbox (badness 10000) in paragraph at lines 270--274
 
  []
 
-) [77] (Lectures/Lecture 12.tex
+) [78] (Lectures/Lecture 12.tex
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 33.
- [78] [79]
+ [79] [80]
 
 Package empheq Warning: You cannot use \displaybreak inside the `empheq'
 (empheq)                environment, as `empheq' creates an unbreakable box. on
@@ -1725,62 +1726,366 @@ Package empheq Warning: You cannot use \displaybreak inside the `empheq'
  input line 151.
 
 
-LaTeX Warning: Reference `prob 12.1' on page 80 undefined on input line 152.
+LaTeX Warning: Reference `prob 12.1' on page 81 undefined on input line 152.
 
-[80] [81] [82]
-Overfull \hbox (17.47267pt too wide) detected at line 322
+[81] [82] [83]) [84] (Lectures/Lecture 13.tex [85]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 76.
+ [86] [87]
+Underfull \hbox (badness 10000) in paragraph at lines 122--126
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 137--141
+
+ []
+
+[88]) [89] (Lectures/Lecture 14.tex
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 4.
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--35
+
+ []
+
+[90] [91] [92]
+Underfull \hbox (badness 10000) in paragraph at lines 143--145
+
+ []
+
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 17
+2.
+
+[93]
+Underfull \hbox (badness 10000) in paragraph at lines 221--224
+
+ []
+
+[94] [95]) [96] (Lectures/Lecture 15.tex
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 4.
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--20
+
+ []
+
+[97]
+Underfull \hbox (badness 10000) in paragraph at lines 56--59
+
+ []
+
+[98]
+Underfull \hbox (badness 10000) in paragraph at lines 104--108
+
+ []
+
+[99]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 150.
+
+Underfull \hbox (badness 10000) in paragraph at lines 156--160
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 170--172
+
+ []
+
+[100]
+Overfull \hbox (0.74574pt too wide) detected at line 205
 []
  []
 
-) [83] (Lectures/Lecture 13.tex [84]
+
+Underfull \hbox (badness 10000) in paragraph at lines 207--209
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 209--213
+
+ []
+
+[101]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 75.
+(mdframed)              on input line 239.
+Package mdframed Info: Not enough space on this page on input line 242.
 
-Underfull \hbox (badness 10000) in paragraph at lines 86--90
-
- []
-
-[85]
-Underfull \hbox (badness 10000) in paragraph at lines 114--126
-
- []
-
-[86]
-Underfull \hbox (badness 10000) in paragraph at lines 134--138
+Underfull \hbox (badness 10000) in paragraph at lines 258--259
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 149--153
+Overfull \hbox (6.45801pt too wide) detected at line 280
+[]  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 280--281
 
  []
 
-[87]
+
+Underfull \hbox (badness 10000) in paragraph at lines 283--289
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 283--289
+
+ []
+
+[102]
+Underfull \hbox (badness 10000) in paragraph at lines 338--343
+
+ []
+
+[103] [104]
+Underfull \hbox (badness 10000) in paragraph at lines 407--408
+
+ []
+
+LaTeX Font Info:    Trying to load font information for T1+cmss on input line 4
+22.
+(C:\Users\bdeew\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmss.fd
+File: t1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+))
+[105] [106] (Lectures/Lecture 16.tex
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 169.
-
-Underfull \hbox (badness 10000) in paragraph at lines 196--200
+(mdframed)              on input line 4.
+ [107]
+Underfull \hbox (badness 10000) in paragraph at lines 66--69
 
  []
 
-[88]) [89] [90] (MATH 103A Lecture Notes, Spring 2022.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 73--76
+
+ []
+
+[108] [109] [110]
+Underfull \hbox (badness 10000) in paragraph at lines 133--139
+
+ []
+
+) [111] (Lectures/Lecture 17.tex
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 39.
+
+Underfull \hbox (badness 10000) in paragraph at lines 51--57
+
+ []
+
+[112]
+Underfull \hbox (badness 10000) in paragraph at lines 67--70
+
+ []
+
+[113]
+Underfull \hbox (badness 10000) in paragraph at lines 86--91
+
+ []
+
+[114]
+Underfull \hbox (badness 10000) in paragraph at lines 129--133
+
+ []
+
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 137.
+[115]) [116] (Lectures/Lecture 18.tex
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 4.
+ [117] [118]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 156.
+Package mdframed Info: Not enough space on this page on input line 159.
+ [119]
+Package mdframed Info: Not enough space on this page on input line 159.
+) [120] [121]
+(Lectures/Lecture 19.tex [122]
+Underfull \hbox (badness 10000) in paragraph at lines 38--42
+
+ []
+
+[123] [124] [125]) [126] (Lectures/Lecture 20.tex
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 4.
+ [127] [128]
+Underfull \hbox (badness 10000) in paragraph at lines 85--89
+
+ []
+
+[129]
+Underfull \hbox (badness 10000) in paragraph at lines 100--109
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 114--119
+
+ []
+
+[130]
+Underfull \hbox (badness 10000) in paragraph at lines 124--128
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 146--149
+
+ []
+
+[131]) [132] (Lectures/Extended/Possible Lecture 21.tex
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 4.
+
+Overfull \hbox (19.56238pt too wide) in paragraph at lines 33--34
+\T1/ppl/m/n/10.95 disk of con-ver-gence $\OML/zplm/m/it/10.95 D[]\OT1/zplm/m/n/
+10.95 (\OML/zplm/m/it/10.95 z[]\OT1/zplm/m/n/10.95 )$\T1/ppl/m/n/10.95 . Let $\
+OML/zplm/m/it/10.95 G$ \T1/ppl/m/n/10.95 be a re-gion in the disk, then we say 
+that the se-ries $[][]$
+ []
+
+[133] [134] [135]
+Underfull \hbox (badness 10000) in paragraph at lines 135--139
+
+ []
+
+) [136] (Lectures/Extended/Possible Lecture 22.tex [137] [138] [139]) [140]
+(Lectures/Extended/Possible Lecture 23.tex
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 3.
+
+Underfull \hbox (badness 10000) in paragraph at lines 45--49
+
+ []
+
+[141] [142] [143] [144]) [145] (Lectures/Extended/Possible Lecture 24.tex
+[146]
+Underfull \hbox (badness 10000) in paragraph at lines 59--63
+
+ []
+
+[147]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 83.
+
+Underfull \hbox (badness 10000) in paragraph at lines 92--96
+
+ []
+
+[148]) [149] (Lectures/Extended/Possible Lecture 25.tex [150]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 56.
+ [151] [152]
+[153]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 133.
+) [154] (Lectures/Extended/Possible Lecture 26.tex [155]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 70.
+ [156]
+Underfull \hbox (badness 10000) in paragraph at lines 95--103
+
+ []
+
+[157] [158]) [159] (Lectures/Extended/Possible Lecture 27.tex
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 3.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 20.
+ [160] [161]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 111.
+
+[162]
+Underfull \hbox (badness 10000) in paragraph at lines 166--172
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 172--176
+
+ []
+
+[163]) [164] (Lectures/Extended/Possible Lecture 28.tex
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 4.
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--36
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--36
+
+ []
+
+[165] [166]
+Underfull \hbox (badness 10000) in paragraph at lines 93--101
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--101
+
+ []
+
+[167]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 122.
+
+Underfull \hbox (badness 10000) in paragraph at lines 134--137
+
+ []
+
+[168] [169]) [170] (Lectures/Extended/Possible Lecture 29.tex
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 4.
+) [171] [172]
+(MATH 103A Lecture Notes, Spring 2022.aux)
 
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `"MATH 103A Lecture Notes, Spring 2022".out' 
 has not changed.
-(rerunfilecheck)             Checksum: F011CFE08A6AF3F7BBE1F6293E64BFC3;3065.
+(rerunfilecheck)             Checksum: D3AFBA8312A61464888AA367E3677D2C;7117.
  ) 
 Here is how much of TeX's memory you used:
- 40498 strings out of 478659
- 934235 string characters out of 2845920
- 1312023 words of memory out of 3000000
- 57449 multiletter control sequences out of 15000+600000
- 487118 words of font info for 217 fonts, out of 8000000 for 9000
+ 41803 strings out of 478659
+ 962545 string characters out of 2845920
+ 1319441 words of memory out of 3000000
+ 58460 multiletter control sequences out of 15000+600000
+ 493500 words of font info for 230 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 105i,18n,118p,1069b,1920s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 105i,18n,118p,1069b,2514s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C:/Users/bdeew/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:
 /Users/bdeew/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex1
 0.pfb><C:/Users/bdeew/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
@@ -1795,13 +2100,14 @@ ta/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmri.pfb><C:/Users/bdeew
 C:/Users/bdeew/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbol
 s/msbm10.pfb><C:/Users/bdeew/AppData/Local/Programs/MiKTeX/fonts/type1/urw/pala
 tino/uplb8a.pfb><C:/Users/bdeew/AppData/Local/Programs/MiKTeX/fonts/type1/urw/p
-alatino/uplr8a.pfb><C:/Users/bdeew/AppData/Local/Programs/MiKTeX/fonts/type1/ur
-w/palatino/uplr8a.pfb><C:/Users/bdeew/AppData/Local/Programs/MiKTeX/fonts/type1
-/urw/palatino/uplri8a.pfb>
-Output written on "MATH 103A Lecture Notes, Spring 2022.pdf" (91 pages, 550783 
-bytes).
+alatino/uplbi8a.pfb><C:/Users/bdeew/AppData/Local/Programs/MiKTeX/fonts/type1/u
+rw/palatino/uplr8a.pfb><C:/Users/bdeew/AppData/Local/Programs/MiKTeX/fonts/type
+1/urw/palatino/uplr8a.pfb><C:/Users/bdeew/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/urw/palatino/uplri8a.pfb>
+Output written on "MATH 103A Lecture Notes, Spring 2022.pdf" (173 pages, 876654
+ bytes).
 PDF statistics:
- 1205 PDF objects out of 1440 (max. 8388607)
- 355 named destinations out of 1000 (max. 500000)
- 227 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2013 PDF objects out of 2073 (max. 8388607)
+ 588 named destinations out of 1000 (max. 500000)
+ 483 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,0 +1,202 @@
+\vspace*{1em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Sequences \& Series}
+\end{center}
+\end{mdframed}
+
+\begin{definition}[Sequences]
+A \cdef{sequence} of complex numbers is a complex-valued function $z$ whose domain is the set of positive integers. We write $z_n = z(n)$ for the value of the function $z$ at $n$. We think of values occurring in a ``sequential" order
+\[z_1,z_2,\ldots,z_n,\ldots\] 
+and we usually denote the sequence as $(z_n)_n$.
+\end{definition}
+
+\vspace*{1em}
+
+\begin{definition}[Limit of a Sequence]
+A sequence $(z_n)_n$ has a limit $L \in \cc$ if for all $\epsilon > 0$, there exists an $N \in \zz_{>0}$ such that 
+\[\abs{z - z_n} < \epsilon,\ \text{whenever } n \geq N\]
+A sequence that has a limit is called \cdef{convergent} and we write
+\[\lim_{n \to \infty} z_n = L \ \text{ or }\ z_n \to L\]
+while a sequence with no limit is called \cdef{divergent}.
+\[\text{\color{red}add image here}\]
+\end{definition}
+
+\vspace*{1em}
+
+\begin{proposition}\label{limuniqueseq}\hfill
+\begin{itemize}
+\item[(1)] The limit of a convergent sequence is unique.
+\item[(2)] For a sequence $(z_n)_n$, we write each term as $z_n = x_n + iy_n$, and extract two real sequences $(x_n)_n$ and $(y_n)_n$. Then, 
+\[x_n + iy_n \to x + iy \quad \text{if and only if} \quad x_n \to x\ \text{ and }\ y_n \to y\]
+\end{itemize}
+\end{proposition}
+\begin{proof}
+The proof of (1) is similar to that of Theorem \ref{limunique}, and that of (2) is similar to the proof of Theorem \ref{cmplxlimripart}.
+%\hfill
+%\begin{itemize}
+%\item[(1)] Suppose $(z_n)_n$ is a convergent sequence with \[L_1 = \lim_{n \to \infty}\,z_n = L_2\]
+%Then, by definition, there exists an $N_1,\,N_2 \in \zz_{>0}$ such that 
+%\[\abs{z_n - L_1} < \frac{\epsilon}{2},\ \text{whenever } n \geq N_1;\ \text{ and}\quad \abs{z_n - L_2} < \frac{\epsilon}{2},\ \text{whenever } n \geq N_2\]
+%Then, for $n \geq \max\{N_1,N_2\} \geq N_1,N_2$, we have
+%\begin{align*}
+%\abs{L_1 - L_2} &= \abs{L_1 - z_n + z_n - L_2}\\[0.5em]
+%&\leq \abs{z_n - L_1} + \abs{z_n - L_2} \leq \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+%\end{align*}
+%Since $\epsilon > 0$, we get $\abs{L_1 - L_2}$, and therefore $L_1 = L_2$.
+%\item[(2)] 
+%\end{itemize}
+\end{proof}
+
+\vspace*{1em}
+
+\begin{example}
+We show that
+\[\lim_{n \to \infty}\,-1 + i\,\frac{(-1)^n}{n^2}\]
+Proposition \ref{limuniqueseq} tells us that
+\begin{align*}
+\lim_{n \to \infty}\,-1 + i\,\frac{(-1)^n}{n^2} &= \lim_{n \to \infty}\,-1 + i\,\lim_{n \to \infty}\,\frac{(-1)^n}{n^2}\\[0.5em]
+&= -1 + i\,\lim_{n \to \infty}\,\frac{(-1)^n}{n^2}
+\end{align*}
+So, let's show
+\[\lim_{n \to \infty}\,\frac{(-1)^n}{n^2} = 0\]
+For any $\epsilon > 0$, choose an $N > 1/\sqrt{\epsilon}$, then for any $n \geq N$ we get
+\[\abs{\frac{(-1)^n}{n} - 0} = \abs{\frac{(-1)^n}{n}} = \abs{\frac{1}{n}} = \frac{1}{n^2} \leq \frac{1}{N^2} < \epsilon\]
+Thus, 
+\[\lim_{n \to \infty}\,-1 + i\,\frac{(-1)^n}{n^2}\]
+and hence,
+\[\lim_{n \to \infty}\,-1 + i\,\frac{(-1)^n}{n^2}\]
+\end{example}
+
+\vspace*{1em}
+
+\begin{definition}[Series]
+A \cdef{series} of complex numbers is a \emph{symbol}
+\[\sum_{k = 1}^\infty\,z_k = z_1 + z_2 + \cdots + z_n + \cdots\]
+associated to the sequence $(z_n)_n$ of complex numbers. A series has an associated \cdef{sequence\ of\ partial} \cdef{sums}
+\[s_n = \sum_{k=1}^n\,z_k = \underbrace{\,z_1 + z_2 + \cdots + z_n\,}_{\text{sum of the first $n$ terms}}\]
+A series is \cdef{convergent} if $(s_n)_n$ is convergent, this case we write
+\[\sum_{k = 1}^\infty\,z_k = \lim_{n \to \infty}\,s_n = \lim_{n \to \infty}\sum_{k=1}^n\,z_k\]
+and the limit $\lim_{n \to \infty}\, s_n$ is called the \cdef{sum} of the series. A series that does not converge is said to be \cdef{divergent}.
+\end{definition}
+
+\vspace*{1em}
+
+\begin{proposition}\label{seriesrealim}
+Suppose that $(z_n)_n$ is a sequence with $z_n = x_n + iy_n$. Then,
+\[\sum_{k=1}^\infty \,x_k + iy_k = x + iy \quad \text{if and only if} \quad \sum_{k=1}^\infty \,x_k = x\ \text{ and }\ \sum_{k=1}^\infty \,y_k = y\]
+\end{proposition}
+\begin{proof}
+This is just Proposition \ref{limuniqueseq} (2) applied to the sequences of partial sums.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{remark}
+According to Proposition \ref{seriesrealim}, we can write
+\[\sum_{k=1}^\infty \,x_k + iy_k = \sum_{k=1}^\infty \,x_k + i\sum_{k=1}^\infty \,y_k\]
+provided the series on the left \emph{or} the two on the right converge. 
+\end{remark}
+
+%\vspace*{1em}
+
+\begin{proposition}[Test for Divergence]\label{tailzero}
+If $\sum_{k=1}^\infty \,z_k$ converges, then $z_n \to 0$.
+\end{proposition}
+\begin{proof}
+Write $z_n = x_n + iy_n$, then by Proposition \ref{seriesrealim}, the series $\sum_{k=1}^\infty \,x_k$ and $\sum_{k=1}^\infty \,y_k$ converge. As series of real numbers, we know that $x_n \to 0$ and $y_n \to 0$. Therefore,
+\[\lim_{n \to \infty}\,z_n = \lim_{n \to \infty}\,x_n + i\lim_{n \to \infty}\,y_n = 0\]\\[-2em]
+\end{proof}
+
+\vspace*{1em}
+
+\begin{corollary}\label{tailbound}
+If $\sum_{k=1}^\infty \,z_k$ converges, then there exists an $M > 0$ such that $\abs{z_n} \leq M$ for all $n$. That is, the sequence $(z_n)_n$ is \emph{bounded}.
+\end{corollary}
+\begin{proof}
+If $\sum_{k=1}^\infty \,z_k$ converges, then by Proposition \ref{tailzero}, $z_n \to 0$. Then, we can find an $N$ such that $\abs{z_n} \leq 1$ for every $n \geq N$. Set, 
+\[M = \max\set{1,\abs{z_1},\ldots,\abs{z_{N-1}}},\]
+then $\abs{z_n} \leq M$, for every $n$. 
+\end{proof}
+
+\vspace*{1em}
+
+\begin{definition}
+A series $\sum_{k=1}^\infty \,z_k$ is \cdef{absolutely\ convergent} if the series $\sum_{k=1}^\infty \,\abs{z_k}$ of real numbers converges.
+\end{definition}
+
+\vspace*{1em}
+
+\begin{corollary}[Absolutely Convergent Series converge]
+If $\sum_{k=1}^\infty \,z_k$ is absolutely convergent, then it is convergent.
+\end{corollary}
+\begin{proof}
+By assumption, $\sum_{k=1}^\infty \,\abs{z_k}$ converges. Note that $\abs{x_n} \leq \abs{z_n}$ and $\abs{y_n} \leq \abs{z_n}$ for every $n$. By the comparison test (from calculus), the series
+\[\sum_{k=1}^\infty \,\abs{x_k} \quad \text{and} \quad \sum_{k=1}^\infty \,\abs{y_k}\]
+converge. Hence, the series $\sum_{k=1}^\infty \,x_k$ and $\sum_{k=1}^\infty \,y_k$ absolutely converge, and thus converge (a result from calculus). By Proposition \ref{seriesrealim}, we conclude that $\sum_{k=1}^\infty \,z_k$ converges.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{definition}[Remainder of a Convergent Series]
+Suppose $\sum_{k=1}^\infty \,z_k$ is a convergent series and $S$ is its sum. Then {\color{blue}$n^{\text{th}}$} \cdef{remainder} of the series is the complex number
+\begin{align*}
+\rho_n = S - s_n &= S - \sum_{k=1}^n\,z_k\\[0.5em]
+&= \sum_{k=1}^\infty\,z_k - \sum_{k=1}^n\,z_k
+\end{align*}
+The remainder provides a convenient way to prove that $\sum_{k=1}^\infty\,z_k = S$, as we note that
+\[\sum_{k=1}^\infty\,z_k = S \quad \text{if and only if} \quad \rho_n \to 0,\]
+as $\abs{S - s_n} = \abs{\rho_n - 0}$.
+\end{definition}
+
+%\vspace*{1em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Power Series}
+\end{center}
+\end{mdframed}
+
+\begin{definition}[Power Series]
+A \cdef{power\ series} is a series
+\[\sum_{k=0}^\infty\,a_k(z - z_0)^k = a_0 + a_1(z - z_0) + \cdots + a_n(z - z_0)^n + \cdots\]
+where $(a_n)_n$ is a sequence, $z_0 \in \cc$ is fixed, and $z$ is any complex number in a prescribed region in $\cc$. The associated sum, partial sum and remainders depend on $z$, and are denoted $S(z), s_n(z)$ and $\rho_n(z)$ respectively.
+\end{definition}
+
+%\vspace*{1em}
+
+\begin{example}
+We show that the \emph{geometric series} $\sum_{k=0}^\infty\,az^k$ is convergent when $\abs{z} < 1$. In fact, 
+\[\sum_{k=0}^\infty\,a_k(z - z_0)^k = \frac{a}{1 - z}\quad (\abs{z} < 1)\]
+We compute the remainder
+\begin{align*}
+\rho_n(z) &= \frac{a}{1 - z} - s_n(z)\\[1em]
+&= \frac{a}{1 - z} - \sum_{k=0}^{n-1}\,az^k\\[1em]
+&= \frac{a}{1 - z} - a\left(\frac{1 - z^n}{1 - z}\right)\\[1em]
+&= a\left(\frac{z^n}{1 - z}\right)
+\end{align*}
+Hence, 
+\[\abs{\rho_n(z)} = \frac{\abs{a}}{\abs{1 - z}}\cdot \abs{z}^n\]
+Note that this sequence of real numbers converges to $0$ if $\abs{z} < 1$ and diverges otherwise. Hence, 
+\[\lim_{n \to \infty}\,\rho_n(z) = \begin{cases}0 & \text{if } \abs{z} < 1\\ \text{diverges} & \text{otherwise} \end{cases}\]
+\end{example}
+
+\vspace*{1em}
+
+\begin{theorem}[Taylor's Theorem]\label{taylor}
+Suppose that $f$ is holomorphic on an open disk $D_R(z_0)$. Then at each $z \in D_R(z_0)$, $f(z)$ has a convergent power series expansion
+\[f(z) = \sum_{k=0}^\infty\,a_k(z - z_0)^k\]
+with coefficients
+\[a_k = \frac{f^{(k)}(z_0)}{k!}\]
+The series expansion of $f$ guaranteed by the theorem is called the \cdef{Taylor\ series\ of} {\color{blue}$f$} \cdef{about} {\color{blue}$z_0$}.
+\end{theorem}
+
+\vspace*{2em}
+
+\subsection{Problems}
+\vspace{0.1in}
+To be added
+%\begin{problem}\label{prob 12.1}
+%
+%\end{problem}

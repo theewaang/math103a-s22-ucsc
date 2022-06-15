@@ -1,0 +1,132 @@
+\vspace*{1em}
+
+\begin{theorem}[Residue at $\infty$]\label{resinfty}
+If a function is holomorphic everywhere on $\cc$ except at a finite number of singularities lying interior to a simple closed positively oriented contour $C$, then
+\[\int_C\,f(z)\,dz = 2\pi i\cdot\res{0}\left(\frac{1}{z^2}\,f\!\left(\frac{1}{z}\right)\right)\]
+In particular,
+\[\res{\infty}f(z) = -\res{0}\left(\frac{1}{z^2}\,f\!\left(\frac{1}{z}\right)\right)\]
+\end{theorem}
+\begin{proof}
+Let $C_0$ be a negatively oriented circle centered at $0$, whose interior contains $C$.
+\[\text{\color{red}add image here}\]
+By Principle of Deformation of Paths (Corollary \ref{deformation}),
+\begin{align*}
+\int_C\,f(z)\,dz &= \int_{-C_0}\,f(z)\,dz\\[1em]
+ &= -\int_{C_0}\,f(z)\,dz\\[0.5em]
+ &= -\res{\infty}f(z)
+\end{align*}
+To compute $\res{\infty}f(z)$ in terms of $\res{0}f(z)$, we find the Laurent series of $f$ on an annulus $R < \abs{z} < \infty$ where 
+\[\max_{w\in C}\abs{w} < R < \text{radius of $C_0$}\]
+We have
+\[f(z) = \sum_{k=0}^\infty\, a_kz^k + \sum_{k=1}^\infty\frac{a_{-k}}{z^k}\]
+where
+\[a_n = \frac{1}{2\pi i}\int_{-C_0}\frac{f(z)}{z^{n+1}}\,dz \quad \text{for } n \in \zz\]
+Then,
+\[\frac{1}{z^2}\,f\!\left(\frac{1}{z}\right) = \sum_{k=0}^\infty \frac{a_k}{z^{k+2}} + \sum_{k=1}^\infty\,a_{-k}z^{k-2},\quad \text{for }0 < \abs{\frac{1}{z}} < \frac{1}{R}\]
+Note that,
+\begin{align*}
+\res{0}\left(\frac{1}{z^2}\,f\!\left(\frac{1}{z}\right)\right) = a_{-1} &= \frac{1}{2\pi i}\int_{-C_0}\,f(z)\,dz\\[1em]
+&= -\res{\infty}f(z)
+\end{align*}
+\end{proof}
+
+\vspace*{1em}
+
+\begin{example}[Revisiting Example \ref{resexample}]
+Let $C$ be the circle $\abs{z} = 2$ with positive orientation and $f(z) = \dfrac{4z - 5}{z(z - 1)}$, we can compute
+\[\int_C\frac{4z - 5}{z(z - 1)}\,dz\]
+using a single residue. $f(z)$ has isolated singularities at $0$ and $1$, both of which lie interior to $C$. We have
+\begin{align*}
+\frac{1}{z^2}\,f\!\left(\frac{1}{z}\right) &= \frac{1}{z^2}\left(\frac{4/z - 5}{1/z(1/z - 1)}\right)\\[0.5em]
+ &= \frac{4 - 5z}{z(1-z)}
+\end{align*}
+Since $\dfrac{1}{1 - z}$ is holomorphic at $0$, it has a Maclaurin series in the unit disk around $0$, so
+\begin{align*}
+\frac{1}{z^2}\,f\!\left(\frac{1}{z}\right) = \frac{4 - 5z}{z(1-z)} &= \frac{4 - 5z}{z}\cdot\frac{1}{1 - z}\\[0.5em]
+ &= \left(\frac{4}{z} - 5\right)\sum_{k=0}^\infty z^k\\[0.5em]
+ &= 4\sum_{k=0}^\infty z^{k-1} - 5\sum_{k=0}^\infty z^k\\[0.5em]
+ &= \frac{4}{z} - \sum_{k=0}^\infty z^k
+\end{align*}
+Therefore,
+\[\res{0}\left(\frac{1}{z^2}\,f\!\left(\frac{1}{z}\right)\right) = 4 \quad \text{and} \quad \int_C\frac{4z - 5}{z(z - 1)}\,dz = 2\pi i\cdot\res{0}\left(\frac{1}{z^2}\,f\!\left(\frac{1}{z}\right)\right) = 8\pi i\]
+using Theorem \ref{resinfty}.
+\end{example}
+
+\vspace*{1em}
+
+\begin{example}
+The function
+\[f(z) = \frac{z^2}{(z - 2)(z^2 + 3)}\]
+has no antiderivative on the domain $G = \setp{z \in \cc}{\abs{z} > 2}$.\\
+\\
+Let $C$ be the circle of radius $3$ centered at $0$. Notice that all three singularities of $f$, which are $2,\,\pm i\sqrt{3}$, lie in the interior of $C$. Hence, by Theorem \ref{resinfty},
+\[\int_C\,f(z)\,dz = 2\pi i\cdot\res{0}\left(\frac{1}{z^2}\,f\!\left(\frac{1}{z}\right)\right)\]
+We have,
+\begin{align*}
+\frac{1}{z^2}\,f\!\left(\frac{1}{z}\right) &= \frac{1}{z^2}\left(\frac{1/z^2}{(1/z - 2)(1/z^2 + 3)}\right)\\[0.5em]
+ &= \frac{1}{z(1-2z)(1+3z^2)}
+\end{align*}
+The functions $\dfrac{1}{1 - 2z}$ and $\dfrac{1}{1 + 3z^2}$ are holomorphic at $0$,  and so have a Maclaurin series in the disk $D_{1/6}(0)$, here
+\[\abs{2z} < \frac{1}{3} < 1 \quad \text{and} \quad \abs{3z^2} < \frac{1}{2} < 1\]
+Therefore,
+\begin{align*}
+\frac{1}{1 - 2z} &= \sum_{k=0}^\infty 2^kz^k & \frac{1}{1 + 3z^2} &= \sum_{k=0}^\infty (-3)^kz^{2k}
+\end{align*}
+Hence the Maclaurin series of the product $\dfrac{1}{(1-2z)(1 + 3z^2)}$ has constant term $1$, and thus
+\[\res{0}\left(\frac{1}{z^2}\,f\!\left(\frac{1}{z}\right)\right) = 1, \quad \text{therefore } \int_C\,f(z)\,dz = 2\pi i\cdot\res{0}\left(\frac{1}{z^2}\,f\!\left(\frac{1}{z}\right)\right) = 2\pi i \neq 0\]
+Hence $f(z)$ doesn't have an antiderivative on $G$ by the Fundamental Theorem of Contour Integration.
+\end{example}
+
+\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Classifying Isolated Singularities}
+\end{center}
+\end{mdframed}
+
+\begin{discussion}
+Recall that if $f$ has an isolated singularity at $z_0 \in \cc$, then $f$ has a Laurent series
+\[f(z) = \sum_{k=0}^\infty\,a_k(z - z_0)^k + \sum_{k=1}^\infty \frac{a_{-k}}{(z - z_0)^k}\]
+on some annulus $0 < \abs{z - z_0} < R$. The sum
+\[\sum_{k=1}^\infty \frac{a_{-k}}{(z - z_0)^k} = \frac{a_{-1}}{z - z_0} + \frac{a_{-2}}{(z - z_0)^2} + \frac{a_{-3}}{(z - z_0)^3} + \cdots\]
+is called the \cdef{principal\ part\ of} {\color{blue}$f$} \cdef{at} {\color{blue}$z_0$}.\\
+\\
+We will classify isolated singularities bases on what the principal part looks like: whether it's zero, non-zero with finitely many terms, or infinitely many terms. The aim is to understand how to compute residues based on the type of singularity.
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{definition}[Types of Singularities]
+Suppose that $f$ has an isolated singularity at $z_0 \in \cc$ with principal part 
+\[\sum_{k=1}^\infty \frac{a_{-k}}{(z - z_0)^k} = \frac{a_{-1}}{z - z_0} + \frac{a_{-2}}{(z - z_0)^2} + \frac{a_{-3}}{(z - z_0)^3} + \cdots\]
+then
+\begin{itemize}
+\item[$\bullet$] $z_0$ is said to be a \cdef{removable\ singularity} if the principal part of $f$ at $z_0$ is zero, that is, $a_{-k} = 0$ for all $k \geq 1$.
+\item[$\bullet$] $z_0$ is said to be a \cdef{essential\ singularity} if the principal part of $f$ at $z_0$ has infinitely many terms.
+\item[$\bullet$] $z_0$ is said to be a \cdef{pole\ of\ order} {\color{blue}$n$} if for some $n$ we have $a_{-n} \neq 0$ and $a_{-k} = 0$ for every $k \geq n$. That is, the principal part has finitely many terms and is of the form
+\[\frac{a_{-1}}{z - z_0} + \frac{a_{-2}}{(z - z_0)^2} + \cdots + \frac{a_{-n}}{(z - z_0)^n}\]
+A pole of order $n = 1$ is called a \cdef{simple\ pole}.
+\end{itemize}
+\end{definition}
+
+\vspace*{1em}
+
+\begin{remark}[Removable Singularity]
+Suppose that $f$ has a removable singularity at $z_0 \in \cc$, then by definition we can write
+\[f(z) = \sum_{k=0}^\infty\, a_k(z - z_0)^k + 0\]
+on some annulus $0 < \abs{z - z_0} < R$. Let's define
+\[g(z) = \begin{cases} f(z) & \text{if } z \neq z_0\\[0.5em] a_0 & \text{if } z = z_0 \end{cases}\]
+then
+\[g(z) = \sum_{k=0}^\infty\, a_k(z - z_0)^k\]
+on the disk $\abs{z - z_0} < R$. Therefore $g$ is holomorphic on the disk, and agrees with $f$ everywhere on the annulus $0 < \abs{z - z_0} < R$. In this way, the singularity has been removed and we have obtained a holomorphic function $g$ from $f$. This is the first example of \emph{analytic continuation}.
+\end{remark}
+
+\vspace*{2em}
+
+\subsection{Problems}
+\vspace{0.1in}
+To be added
+%\begin{problem}\label{prob 12.1}
+%
+%\end{problem}

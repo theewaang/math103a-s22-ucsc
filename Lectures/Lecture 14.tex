@@ -1,0 +1,286 @@
+\vspace*{1em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Antiderivatives \& Fundamental Theorem of Contour Integrals}
+\end{center}
+\end{mdframed}
+
+\begin{discussion}
+Suppose $C$ is a contour joining $z_1$ to $z_2$. In general, the value of the integral
+\[\int_C\, f(z)\ dz\]
+depends on $C$. For example, we have seen that
+\[\int_{C_1} \frac{1}{z}\,dz = \pi i \quad \text{and} \quad \int_{C_2}\frac{1}{z}\,dz = -\pi i\]
+\[\begin{tikzpicture}[scale=1.3]
+    \draw[<->,thick] (-1.75,0)--(1.75,0);
+	\draw[<->,thick] (0,-1.75)--(0,1.75);
+	\node[label=below left:{$-1$}](A) at (-1.25,0) {};
+	\node[label=below right:{$1$}](B) at (1.25,0) {};
+    \begin{scope}
+        \node[label=right:{\color{red}$C_1$}](C) at (1,1) {};
+        \draw[use Hobby shortcut,clockwise arrows,thick,red]
+	(-1.25,0) .. (0,1.25) .. (1.25,0);
+        \node[label=left:{\color{violet}$C_2$}](D) at (-1,-1) {};
+        \draw[use Hobby shortcut,clockwise arrows,thick,violet]
+	(-1.25,0) .. (0,-1.25) .. (1.25,0);
+    \end{scope}
+    \draw [fill=black] (A) circle (1.3pt);
+    \draw [fill=black] (B) circle (1.3pt);
+\end{tikzpicture}\]
+But on the other hand we have also seen that
+\[\int_C\,z\ dz = \frac{z_2^2 - z_1^2}{2}\]
+for any contour $C$ with initial point $z_1$ and end point $z_2$.\\
+\\
+The difference between these functions turns out to be that $f(z) = z$ has an antiderivative on $\cc$ while $g(z) = 1/z$ does not any domain containing $C_1$ and $C_2$. 
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{definition}[Antiderivative]
+Suppose that $f$ is a continuous function on a domain $G$. Any holomorphic function $F:G \to \cc$ is called an \cdef{antiderivative} of $f$ if $F'(z) = f(z)$ for every $z \in G$. 
+\end{definition}
+
+\vspace*{1em}
+
+\begin{definition}[Independence of Path]
+Let $f: G \to \cc$ be a continuous function on a domain $G$ and fix $z_1,\,z_2 \in G$. If
+\[\int_{C_1}\,f(z)\ dz = \int_{C_2}\,f(z)\ dz\]
+for any pair of contours $C_1$ and $C_2$ joining $z_1$ to $z_2$, then the integral of $f$ from $z_1$ to $z_2$ is \emph{independent of path} and we denote the unique value by
+\[\int_{z_1}^{z_2}\,f(z)\ dz.\]
+So, for instance, we would write
+\[\int_{z_1}^{z_1}\,z\ dz = \frac{z_2^2 - z_1^2}{2},\]
+since we have already proved the integral of $f(z) = z$ from $z_1$ to $z_2$, for any $z_1,\,z_2 \in \cc$, is independent of path. 
+\end{definition} 
+
+\vspace*{1em}
+
+\begin{theorem}[Fundamental Theorem of Contour Integrals]\label{FTCoCI}
+Suppose $f$ is continuous on a domain $G$. The following are equivalent. 
+\begin{itemize}
+\item[(1)] $f$ has an antiderivative $F: G \to \cc$. 
+\item[(2)] For all $z_1,\,z_2 \in G$, the integral of $f$ from $z_1$ to $z_2$ are independent of path.
+\item[(3)] If $C$ is any closed contour lying in $G$, then
+\[\int_C\,f(z)\ dz = 0\]
+\end{itemize}
+If any of these conditions hold, then the unique value of the integral in (2) is given as
+\[\int_{z_1}^{z_2}\,f(z)\ dz = F(z_2) - F(z_1)\]
+where $F$ is the antiderivative given in (1).
+\end{theorem}
+\begin{proof}\hfill
+\begin{itemize}[leftmargin=4.5em,itemsep=1.5em]
+\item[(1) $\Rightarrow$ (2)] Suppose $f$ has an antiderivative $F: G \to \cc$. Let $z_1,\,z_2 \in G$ and let $C$ be any contour with initial point $z_1$ to $z_2$ and lying in $G$.\\[0.5em]
+First assume $C$ is a smooth arc parametrised by $z:[a,b] \to \cc$; therefore, in particular, $z(a) = z_1$ and $z(b) = z_2$. Then we first note
+\[(F\circ z)'(t) = F'(z(t))z'(t) = f(z(t))z'(t)\]
+That is, we have found an antiderivative of $f(z(t))z'(t)$, the function $F\circ z$. Hence, 
+\begin{align*}
+\int_C\,f(z)\ dz &= \int_a^b\,f(z(t))z'(t)\ dt\\[1em]
+&= F(z(a)) - F(z(b)),\quad \text{by Proposition \ref{pathftc}}\\[0.5em]
+&= F(z_2) - F(z_1)
+\end{align*}
+Now, assume $C$ is a contour; that is, we can write $C = C_1 + \cdots + C_n$, where $C_i$'s are smooth arcs with initial point $w_i$ and end point $w_{i + 1}$. In particular, $w_1 = z_1$ and $w_{n+1} = z_2$. Then,
+\begin{align*}
+\int_C\,f(z)\ dz &= \sum_{i=1}^n\int_{C_i}\,f(z)\ dz\\[1em]
+ &= \sum_{i=1}^n F(w_{i+1}) - F(w_i)\\[0.5em]
+ &= F(w_{n+1}) - F(w_1)\\[0.5em]
+ &= F(z_2) - F(z_1)
+\end{align*}
+Since $F(z_2) - F(z_1)$ only depends on $z_1$ and $z_2$ and note the contour itself, we have proved the claim.
+
+\item[(2) $\Rightarrow$ (3)] Let $C$ be any closed contour lying in $G$, and choose two distinct point $z_1$ and $z_2$ on $C$. Let $C_1$ and $C_2$ be contours from $z_1$ to $z_2$ such that $C = C_1 - C_2$.
+\[\begin{tikzpicture}[scale=0.6]
+%    \draw[<->,thick] (-2,0)--(5,0);
+%	\draw[<->,thick] (0,-2)--(0,5);
+    \begin{scope}
+    \draw[use Hobby shortcut,closed=true,fill=dirt,fill opacity=1/10,dashed]
+	(5,5.5) .. (8,3) .. (3,-1) .. (-1,-2.5) .. (-2,-1.5) .. (-4,0) .. (-2,3) .. (-1,4.5) .. (2,5);
+    \end{scope}
+    \node[label=below:{$G$}](A) at (7,1) {};
+\begin{scope}
+        \node[label=left:{$C$}] at (6.25,4.25) {};
+        \node[label=left:{\color{teal}$C_1$}](A) at (0,2) {};
+        \node[label=below right:{\color{firebrick}$C_2$}](B) at (2,1) {};
+        \node[label=above:{$z_2$}](C) at (4,4) {};
+        \node[label=below:{$z_1$}](D) at (-1,-1) {};
+        \draw[use Hobby shortcut,clockwise arrows,thick]
+	(4,4) .. (2,3.75) .. (0,4) .. (0,2) .. (-2,0) .. (-1,-1);
+        \draw[use Hobby shortcut,clockwise arrowsnew,thick]
+	(4,4) .. (5,4) .. (5,3) .. (2,1) .. (-0.5,0) .. (-1,-1);
+    \end{scope}
+    \draw [fill=black] (C) circle (2pt);
+    \draw [fill=black] (D) circle (2pt);
+\end{tikzpicture}\]
+By assumption, the integral of $f$ from $z_1$ to $z_2$ is independent of path, therefore
+\[\int_{C_1}\,f(z)\ dz = \int_{C_2}\,f(z)\ dz\]
+Hence,
+\begin{align*}
+\int_C\,f(z)\ dz &= \int_{C_1 - C_2}\,f(z)\ dz = \int_{C_1}\,f(z)\ dz - \int_{C_2}\,f(z)\ dz = 0,
+\end{align*}
+as claimed.
+
+\item[(3) $\Rightarrow$ (2)] Suppose
+\[\int_C\,f(z)\ dz = 0\]
+for any closed contour $C$ lying in $G$. Let $z_1,\,z_2 \in G$ and $C_1$ and $C_2$ are two contour with initial point $z_1$ and end point $z_2$. Then $C_1  - C_2$ is a closed contour, and therefore by assumption
+\begin{align*}
+0 &= \int_{C_1 - C_2}\,f(z)\ dz = \int_{C_1}\,f(z)\ dz - \int_{C_2}\,f(z)\ dz
+\end{align*}
+Hence, 
+\[\int_{C_1}\,f(z)\ dz = \int_{C_2}\,f(z)\ dz,\]
+as claimed.
+
+\item[(2) $\Rightarrow$ (1)] Assume (2) (and also (3), since we've shown them to be equivalent). We need to show that $f$ has an antiderivative on $G$. Fix any point $z_0 \in G$ and define
+\[F(w) = \int_{z_0}^w\,f(z)\ dz,\]
+which is well defined by (2). We need to show $F'(w) = f(w)$ for any $w \in G$. That is, 
+\[\lim_{h \to 0}\frac{F(w + h) - F(w)}{h} = f(w)\]
+Let $\epsilon > 0$ and consider an $z \in G$. Since $f$ is continuous at $z$, we can find $\delta > 0$ such that 
+\[\text{if }\abs{z - w} < \delta,\quad \text{then }\abs{f(z) - f(w)} < \epsilon\]
+For $w \in G$, since $G$ is a domain and so in particular an open set, we can find a $d>0$ such that $D_d(w) \subseteq G$. Pick a $h \in \cc$ such that $0< \abs{h} < \min\set{d,\delta}$. Then $0 < \abs{h} < d$ and $0 < \abs{h} < \delta$. In particular, $w + h \in D_d(w) \subseteq G$; then,
+\begin{align*}
+F(w + h) - F(w) &= \int_{z_0}^{w+h}\,f(z)\ dz - \int_{z_0}^w\,f(z)\ dz = \int_{w}^{w+h}\,f(z)\ dz
+\end{align*}
+Since our integrals are path-independent, we assume that the integral above is over a line segment from $w$ to $w + h$, which lies in $G$, since $D_d(w)$ is convex. Also, 
+\begin{align*}
+f(w) &= \frac{f(w)h}{h} = \frac{1}{h}\,f(w)\,\int_{w}^{w+h}\,dz = \frac{1}{h}\,\int_{w}^{w+h}\,f(w)\ dz
+\end{align*}
+Also, since $\abs{h} < \delta$, then $\abs{z - w} < \delta$ for any point $z$ lying on $\ell$, the line segment joining $w$ to $w + h$. Therefore, $\abs{f(z) - f(w)} < \epsilon$ for any $z \in \ell$, that is, $\max_{z \in \ell}\abs{f(z) - f(w)} < \epsilon$.\\
+\[\begin{tikzpicture}[scale=0.6]
+%    \draw[<->,thick] (-2,0)--(5,0);
+%	\draw[<->,thick] (0,-2)--(0,5);
+    \begin{scope}
+    \draw[use Hobby shortcut,closed=true,fill=dirt,fill opacity=1/10,dashed]
+	(5,5.5) .. (7,4) .. (2,-1) .. (-2,-2.5) .. (-2,-1.5) .. (-4,0) .. (-4,3) .. (-1,5) .. (2,5);
+    \end{scope}
+    \node[label=below:{$G$}](A) at (7,2) {};
+\begin{scope}
+%        \node[label=left:{$C$}] at (6.25,4.25) {};
+%        \node[label=left:{\color{teal}$C_1$}](A) at (0,2) {};
+%        \node[label=below right:{\color{firebrick}$C_2$}](B) at (2,1) {};
+        \node[label=right:{$w$}](C) at (5,3) {};
+        \node[label=left:{$w + h$}](D) at (0,4) {};
+        \node[label=below:{$z_0$}](E) at (-1,-1) {};
+        \node[label=below:{$z$}](F) at (2,3.6) {};
+        \draw[use Hobby shortcut,thick,teal]
+	(0,4) .. (0,2) .. (-2,0) .. (-1,-1);
+        \draw[use Hobby shortcut,thick,firebrick]
+	(5,3) .. (2,1) .. (-0.5,0) .. (-1,-1);
+    \end{scope}
+    \draw[thick] (0,4)--(5,3);
+    \draw [fill=black] (C) circle (2pt);
+    \draw [fill=black] (D) circle (2pt);
+    \draw [fill=black] (E) circle (2pt);
+    \draw [fill=black] (F) circle (2pt);
+    \draw [decorate,decoration={brace,amplitude=8pt,mirror,raise=4pt},yshift=0pt,thick]
+(5,3) -- (2,3.6) node [black,midway,above,xshift=0.2cm,yshift=0.4cm] {$\footnotesize <\delta$};
+\end{tikzpicture}\]
+Using the preceding computations we have
+\begin{align*}
+\abs{\frac{F(w + h) - F(w)}{h} - f(w)} &= \abs{\frac{1}{h}\,\int_{w}^{w+h}\,f(z)\ dz - \frac{1}{h}\,\int_{w}^{w+h}\,f(w)\ dz}\\[1em]
+ &= \frac{1}{h}\,\abs{\int_{w}^{w+h}\,f(z) - f(w)\ dz}\\[1em]
+ &\leq \frac{1}{h}\,\max_{z \in \ell}\abs{f(z) - f(w)}\cdot L(\ell)\\[1em]
+ &< \frac{\epsilon}{h}\cdot L(\ell)\\[1em]
+ &= \epsilon,\quad \text{since $L(\ell) = h$}
+\end{align*}
+We have shown that given an $\epsilon > 0$, there exists a $\delta > 0$ such that
+\[\text{if }\abs{h} < \delta,\quad \text{then }\abs{\frac{F(w + h) - F(w)}{h} - f(w)} < \epsilon\]
+That is, $F'(w) = f(w)$, for all $w \in G$.
+\end{itemize}
+\vspace*{-\baselineskip}
+\end{proof}
+
+\vspace*{1em}
+
+\begin{example}\hfill
+\begin{itemize}
+\item[(1)] The function $f(z) = 1/z$ has no antiderivative on $\cc^*$. In fact, it has no antiderivative on any domain $G$ containing a deleted neighbourhood of $0$. Take a circle $C_\epsilon = C_\epsilon(0)$ with radius $\epsilon > 0$ such that it lies in our domain $G$.
+\[\begin{tikzpicture}[scale=0.6]
+    \draw[<->,thick] (-2,1)--(5,1);
+	\draw[<->,thick] (1,-2)--(1,5);
+    \draw [fill=white] (1,1) circle (2.5pt);
+	\draw[indigo,thick](1,1) circle (1);
+    \node[label={\color{indigo}$C_\epsilon$}] at (2.3,1.5) {};
+    \node[label=right:{$G$}] at (4.5,2.5) {};
+	\begin{scope}
+    \draw[use Hobby shortcut,closed=true,wise arrows,fill=dirt,fill opacity=1/10,dashed]
+	(4.5,4.5) .. (4,2) .. (3,-2) .. (0,-1) .. (-1.5,-1.5) .. (-1,0) .. (-2,3) .. (-1,4.5) .. (2,4) .. (4.5,4.5);
+    \end{scope}
+\end{tikzpicture}\]
+Then,
+\begin{align*}
+\int_{C_\epsilon}\,\frac{1}{z}\ dz &= \int_{0}^{2\pi}\,\frac{1}{\epsilon e^{it}}\,i\epsilon e^{it}\ dt\\[1em]
+ &= \int_{0}^{2\pi}\,i\ dt\\[1em]
+ &= 2\pi i
+\end{align*}
+By Theorem \ref{FTCoCI}, $f(z)$ does not have an antiderivative on such a domain, as the integral over the closed contour $C_\epsilon$ was non-zero. The problem is as follows: it is true that that a branch of the logarithm $F(z) = \log z$ is such that 
+\[F'(z) = \frac{1}{z},\]
+but it is only holomorphic on the complement of the branch cut. Since our domain contains a deleted neighbourhood of $0$, it has a non-empty intersection with any branch cut we take, and therefore $F$ is not holomorphic on $G$. This argument, in particular, holds for the domain $\cc^*$.
+
+\item[(2)] The function $f(z) = \cos z$ is entire on $\cc$, so is $F(z) = \sin z$. Moreover $F'(z) = \cos z = f(z)$, so $f$ has an antiderivative on $\cc$. So, for instance
+\begin{align*}
+\int_0^{\pi i}\,\cos z\ dz &= \sin\pi i - \sin 0 = \sin\pi i
+\end{align*}
+
+\item[(3)] Although $f(z) = 1/z$ has no antiderivative on any domain containing a deleted neighbourhood of $0$, we can integrate $f$ over a circle $C$ by using two different antiderivatives.\\
+\\
+Let $C_1$ be parametrised by $z(t) = e^{it},\, t \in [-\pi/2,\pi/2]$, a contour from $-i$ to $i$.
+\[\begin{tikzpicture}[scale=1.5]
+    \draw[<-,thick] (1.75,0)--(0,0);
+	\draw[<->,thick] (0,-1.75)--(0,1.75);
+    \begin{scope}
+        \node[label=left:{$C_1$}](A) at (1.75,1) {};
+        \node[label=left:{$-i$}](B) at (0,-1.25) {};
+        \node[label=left:{$i$}](C) at (0,1.25) {};
+        \draw[use Hobby shortcut,clockwise arrows,thick]
+	(0,1.25) .. (1.25,0) .. (0,-1.25);
+    \end{scope}
+	\draw[->,thick,dashed,firebrick] (0,0)--(-1.75,0);
+    \draw [firebrick,fill=white] (0,0) circle (1.3pt);
+    \draw [fill=black] (B) circle (1.3pt);
+    \draw [fill=black] (C) circle (1.3pt);
+\end{tikzpicture}\]
+On $\cc\setminus \rr_{\leq 0}$, $f(z)$ has an antiderivative, namely the principal branch of the logarithm
+\[\plog z = \ln\abs{z} + i\parg z,\quad -\pi < \parg z < \pi\]
+Then, by Theorem \ref{FTCoCI}
+\begin{align*}
+\int_{C_1}\,\frac{1}{z}\ dz &= \plog i - \plog(-i)\\[0.5em]
+&= \left(\ln\abs{i} + i\parg i\right) - \left(\ln\abs{-i} + i\parg (-i)\right)\\[0.5em]
+&= \left(\ln 1 + i\frac{\pi}{2}\right) - \left(\ln 1 - i\frac{\pi}{2}\right)\\[0.5em]
+&= \pi i
+\end{align*}
+\vspace*{1em}
+Let $C_2$ be parametrised by $z(t) = e^{it},\, t \in [\pi/2,3\pi/2]$, a contour from $i$ to $-i$.
+\[\begin{tikzpicture}[scale=1.5]
+    \draw[<-,thick] (-1.75,0)--(0,0);
+	\draw[<->,thick] (0,-1.75)--(0,1.75);
+    \begin{scope}
+        \node[label=right:{$C_2$}](A) at (-1.75,1) {};
+        \node[label=right:{$-i$}](B) at (0,-1.25) {};
+        \node[label=right:{$i$}](C) at (0,1.25) {};
+        \draw[use Hobby shortcut,clockwise arrows,thick]
+	(0,-1.25) .. (-1.25,0) .. (0,1.25);
+    \end{scope}
+	\draw[->,thick,dashed,firebrick] (0,0)--(1.75,0);
+    \draw [firebrick,fill=white] (0,0) circle (1.3pt);
+    \draw [fill=black] (B) circle (1.3pt);
+    \draw [fill=black] (C) circle (1.3pt);
+\end{tikzpicture}\]
+On $\cc\setminus \rr_{\geq 0}$, $f(z)$ has an antiderivative, namely the following branch of the logarithm
+\[\log z = \ln\abs{z} + i\arg z,\quad 0 < \arg z < 2\pi\]
+Then, by Theorem \ref{FTCoCI}
+\begin{align*}
+\int_{C_2}\,\frac{1}{z}\ dz &= \log (-i) - \log i\\[0.5em]
+&= \left(\ln\abs{i} + i\arg (-i)\right) - \left(\ln\abs{-i} + i\arg i\right)\\[0.5em]
+&= \left(\ln 1 + i\frac{3\pi}{2}\right) - \left(\ln 1 + i\frac{\pi}{2}\right)\\[0.5em]
+&= \pi i
+\end{align*}
+Hence, 
+\[\int_C\,\frac{1}{z}\ dz = \int_{C_1}\,\frac{1}{z}\ dz + \int_{C_2}\,\frac{1}{z}\ dz = \pi i + \pi i = 2\pi i\]
+\end{itemize}
+\end{example}
+
+\vspace*{2em}
+
+\subsection{Problems}
+\vspace{0.1in}
+To be added
+%\begin{problem}\label{prob 12.1}
+%
+%\end{problem}

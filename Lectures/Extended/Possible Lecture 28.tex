@@ -1,0 +1,209 @@
+\vspace*{1em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Improper Integrals from Fourier Analysis}
+\end{center}
+\end{mdframed}
+
+\begin{discussion}
+We make the following assumptions for this section.
+\begin{itemize}
+\item[(1)] $f(x) = p(x)/q(x)$ is a rational function with real coefficients, and $p(x)$ and $q(x)$ have no factors in common.
+\item[(2)] $q(x)$ has no real zeros.
+\item[(3)] $a>0$ and $f(x)\sin ax$, or $f(x)\cos ax$, is an even function.
+\end{itemize}
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{discussion}
+The same steps, with minor modifications, as in Discussion \ref{stepsintegral} can be used to compute integrals of the form
+\[\int_{-\infty}^\infty\,f(x)\sin ax\,dx \quad \text{or} \quad \int_{-\infty}^\infty\,f(x)\cos ax\,dx\]
+We use Euler's formula to write
+\[\int_{-\infty}^\infty\,f(x)\cos ax\,dx + i\int_{-\infty}^\infty\,f(x)\sin ax\,dx = \int_{-\infty}^\infty\,f(x)e^{iax}\,dx\]
+We simply compute the RHS, and depending what integral we want to compute we simply take the real or imaginary part, and then take the limit.
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{example}
+Compute $\displaystyle \int_0^\infty\frac{\cos 2x}{(x^2 + 4)^2}\,dx$.\\
+\\
+We will integrate $f(z)e^{2iz}$, where $f(z) = 1/(z^4 + 4)^2$, over a semicircular contour $\Gamma_R$. Clearly $f(z)$ has a single singularity $2i$ above the real axis; moreover $\abs{2i} = 2$, so we take $R > 2$.\\
+\\
+Using the residue theorem, we have
+\[\int_{-R}^Rf(x)e^{2ix}\,dx = 2\pi i\cdot\res{2i}f(z)e^{2iz} - \int_{C_R}\,f(z)e^{2iz}\,dz\]
+To compute the residue, let $\phi(z) = \dfrac{e^{2iz}}{(z + 2i)^2}$, so that
+\[f(z)e^{2iz} = \frac{\phi(z)}{(z - 2i)^2}\]
+$\phi(z)$ is non-zero and holomorphic at $2i$, hence $2i$ is a pole of order $2$ and
+\begin{align*}
+\res{2i}f(z)e^{2iz} = \phi'(2i) &= \frac{2ie^{2iz}(z + 2i)^2 - 2(z + 2i)e^{2iz}}{(z + 2i)^4}\Bigg\vert_{z = 2i}\\[1em]
+ &= \frac{2ie^{2i\cdot 2i}(2i + 2i)^2 - 2(2i + 2i)e^{2i\cdot 2i}}{(2i + 2i)^4}\\[1em]
+ &= \frac{2ie^{-4}(4i)^2 - 2(4i)e^{-4}}{(4i)^4}\\[1em]
+ &= \frac{2(4i)e^{-4}(4i^2 - 1)}{(4i)^4}\\[1em]
+ &= \frac{2e^{-4}(-5)}{(4i)^3}\\[1em]
+ &= \frac{5}{32i}\,e^{-4}
+\end{align*}
+On $C_R$, we note that $\abs{z} = R$, therefore 
+\[|z^4 + 4| \geq ||z|^4 - 4| = R^4 - 4 \quad \text{and} \quad |e^{2iz}| = e^{2\Re(iz)} = e^{-2\Im z} \leq 1\]
+So,
+\begin{align*}
+\abs{\int_{C_R}\,f(z)e^{2iz}\,dz} &\leq L(C_R)\cdot \max_{z \in C_R}\frac{|e^{2iz}|}{|z^4 + 4|}\\[0.5em]
+ &\leq \frac{\pi R}{R^4 - 4} \to 0,\ \text{as }R \to \infty
+\end{align*}
+Thus,
+\begin{align*}
+\int_0^\infty\frac{\cos 2x}{(x^2 + 4)^2}\,dx &= \frac{1}{2}\cdot\pv{\int_{-\infty}^\infty\,\frac{\cos 2x}{(x^2 + 4)^2}\,dx}\\[1em]
+ &= \frac{1}{2}\lim_{R \to \infty}\int_{-R}^R\,\frac{\cos 2x}{(x^2 + 4)^2}\,dx\\[1em]
+ &= \frac{1}{2}\lim_{R \to \infty}\Re\int_{-R}^R\,f(x)e^{2ix}\,dx\\[1em]
+ &= \frac{1}{2}\lim_{R \to \infty}\left(2\pi i\cdot \res{2i}f(z)e^{2iz} - \int_{C_R}\,f(z)e^{2iz}\,dz\right)\\[1em]
+ &= \frac{1}{2}\lim_{R \to \infty}\left(\frac{5\pi}{16e^4} - \int_{C_R}\,f(z)e^{2iz}\,dz\right)\\[1em]
+ &= \frac{5\pi}{32e^4}
+\end{align*}
+\end{example}
+
+\vspace*{1em}
+
+\begin{remark}
+The preceding method works only if $\deg q(x) - \deg p(x) \geq 2$, where $f(x) = p(x)/q(x)$. Because otherwise the bound for contour integrals may not be enough to prove
+\[\lim_{R \to \infty}\int_{C_R}\,f(z)e^{aiz}\,dz = 0\]
+In this case, we may be able to use Jordan's Lemma instead.
+\end{remark}
+
+\vspace*{1em}
+
+\begin{lemma}[Jordan's Lemma]
+Assume
+\begin{itemize}
+\item[(1)] $f$ is holomorphic at all points in the upper half plane (the domain where points have positive imaginary part) that are exterior to some circle $\abs{z} = R_0$.
+\item[(2)] $C_R$ is the semicircle with $R > R_0$.
+\item[(3)] There exists $M_R > 0$ such that $\abs{f(z)} \leq R$ for all $z \in C_R$ and $\lim_{R \to \infty}M_R = 0$.
+\end{itemize}
+Then, for any $a > 0$, 
+\[\lim_{R \to \infty}\int_{C_R}\,f(z)e^{aiz}\,dz = 0\]
+\end{lemma}
+\begin{proof}
+Skipped.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{example}
+Compute $\displaystyle \int_0^\infty\,\frac{x\sin 2x}{x^2 + 3}\,dx$.\\
+\\
+We will integrate $f(z)e^{2iz}$, where $f(z) = z/(z^2 + 3)$, over a semicircular contour $\Gamma_R$. Clearly $f(z)$ has a single singularity $i\sqrt{3}$ above the real axis; moreover $\abs{i\sqrt{3}} = \sqrt{3}$, so we take $R > \sqrt{3}$.\\
+\\
+Using the residue theorem, we have
+\begin{align*}
+\int_{-R}^R\,\frac{x\sin 2x}{x^2 + 3}\,dx &= \Im\int_{-R}^R\,f(x)e^{2ix}\,dx\\[1em]
+= \Im\left(2\pi i\cdot\res{i\sqrt{3}}\,f(z)e^{2iz} - \int_{C_R}\,f(z)e^{2iz}\,dz\right)
+\end{align*}
+To compute the residue, write $p(z) = ze^{2iz},\ q(z) = z^2 + 3$; both are clearly holomorphic. Note that $p(i\sqrt{3}) \neq 0,\ q(i\sqrt{3}) = 0$ and $q'(i\sqrt{3} = i2\sqrt{3} \neq 0$, so $i\sqrt{3}$ is a simple pole and therefore
+\[\res{i\sqrt{3}}\,f(z)e^{2iz} = \res{i\sqrt{3}}\,\frac{p(z)}{q(z)} = \frac{p(i\sqrt{3})}{q'(i\sqrt{3})} = \frac{e^{-2\sqrt{3}}}{2}\]
+Hence
+\[\int_{-R}^R\,\frac{x\sin 2x}{x^2 + 3}\,dx = \pi e^{-2\sqrt{3}} - \Im\int_{C_R}\,f(z)e^{2iz}\,dz\]
+We now show
+\[\lim_{R \to \infty}\Im\int_{C_R}\,f(z)e^{2iz}\,dz = 0\]
+On $C_R$, we note that $\abs{z} = R$, therefore 
+\[\abs{\frac{z}{z^2 + 3}} = \frac{|z|}{|z^2 + 3|} \leq \frac{|z|}{|z|^2 - 3} = \frac{R}{R^2 - 3} \eqqcolon M_R\]
+Since $\lim_{R \to \infty}M_R = 0$, by Jordan's Lemma we have
+\[\lim_{R \to \infty}\int_{C_R}\,f(z)e^{2iz}\,dz = 0,\qquad \text{hence }\ \lim_{R \to \infty}\Im\int_{C_R}\,f(z)e^{2iz}\,dz = 0\]
+Thus,
+\begin{align*}
+\int_0^\infty\,\frac{x\sin 2x}{x^2 + 3}\,dx &= \frac{1}{2}\cdot\pv{\int_{-\infty}^\infty\,\frac{x\sin 2x}{x^2 + 3}\,dx}\\[1em]
+ &= \frac{1}{2}\,\pi e^{-2\sqrt{3}}
+\end{align*}
+\end{example}
+
+\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Indented Path}
+\end{center}
+\end{mdframed}
+
+\begin{discussion}
+Till now we've avoided functions that have singularities on the real line; how do we integrate such functions? For such an instance, \emph{indented paths} can sometimes be used to avoid an isolated singularity or branch point that lies on the real axis. We illustrate this method using an example.
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{example}[Dirichlet's Integral]
+Compute $\displaystyle \int_0^\infty\,\frac{\sin x}{x}\,dx$.\\
+\\
+We integrate $f(z) = \dfrac{e^{iz}}{z}$ over the contour $\Gamma = C_R + L_1 + C_\rho + L_2$
+\[\begin{tikzpicture}[scale=1.5]
+    \draw[<->,thick] (-2.25,0)--(2.25,0);
+	\draw[<->,thick] (0,-0.5)--(0,2.25);
+    \begin{scope}
+        \node[label={$C_\rho$}](A) at (-0.3,0.3) {};
+        \draw[use Hobby shortcut,clockwise arrows,very thick,firebrick]
+	(1,0) .. (0,1) .. (-1,0);
+        \node[label={$C_R$}](A) at (1.3,1.3) {};
+        \draw[use Hobby shortcut,clockwise arrows,very thick,firebrick]
+	(-1.75,0) .. (0,1.75) .. (1.75,0);
+        \node[label={$L_1$}](B) at (-1.375,-0.75) {};
+        \draw[clockwise arrowsmult4,very thick,firebrick]
+	(-1.75,0)--(-1,0);
+        \node[label={$L_2$}](B) at (1.375,-0.75) {};
+        \draw[clockwise arrowsmult4,very thick,firebrick]
+	(1,0)--(1.75,0);
+	\fill[firebrick] (0,0) circle (2pt);
+	\fill[white] (0,0) circle (1.5pt);
+    \end{scope}
+\end{tikzpicture}\]
+By Cauchy-Goursat
+\[0 = \int_{\Gamma_R}\, \frac{e^{iz}}{z}\,dz = \int_{C_R}\, \frac{e^{iz}}{z}\,dz + \int_{L_1}\, \frac{e^{iz}}{z}\,dz + \int_{C_\rho}\, \frac{e^{iz}}{z}\,dz + \int_{L_2}\, \frac{e^{iz}}{z}\,dz\]
+Parametrise $-L_1,\,L_2$ as follows
+\begin{align*}
+-L_1&: z_1(x) = -x,\quad \rho \leq x \leq R\\[0.5em]
+L_2&: z_2(x) = x,\quad \rho \leq x \leq R
+\end{align*}
+Then,
+\begin{align*}
+\int_{L_1}\, \frac{e^{iz}}{z}\,dz + \int_{L_2}\, \frac{e^{iz}}{z}\,dz &= \int_{L_2}\, \frac{e^{iz}}{z}\,dz - \int_{-L_1}\, \frac{e^{iz}}{z}\,dz\\[1em]
+&= \int_\rho^R\,\frac{e^{ix}}{x}\,dx - \int_\rho^R\,\frac{e^{-ix}}{x}\,dx\\[1em]
+&= \int_\rho^R\,\frac{e^{ix} - e^{-ix}}{x}\,dx\\[1em]
+&= 2i\int_\rho^R\,\frac{\sin x}{x}\,dx
+\end{align*}
+Hence,
+\begin{align*}
+\int_\rho^R\,\frac{\sin x}{x}\,dx &= -\frac{1}{2i}\left(\int_{C_R}\, \frac{e^{iz}}{z}\,dz + \int_{C_\rho}\, \frac{e^{iz}}{z}\,dz\right)\\[1em]
+\int_0^\infty\,\frac{\sin x}{x}\,dx &= -\frac{1}{2i}\left(\lim_{R \to \infty}\int_{C_R}\, \frac{e^{iz}}{z}\,dz + \lim_{\rho \to 0}\int_{C_\rho}\, \frac{e^{iz}}{z}\,dz\right)
+\end{align*}
+By Jordan's Lemma, for $M_R = 1/R$, we get
+\[\lim_{R \to \infty}\int_{C_R}\, \frac{e^{iz}}{z}\,dz = 0\]
+We now compute $\displaystyle \lim_{\rho \to 0}\int_{C_\rho}\, \frac{e^{iz}}{z}\,dz$; consider the Laurent series
+\begin{align*}
+\frac{e^{iz}}{z} &= \frac{1}{z} \sum_{k=0}^\infty\frac{i^kz^k}{k!}\\[0.5em]
+ &= \sum_{k=0}^\infty\frac{i^kz^{k-1}}{k!}\\[0.5em]
+ &= \frac{1}{z} + \sum_{k=1}^\infty\frac{i^kz^{k-1}}{k!}\\[0.5em]
+ &= \frac{1}{z} + g(z)
+\end{align*}
+Since $g(z)$ is a power series about $0$, it is holomorphic in a neighbourhood of $0$. In particular, $g(z)$ is continuous on the closed disk $\overline{D}_\epsilon(0)$ for some $\epsilon > 0$, and is thus bounded on this closed disk. Say, $\abs{g{z}} \leq M$ for every $\abs{z} \leq \epsilon$. Hence if $\rho < \epsilon$, which we can assume, 
+\begin{align*}
+\abs{\int_{C_\rho}\, g(z)\,dz} &\leq L(C_\rho)\cdot \max_{z \in C_\rho}\abs{g(z)}\\[1em]
+ &\leq \pi\rho M \to 0,\ \text{as }\rho \to 0
+\end{align*} 
+Thus, parametrising $-C_\rho$ as $\gamma(t) = \rho e^{it},\ 0 \leq t \leq \pi$
+\begin{align*}
+\lim_{\rho \to 0}\int_{C_\rho}\, \frac{e^{iz}}{z}\,dz &= \lim_{\rho \to 0}\int_{C_\rho}\, \frac{1}{z}\,dz + \lim_{\rho \to 0}\int_{C_\rho}\, g(z)\,dz\\[1em]
+ &= -\lim_{\rho \to 0}\int_{-C_\rho}\, \frac{1}{z}\,dz + 0\\[1em]
+ &= -\lim_{\rho \to 0}\int_0^\pi\, \frac{i\rho e^{it}}{\rho e^{it}}\,dt\\[1em]
+ &= -\lim_{\rho \to 0}\int_0^\pi\, i\,dt\\[1em]
+ &= -\pi i
+\end{align*}
+Therefore
+\[\int_0^\infty\,\frac{\sin x}{x}\,dx = -\frac{1}{2i}(-\pi i) = \frac{\pi}{2}\]
+\end{example}
+
+\vspace*{2em}
+
+\subsection{Problems}
+\vspace{0.1in}
+To be added
+%\begin{problem}\label{prob 12.1}
+%
+%\end{problem}

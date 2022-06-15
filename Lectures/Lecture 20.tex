@@ -1,0 +1,171 @@
+\vspace*{1em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Laurent Series}
+\end{center}
+\end{mdframed}
+
+\begin{remark}
+When $f$ is not holomorphic, Theorem \ref{taylor} cannot be applied. However, we can often find a series expansion of $f$ that involves \emph{negative} powers of $(z - z_0)$.
+\end{remark}
+
+\vspace*{1em}
+
+\begin{example}\hfill
+\begin{itemize}
+\item[(1)] $f(z) = \dfrac{e^{-z}}{z^2}$. The function is not holomorphic at $z_0 = 0$.\\[0.5em]
+So we look for a series expansion involving powers of $z$. We have,
+\begin{align*}
+\frac{e^{-z}}{z^2} = \frac{1}{z^2}\sum_{k=0}^\infty\frac{(-z)^k}{k!} &= \sum_{k=0}^\infty\frac{(-1)^kz^{k-2}}{k!}\\[1em]
+ &=\frac{1}{z^2} - \frac{1}{z} + \sum_{k=0}^\infty\frac{(-1)^kz^k}{(k+2)!}
+\end{align*}
+for $0 < \abs{z} < \infty$.
+
+\item[(2)] $f(z) = \dfrac{1 + 2z^2}{z^3 + z^5}$. We have,
+\begin{align*}
+\frac{1 + 2z^2}{z^3 + z^5} = \frac{1}{z^3}\left(\frac{1 + 2z^2}{1 + z^2}\right) &= \frac{1}{z^3}\left(\frac{2(1 + z^2) - 1}{1 + z^2}\right)\\[1em]
+ &= \frac{1}{z^3}\left(2 - \frac{1}{1 + z^2}\right)\\[1em]
+ &= \frac{1}{z^3}\left(2 - \sum_{k=0}^\infty (-z^2)^k\right),\quad \text{for }0 < \abs{z} < 1\\[1em]
+ &= \frac{2}{z^3} - \frac{1}{z^3}\sum_{k=0}^\infty (-1)^kz^{2k}\\[1em]
+ &= \frac{2}{z^3} - \sum_{k=0}^\infty (-1)^kz^{2k-3}\\[1em]
+ &= \frac{2}{z^3} - \frac{1}{z^3} + \frac{1}{z} - \sum_{k=2}^\infty (-1)^kz^{2k-3}\\[1em]
+ &= \frac{1}{z^3} + \frac{1}{z} - \sum_{k=2}^\infty (-1)^kz^{2k-3}
+\end{align*}
+
+\item[(3)] $f(z) = \dfrac{e^z}{(1+z)^2}$. The singularity is at $z_0 = -1$, so we want powers of $(1 + z)$. We have,
+\begin{align*}
+\frac{e^z}{(1+z)^2} = \frac{e^{z+1}}{e(1+z)^2} &=  \frac{1}{e(z + 1)^2}\sum_{k=0}^\infty \frac{(z+1)^k}{k!},\quad \text{for }0 < \abs{z + 1} < \infty\\[1em]
+ &=\frac{1}{e}\sum_{k=0}^\infty \frac{(z+1)^{k-2}}{k!}\\[1em]
+ &=\frac{1}{e}\left(\frac{1}{(z + 1)^2} + \frac{1}{z + 1} + \sum_{k=0}^\infty \frac{(z+1)^k}{(k+2)!}\right)
+\end{align*}
+\end{itemize}
+\end{example}
+
+\vspace*{1em}
+
+\begin{theorem}[Laurent's Theorem]\label{laurent}
+Suppose that $f$ is holomorphic on an annulus $R_1 < \abs{z - z_0} < R_2$. Then $f$ has a \cdef{Laurent\ series} expansion on that annulus
+\[f(z) = \sum_{k=0}^\infty a_k(z - z_0)^k + \sum_{k=1}^\infty\frac{a_{-k}}{(z - z_0)^k},\quad \text{for }R_1 < \abs{z - z_0} < R_2\]
+with coefficients given by
+\[a_n = \frac{1}{2\pi i}\int_C \frac{f(z)}{(z - z_0)^{n+1}}\,dz,\quad n \in \zz\]
+where $C$ is a positively oriented simple closed contour in the annulus whose interior contains $z_0$. 
+\[\text{\color{red}add image here}\]
+In particular, 
+\[a_{-1} = \frac{1}{2\pi i}\int_C\, f(z)\,dz\]
+\end{theorem}
+\begin{proof}
+First, let's assume that $z_0 = 0$. Let $z$ be such that $R_1 < \abs{z} < R_2$. Let $C_1$ and $C_2$ be circles, with positive orientation, with radii $r_1$ and $r_2$ respectively such that
+\[R_1 < r_1 < \abs{z} < r_2 < R_2,\]
+and such the contour $C$ lies in the interior of $C_1$ but exterior of $C_2$, that is, between $C_1$ and $C_2$. Hence, by Corollary \ref{deformation}, we can assume
+\[a_k = \frac{1}{2\pi i}\int_{C_2} \frac{f(z)}{(z - z_0)^{k+1}}\,dz,\ \text{ for }k\geq 0 \quad \text{and} \quad a_{-k} = \frac{1}{2\pi i}\int_{C_1} \frac{f(z)}{(z - z_0)^{-k+1}}\,dz,\ \text{ for }k\geq 1\]
+Also let $\epsilon > 0$ be such that $C_\epsilon = C_\epsilon(z)$ lies in between $C_1$ and $C_2$.\\[0.5em]
+Before computing the remainder, we note that by Theorem \ref{cgthmgen} (Generalised Cauchy-Goursat Theorem), we have
+\[\int_{C_2}\,\frac{f(w)}{w - z}\,dw - \int_{C_1}\,\frac{f(w)}{w - z}\,dw - \int_{C_\epsilon}\,\frac{f(w)}{w - z}\,dw = 0 \tag{$1$}\]
+Furthermore, by Theorem \ref{cintform} (Cauchy's Integral formula)
+\[\int_{C_\epsilon}\,\frac{f(w)}{w - z}\,dw = 2\pi i\cdot f(z) \tag{$2$}\]
+(1) and (2) gives us
+\[f(z) = \frac{1}{2\pi i}\int_{C_2}\,\frac{f(w)}{w - z}\,dw - \frac{1}{2\pi i} \int_{C_1}\,\frac{f(w)}{w - z}\,dw = \frac{1}{2\pi i}\int_{C_2}\,\frac{f(w)}{w - z}\,dw + \frac{1}{2\pi i} \int_{C_1}\,\frac{f(w)}{z - w}\,dw\]
+Also recall from the Proof of Theorem \ref{taylor} (Taylor's Theorem)
+\begin{align*}
+\frac{1}{w - z} &= \sum_{k=0}^{n-1}\frac{z^k}{w^{k+1}} + \frac{z^n}{w^n(w - z)}\\[1em]
+\frac{1}{z - w} &= \sum_{k=0}^{n-1}\frac{w^k}{z^{k+1}} + \frac{w^n}{z^n(z - w)}\\[0.5em]
+ &= \sum_{k=1}^{n}\frac{w^{k-1}}{z^k} + \frac{w^n}{z^n(z - w)}\\[0.5em]
+\end{align*}
+Now, 
+\begin{align*}
+\rho_n(z) &= f(z) - \sum_{k=0}^{n-1}\,a_k(z - 0)^k - \sum_{k=1}^{n}\,\frac{a_{-k}}{(z - 0)^k}\\[1em]
+ &= \frac{1}{2\pi i}\int_{C_2}\,\frac{f(w)}{w - z}\,dw +\frac{1}{2\pi i} \int_{C_1}\,\frac{f(w)}{z - w}\,dw\\[0.5em]
+ &\qquad - \sum_{k=0}^{n-1}\,z^k\cdot\frac{1}{2\pi i}\int_{C_2} \frac{f(w)}{w^{k+1}}\,dw - \sum_{k=1}^{n}\,z^{-k}\cdot\frac{1}{2\pi i}\int_{C_1} \frac{f(w)}{w^{-k+1}}\,dw\\[1em]
+ &= \frac{1}{2\pi i} \int_{C_2}\,f(w)\left(\frac{1}{w - z} - \sum_{k=0}^{n-1}\frac{z^k}{w^{k+1}}\right) dw + \frac{1}{2\pi i} \int_{C_1}\,f(w)\left(\frac{1}{z - w} - \sum_{k=1}^{n}\frac{z^{-k}}{w^{-k+1}}\right) dw\\[1em]
+ &= \frac{1}{2\pi i} \int_{C_2}\,f(w)\left(\frac{1}{w - z} - \sum_{k=0}^{n-1}\frac{z^k}{w^{k+1}}\right) dw + \frac{1}{2\pi i} \int_{C_1}\,f(w)\left(\frac{1}{z - w} - \sum_{k=1}^{n}\frac{w^{k-1}}{z^k}\right) dw\\[1em]
+ &= \frac{1}{2\pi i} \int_{C_2}\,f(w)\,\frac{z^n}{w^n(w - z)}\, dw + \frac{1}{2\pi i} \int_{C_2}\,f(w)\,\frac{w^n}{z^n(z - w)}\, dw
+\end{align*}
+Therefore, by triangle inequality
+\[\abs{\rho_n(z)} \leq \frac{1}{2\pi} \abs{\int_{C_2}\,f(w)\,\frac{z^n}{w^n(w - z)}\, dw} + \frac{1}{2\pi} \abs{\int_{C_2}\,f(w)\,\frac{w^n}{z^n(z - w)}\, dw}\]
+We can then show that the right hand side converges to $0$ as $n \to \infty$, similar to what we did in the proof of Theorem \ref{taylor}. This proves our claim for $z_0 = 0$.\\
+\\
+Suppose now that $z_0 \neq 0$, and $f$ is a function that satisfies the hypotheses of the theorem. Define $g(z) \coloneqq f(z + z_0)$; since $f$ is holomorphic on $R_1 < \abs{z - z_0} < R_2$, we get that $g$ is holomorphic on $R_1 < \abs{z} < R_2$. Therefore, by our arguments above, we have
+\[g(z) = \sum_{k=0}^\infty a_kz^k + \sum_{k=1}^\infty\frac{a_{-k}}{z^k}\]
+with
+\[a_n = \frac{1}{2\pi i}\int_\Gamma \frac{f(z)}{z^{n+1}}\,dz,\quad n \in \zz\]
+where $\Gamma$ is the contour obtained from $C$ after translating by $z_0$. To finish the proof, we simply replace $g(z)$ by $f(z + z_0)$, and then $z$ by $z - z_0$. 
+\end{proof}
+
+\vspace*{1em}
+
+\begin{example}\label{laurentex}
+Laurent series are rarely found by using the integral expressions (in fact, it's the other way around, we use the Laurent series expansion to compute the integral expressions). We usually find them by making use of the six Maclaurin series from Example \ref{macelseries}. 
+\begin{itemize}[itemsep=1em]
+\item[(1)] $f(z) = \dfrac{1}{z(1 + z^2)}$.\\
+\\
+The singularities are at $0,\,\pm i$. So, the function is holomorphic on $0 < \abs{z}< 1$. Therefore, by Theorem \ref{laurent}, $f$ has a Laurent series expansion on this deleted neighbourhood. We have,
+\begin{align*}
+\frac{1}{z(1 + z^2)} &= \frac{1}{z}\left(\frac{1}{1 + z^2}\right)\\[0.5em]
+ &= \frac{1}{z}\cdot\sum_{k=0}^\infty(-z^2)^k\\[0.5em]
+ &= \sum_{k=0}^\infty (-1)^kz^{2k-1}\\[0.5em]
+ &= \frac{1}{z} + \sum_{k=1}^\infty (-1)^kz^{2k-1}\\[0.5em]
+ &= \frac{1}{z} + \sum_{k=0}^\infty (-1)^{k+1}z^{2k+1}
+\end{align*}
+Note that we have $a_{-1} = 1$, and thus,
+\[\int_C\,\frac{1}{z(1 + z^2)}\,dz = \int_C\,f(z)\,dz = 2\pi i\cdot a_{-1} = 2\pi i,\]
+where $C$ is any positively oriented simple closed contour about $0$ in the deleted neighbourhood $0 < \abs{z} < 1$.
+
+\item[(2)] $f(z) = e^{1/z}$.\\
+\\
+The singularity is at $0$. So, the function is holomorphic on $0 < \abs{z}< \infty$, that is, $\cc^*$. Therefore, by Theorem \ref{laurent}, $f$ has a Laurent series expansion on $\cc^*$. We have,
+\begin{align*}
+e^{1/z} &= \sum_{k=0}^\infty \frac{(1/z)^k}{k!} = \sum_{k=0}^\infty \frac{1}{k!}\cdot\frac{1}{z^k}
+\end{align*}
+Note that we have $a_{-1} = 1$, and thus,
+\[\int_C\,e^{1/z}\,dz = \int_C\,f(z)\,dz = 2\pi i\cdot a_{-1} = 2\pi i,\]
+where $C$ is any positively oriented simple closed contour about $0$.
+
+\item[(3)] $f(z) = \dfrac{z + 1}{z - 1}$.\\
+\\
+The singularity is at $1$. Therefore, by Theorem \ref{taylor}, $f$ has a Taylor expansion on the disk $\abs{z} < 1$, and a Laurent series expansion on $1 < \abs{z} < \infty$, by Theorem \ref{laurent}.
+\begin{itemize}
+\item[$\bullet$] On $\abs{z} < 1$
+\begin{align*}
+\frac{z + 1}{z - 1} &= -(1 + z)\cdot\frac{1}{1 - z}\\[0.5em]
+ &= -(1 + z)\cdot\sum_{k=0}^\infty\,z^k\\[0.5em]
+ &= -\sum_{k=0}^\infty\,z^k - \sum_{k=0}^\infty\,z^{k+1}\\[0.5em]
+ &= -1 - 2\sum_{k=0}^\infty\,z^{k+1}\\[0.5em]
+ &= -1 - 2\sum_{k=1}^\infty\,z^k
+\end{align*}
+
+\item[$\bullet$] On $1 < \abs{z} < \infty$, since $\abs{1/z} < 1$, we have
+\begin{align*}
+\frac{z + 1}{z - 1} = \frac{1 + 1/z}{1 - 1/z} &= \frac{1}{1 - 1/z} + \frac{1/z}{1 - 1/z}\\[0.5em]
+ &= \sum_{k=0}^\infty\left(\frac{1}{z}\right)^k + \frac{1}{z}\cdot\sum_{k=0}^\infty\left(\frac{1}{z}\right)^k\\[0.5em]
+ &= \sum_{k=0}^\infty\,\frac{1}{z^k} + \sum_{k=0}^\infty\,\frac{1}{z^{k+1}}\\[0.5em]
+ &= 1 + 2\sum_{k=0}^\infty\,\frac{1}{z^{k+1}}\\[0.5em]
+ &= 1 + 2\sum_{k=1}^\infty\,\frac{1}{z^k}
+\end{align*}
+
+\item[(4)] $f(z) = \dfrac{1}{(z - z_0)^{n + 1}}$.\\
+\\
+The singularity is at $z_0$, and therefore $f(z)$ is holomorphic on the punctured complex plane $0 < \abs{z - z_0} < \infty$. In fact, $f(z)$ is its own Laurent series expansion. We will compute
+\[\int_C\,\frac{1}{(z - z_0)^{(n + 1) - m}}\,dz\]
+By Theorem \ref{laurent},
+\begin{align*}
+a_{-(m+1)} &= \frac{1}{2\pi i}\int_C\,\frac{f(z)}{(z - z_0)^{-(m+1) + 1}}\,dz\\[1em]
+ &= \frac{1}{2\pi i}\int_C\,\frac{1}{(z - z_0)^{(n + 1) - m}}\,dz
+\end{align*}
+But from the Laurent series expansion of $f$ itself, we note that
+\[a_{-(m+1)} = \begin{cases}1 & \text{if }m = n\\[0.5em] 0 & \text{otherwise} \end{cases}\]
+Giving us, 
+\[\int_C\,\frac{1}{(z - z_0)^{(n + 1) - m}}\,dz = \begin{cases}2\pi i & \text{if }m = n\\[0.5em] 0 & \text{otherwise} \end{cases}\]
+\end{itemize}
+
+\end{itemize}
+\end{example}
+
+\vspace*{2em}
+
+\subsection{Problems}
+\vspace{0.1in}
+To be added
+%\begin{problem}\label{prob 12.1}
+%
+%\end{problem}
